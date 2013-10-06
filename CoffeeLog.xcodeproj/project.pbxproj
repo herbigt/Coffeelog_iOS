@@ -513,6 +513,7 @@
 				F0DC9AA31801E98D00C95EEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0DC9AA41801E98D00C95EEB /* Build configuration list for PBXNativeTarget "CoffeeLogTests" */ = {
 			isa = XCConfigurationList;
@@ -521,6 +522,7 @@
 				F0DC9AA61801E98D00C95EEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
