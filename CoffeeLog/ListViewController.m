@@ -10,6 +10,7 @@
 #import "CoffeeModel.h"
 #import "CoffeeListCell.h"
 #import "DetailViewController.h"
+#import "AddEditViewController.h"
 
 @interface ListViewController ()
 
@@ -82,7 +83,8 @@
 }
 
 - (void)addCoffee:(id)sender {
-    
+    AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:[[CoffeeModel alloc] init]];
+    [self.navigationController pushViewController:aevc animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
