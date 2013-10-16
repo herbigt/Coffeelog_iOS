@@ -13,10 +13,16 @@
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UIImageView *coffeeImageView;
+@property (strong, nonatomic) UILabel *noImageLabel;
 
 @property (strong, nonatomic) NSArray *typesArray;
 @property (strong, nonatomic) NSArray *statesArray;
 @property (strong, nonatomic) NSArray *worksWithArray;
+
+@property (strong, nonatomic) UITextField *nameField;
+@property (strong, nonatomic) UITextField *priceField;
+@property (strong, nonatomic) UITextField *weightField;
+@property (strong, nonatomic) UITextField *webField;
 
 @end
 
@@ -45,20 +51,27 @@
     
     self.coffeeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
     
-    UILabel *noImageLabel = [[UILabel alloc] initWithFrame:self.coffeeImageView.bounds];
-    noImageLabel.text = @"Tap to add image";
-    noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
-    noImageLabel.textColor = UIColorFromRGB(0x8e8e93);
-    noImageLabel.backgroundColor = [UIColor clearColor];
-    noImageLabel.textAlignment = NSTextAlignmentCenter;
+    self.noImageLabel = [[UILabel alloc] init];
+    self.noImageLabel.frame = self.coffeeImageView.bounds;
+    self.noImageLabel.text = @"Tap to add image";
+    self.noImageLabel.textColor = UIColorFromRGB(0x8e8e93);
+    self.noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
+    self.noImageLabel.backgroundColor = [UIColor clearColor];
+    self.noImageLabel.textAlignment = NSTextAlignmentCenter;
     
-    [self.coffeeImageView addSubview:noImageLabel];
+    [self.coffeeImageView addSubview:self.noImageLabel];
     
+    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)];
+    [self.coffeeImageView addGestureRecognizer:tgr];
+    [self.noImageLabel addGestureRecognizer:tgr];
+    
+    self.coffeeImageView.userInteractionEnabled = YES;
+    self.noImageLabel.userInteractionEnabled = YES;
     
     self.tableView.tableHeaderView = self.coffeeImageView;
     
     
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
     add.tintColor = [UIColor whiteColor];
      
     
@@ -71,6 +84,26 @@
     [self.navigationItem setRightBarButtonItem:add];
     
 	[self.navigationController setNavigationBarHidden:NO];
+    
+    // Initialize the form fields
+    self.nameField = [[UITextField alloc] init];
+    self.nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    self.nameField.textColor = UIColorFromRGB(0x8e8e93);
+    self.nameField.placeholder = @"Name";
+    self.nameField.returnKeyType = UIReturnKeyDone;
+    //self.nameField.text = self.coffeeModel.name;
+    
+    self.priceField = [[UITextField alloc] init];
+    self.priceField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    self.priceField.textColor = UIColorFromRGB(0x8e8e93);
+    self.priceField.returnKeyType = UIReturnKeyDone;
+    self.priceField.placeholder = @"Price";
+    
+    self.weightField = [[UITextField alloc] init];
+    self.weightField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+    self.weightField.textColor = UIColorFromRGB(0x8e8e93);
+    self.weightField.returnKeyType = UIReturnKeyDone;
+    self.weightField.placeholder = @"Weight";
 
 }
 
@@ -158,11 +191,8 @@
     
     if(indexPath.section == 0) {
         if(indexPath.row == 0) {
-            UITextField *textField = [[UITextField alloc] initWithFrame:CGRectMake(paddingLeft, 0, 294, cellHeight)];
-            textField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-            textField.textColor = UIColorFromRGB(0x8e8e93);
-            textField.placeholder = @"Name";
-            [cell addSubview:textField];
+            self.nameField.frame = CGRectMake(paddingLeft, 0, 294, cellHeight);
+            [cell addSubview:self.nameField];
         } else if (indexPath.row == 1) {
             UILabel *favLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
             favLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
@@ -225,31 +255,28 @@
     }
     
     if(indexPath.section == 4) {
-        UITextField *unitField = [[UITextField alloc] initWithFrame:CGRectMake(paddingLeft, 0, 60, cellHeight)];
-        unitField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        unitField.textColor = UIColorFromRGB(0x8e8e93);
-        
         UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 0, 25, cellHeight)];
         unitLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         unitLabel.textColor = UIColorFromRGB(0x61605e);
         
-        [cell addSubview:unitField];
-        [cell addSubview:unitLabel];
-        
         if(indexPath.row == 0) {
-            unitField.placeholder = @"Price";
+            self.priceField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
+            [cell addSubview:self.priceField];
+            
             unitLabel.text = @"€";
         } else {
-            unitField.placeholder = @"Weight";
+            self.weightField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
+            [cell addSubview:self.weightField];
+            
             unitLabel.text = @"g";
         }
         
+        [cell addSubview:unitLabel];
         
         return cell;
     }
     
     if(indexPath.section == 5) {
-        NSLog(@"cellheight: %f", cellHeight);
         WorksWithCollectionView *wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(paddingLeft, paddingLeft, self.view.bounds.size.width - paddingLeft*2, cellHeight - paddingLeft)];
         
         [wwcv setTypesArray:self.worksWithArray];
@@ -260,6 +287,60 @@
     return cell;
     
     
+}
+
+- (void)openImageActionSheet:(id)sender {
+    NSString *destructiveTitle = nil;
+    if(self.coffeeImageView.image) {
+        destructiveTitle = @"Remove current";
+    }
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose image" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:destructiveTitle otherButtonTitles:@"From camera", @"From library", nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == actionSheet.cancelButtonIndex) {
+        return;
+    }
+    
+    if(buttonIndex == actionSheet.destructiveButtonIndex) {
+        self.coffeeImageView.image = nil;
+        self.noImageLabel.text = @"Tap to add image";
+        return;
+    }
+    
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    imagePicker.delegate = self;
+    
+    if(buttonIndex == 0) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    } else if(buttonIndex == 1) {
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
+    
+    imagePicker.allowsEditing = YES;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+
+- (void)saveAndClose:(id)sender {
+    NSLog(@"name: %@, price: %@, weight: %@", self.nameField.text, self.priceField.text, self.weightField.text);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSLog(@"done choosing: %@", info);
+    
+    self.coffeeImageView.image = info[@"UIImagePickerControllerEditedImage"];
+    self.noImageLabel.text = @"";
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

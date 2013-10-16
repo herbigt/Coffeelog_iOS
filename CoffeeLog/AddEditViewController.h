@@ -10,7 +10,7 @@
 
 #import "CoffeeModel.h"
 
-@interface AddEditViewController : UITableViewController
+@interface AddEditViewController : UITableViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (strong, nonatomic) CoffeeModel *coffeeModel;
 

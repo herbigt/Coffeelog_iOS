@@ -36,7 +36,7 @@
     c1.isFavorited = YES;
     
   //  DetailViewController *dvc = [[DetailViewController alloc] initWithCoffeeModel:c1];
- //   AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:[[CoffeeModel alloc] init]];
+    AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:c1];
     
     UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
     
