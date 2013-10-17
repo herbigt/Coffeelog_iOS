@@ -66,6 +66,26 @@
 {
     [super viewDidLoad];
     
+    
+    if(self.coffeeList.count == 0) {
+        self.tableView.separatorColor = [UIColor whiteColor];
+        self.tableView.scrollEnabled = NO;
+        
+        UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, self.view.bounds.size.width - 80, self.view.bounds.size.height - 60)];
+        emptyLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:34.0f];
+        emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
+        emptyLabel.numberOfLines = 3;
+        emptyLabel.textAlignment = NSTextAlignmentCenter;
+        emptyLabel.text = @"Welcome, tap here to add your first coffee!";
+        emptyLabel.backgroundColor = [UIColor whiteColor];
+        
+        UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addCoffee:)];
+        [emptyLabel addGestureRecognizer:tgr];
+        emptyLabel.userInteractionEnabled = YES;
+        
+        [self.tableView addSubview:emptyLabel];
+    }
+    
     UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
     settings.tintColor = [UIColor whiteColor];
     
