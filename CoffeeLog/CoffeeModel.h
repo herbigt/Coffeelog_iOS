@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, CoffeeStoreType) {
+    CoffeeStoreTypeWeb = 0, // Website URL
+    CoffeeStoreTypeLocation // Foursquare location
+};
+
 @interface CoffeeModel : NSObject
 
 @property (strong, nonatomic) UIImage *image;
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *type;
+@property (nonatomic) CoffeeStoreType storeType;
 @property (strong, nonatomic) NSString *store;
 
 @property (nonatomic) NSInteger price;

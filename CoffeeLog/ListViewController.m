@@ -32,15 +32,17 @@
         c1.name = @"Espresso Excelsior";
         c1.type = @"Espresso";
         c1.store = @"Kafeee Koojntor";
+        c1.storeType = CoffeeStoreTypeLocation;
         c1.price = 799;
         c1.weight = 250;
         c1.isFavorited = YES;
         
         CoffeeModel *c2 = [[CoffeeModel alloc] init];
-        c2.image = [UIImage imageNamed:@"testimage"];
+        c2.image = nil;
         c2.name = @"Frische Hühnerbrühe";
         c2.type = @"Tütensuppe";
         c2.store = @"web.de";
+        c2.storeType = CoffeeStoreTypeWeb;
         c2.price =  1009;
         c2.weight = 350;
         c2.isFavorited = NO;

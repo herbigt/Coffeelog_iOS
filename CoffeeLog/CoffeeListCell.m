@@ -29,11 +29,11 @@
         self.coffeeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(15, 15, 85, 85)];
         [self addSubview:self.coffeeImageView];
         
-        self.infoView = [[UIView alloc] initWithFrame:CGRectMake(115, 15, 180, 85)];
+        self.infoView = [[UIView alloc] initWithFrame:CGRectMake(115, 10, 180, 85)];
         [self addSubview:self.infoView];
         
         self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite"]];
-        self.favoriteIcon.frame = CGRectMake(self.infoView.bounds.size.width - self.favoriteIcon.bounds.size.width, 0, self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
+        self.favoriteIcon.frame = CGRectMake(self.infoView.bounds.size.width - self.favoriteIcon.bounds.size.width, 5, self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
         [self.infoView addSubview:self.favoriteIcon];
         
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 25)];
@@ -50,7 +50,7 @@
         self.storeIcon.frame = CGRectMake(0, MAX_Y(self.typeLabel) + 5, self.storeIcon.bounds.size.width, self.storeIcon.bounds.size.height);
         [self.infoView addSubview:self.storeIcon];
         
-        self.storeLabel = [[UILabel alloc] initWithFrame:CGRectMake(MAX_X(self.storeIcon) + 5, MAX_Y(self.typeLabel), 160, 25)];
+        self.storeLabel = [[UILabel alloc] initWithFrame:CGRectMake(MAX_X(self.storeIcon) + 5, MAX_Y(self.typeLabel) + 5, 160, 25)];
         self.storeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
         self.storeLabel.textColor = UIColorFromRGB(0x61605e);
         [self.infoView addSubview:self.storeLabel];
@@ -59,6 +59,8 @@
         self.priceLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];
         self.priceLabel.textColor = UIColorFromRGB(0x61605e);
         [self.infoView addSubview:self.priceLabel];
+        
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return self;
 }
@@ -66,7 +68,20 @@
 - (void)setCoffeeModel:(CoffeeModel*)model {
     _coffeeModel = model;
     
-    [self.coffeeImageView setImage:model.image];
+    if(model.image == nil) {
+        [self.coffeeImageView setImage:[UIImage imageNamed:@"placeholder_image"]];
+    } else {
+        [self.coffeeImageView setImage:model.image];
+    }
+    
+    if(model.storeType == CoffeeStoreTypeLocation) {
+        self.storeIcon.image = [UIImage imageNamed:@"location"];
+        self.storeIcon.frame = CGRectMake(0, MAX_Y(self.typeLabel) + 10, self.storeIcon.image.size.width, self.storeIcon.image.size.height);
+    } else {
+        self.storeIcon.image = [UIImage imageNamed:@"web"];
+        self.storeIcon.frame = CGRectMake(0, MAX_Y(self.typeLabel) + 16, self.storeIcon.image.size.width, self.storeIcon.image.size.height);
+    }
+    
     [self.nameLabel setText:model.name];
     [self.typeLabel setText:model.type];
     [self.storeLabel setText:model.store];
