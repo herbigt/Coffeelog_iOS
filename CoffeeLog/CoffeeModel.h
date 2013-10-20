@@ -19,6 +19,7 @@ typedef NS_ENUM(NSInteger, CoffeeStoreType) {
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSString *state;
 @property (nonatomic) CoffeeStoreType storeType;
 @property (strong, nonatomic) NSString *store;
 

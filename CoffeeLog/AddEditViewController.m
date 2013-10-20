@@ -279,6 +279,8 @@
     if(indexPath.section == 5) {
         WorksWithCollectionView *wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(paddingLeft, paddingLeft, self.view.bounds.size.width - paddingLeft*2, cellHeight - paddingLeft)];
         
+        wwcv.tintColor = UIColorFromRGB(0xc6c7c8);
+        
         [wwcv setTypesArray:self.worksWithArray];
         
         [cell addSubview:wwcv];

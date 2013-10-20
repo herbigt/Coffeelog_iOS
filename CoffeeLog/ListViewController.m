@@ -7,10 +7,12 @@
 //
 
 #import "ListViewController.h"
+
 #import "CoffeeModel.h"
 #import "CoffeeListCell.h"
 #import "DetailViewController.h"
 #import "AddEditViewController.h"
+#import "SettingsViewController.h"
 
 @interface ListViewController ()
 
@@ -31,6 +33,7 @@
         c1.image = [UIImage imageNamed:@"testimage"];
         c1.name = @"Espresso Excelsior";
         c1.type = @"Espresso";
+        c1.state = @"Roasted Beans";
         c1.store = @"Kafeee Koojntor";
         c1.storeType = CoffeeStoreTypeLocation;
         c1.price = 799;
@@ -40,6 +43,7 @@
         CoffeeModel *c2 = [[CoffeeModel alloc] init];
         c2.image = nil;
         c2.name = @"Frische Hühnerbrühe";
+        c2.state = @"Hühnchenbeine";
         c2.type = @"Tütensuppe";
         c2.store = @"web.de";
         c2.storeType = CoffeeStoreTypeWeb;
@@ -60,6 +64,10 @@
     
     [self.tableView registerClass:[CoffeeListCell class] forCellReuseIdentifier:@"CoffeeListCell"];
     self.tableView.separatorColor = UIColorFromRGB(0xb57252);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 }
 
 - (void)viewDidLoad
@@ -101,7 +109,9 @@
 }
 
 - (void)openSettings:(id)sender {
-    
+    SettingsViewController *svc = [[SettingsViewController alloc] init];
+    //[self presentViewController:svc animated:YES completion:nil];
+    [self.navigationController pushViewController:svc animated:YES];
 }
 
 - (void)addCoffee:(id)sender {

@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "WorksWithCollectionView.h"
 
 
 @interface DetailViewController ()
@@ -36,15 +37,22 @@
     if (self) {
         _coffeeModel = coffeeModel;
         
-        self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite"]];
-        self.storeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"location"]];
+        self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite_detail"]];
+        self.storeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"location_detail"]];
         
-           }
+    }
     return self;
 }
 
 - (void)shareButton:(id)sender {
     NSLog(@"Share!");
+    
+    NSArray *activityItems = @[self.coffeeModel.name, self.coffeeModel.image];
+
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact];
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 
@@ -88,8 +96,16 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == 4 || indexPath.row == 1) {
-        return 80;
+    if(indexPath.row == 0) {
+        return 65;
+    }
+    
+    if(indexPath.row == 1) {
+        return 75;
+    }
+    
+    if(indexPath.row == 4) {
+        return 140;
     }
     
     return 50;
@@ -101,7 +117,9 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, height)];
+    
+    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    
     cell.textLabel.textColor = UIColorFromRGB(0x61605e);
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -110,25 +128,61 @@
         cell.textLabel.text = self.coffeeModel.name;
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:24.0];
         
-        self.favoriteIcon.frame = CGRectMake(MAX_X(cell) - self.favoriteIcon.bounds.size.width - 15, (cell.bounds.size.height/2) - (self.favoriteIcon.bounds.size.height/2), self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
+        self.favoriteIcon.frame = CGRectMake(MAX_X(cell) - self.favoriteIcon.bounds.size.width - 15, (height/2) - (self.favoriteIcon.bounds.size.height/2), self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
         [cell addSubview:self.favoriteIcon];
     } else if (indexPath.row == 1) {
-        cell.textLabel.text =  [NSString stringWithFormat:@"%@\n%@", self.coffeeModel.type, self.coffeeModel.type];
-        cell.textLabel.numberOfLines = 2;
+        UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
+        typeLabel.textColor = UIColorFromRGB(0x61605e);
+        typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+        typeLabel.text = self.coffeeModel.type;
+        [typeLabel sizeToFit];
+        
+        UILabel *stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, MAX_Y(typeLabel) + 5, self.view.bounds.size.width, 20)];
+        stateLabel.textColor = UIColorFromRGB(0x61605e);
+        stateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+        stateLabel.text = self.coffeeModel.state;
+        [stateLabel sizeToFit];
+  
+        [cell addSubview:typeLabel];
+        [cell addSubview:stateLabel];
+
         
     } else if (indexPath.row == 2) {
-        self.storeIcon.frame = CGRectMake(15, (cell.bounds.size.height/2) - (self.storeIcon.bounds.size.height/2), self.storeIcon.bounds.size.width, self.storeIcon.bounds.size.height);
+        self.storeIcon.frame = CGRectMake(15, (height/2) - (self.storeIcon.bounds.size.height/2), self.storeIcon.bounds.size.width, self.storeIcon.bounds.size.height);
         [cell addSubview:self.storeIcon];
         
-        cell.textLabel.text = self.coffeeModel.store;
-        cell.textLabel.frame = CGRectMake(MAX_X(self.storeIcon) + 5, cell.textLabel.frame.origin.y, cell.textLabel.bounds.size.width - MAX_X(self.storeIcon), cell.textLabel.bounds.size.height);
+        UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(MAX_X(self.storeIcon) + 5, 0, self.view.bounds.size.width - MAX_X(self.storeIcon) * 2 - 5, height)];
+        locationLabel.text = self.coffeeModel.store;
+        locationLabel.textColor = UIColorFromRGB(0x61605e);
+        locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+        
+        [cell addSubview:locationLabel];
+        
+
         
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     } else if (indexPath.row == 3) {
         cell.textLabel.text = [NSString stringWithFormat:@"%.2f€ / %.2fg", (self.coffeeModel.price/100.0f), (self.coffeeModel.weight/100.0f)];
     } else if (indexPath.row == 4) {
-        cell.textLabel.text = @"Works with";
+        UILabel *worksWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
+        worksWithLabel.textColor = UIColorFromRGB(0x61605e);
+        worksWithLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+        worksWithLabel.text = @"Works with";
+        [worksWithLabel sizeToFit];
+        
+        [cell addSubview:worksWithLabel];
+        
+        WorksWithCollectionView *wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(15, MAX_Y(worksWithLabel) + 35, self.view.bounds.size.width - 15 * 2, height - MAX_Y(worksWithLabel) - 35)];
+        
+        
+        
+        [wwcv setTypesArray:@[@"aero", @"filter", @"frenchpress", @"sieb", @"turkish"]];
+        
+        wwcv.tintColor = UIColorFromRGB(0x605f5e);
+        
+        [cell addSubview:wwcv];
+
     }
     
     return cell;

@@ -11,6 +11,7 @@
 @interface WorksWithCollectionView()
 
 @property (strong, nonatomic) NSMutableArray *iconViews;
+@property (nonatomic) CGFloat maxHeight;
 
 @end
 
@@ -29,6 +30,8 @@
         
         self.scrollEnabled = NO;
         
+        
+        
         [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     }
     return self;
@@ -39,9 +42,14 @@
     
     self.iconViews = [NSMutableArray array];
     
+    self.maxHeight = 0;
     for(NSString *type in typesArray) {
-        UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@", type]];
+        UIImage *iconImage = [[UIImage imageNamed:[NSString stringWithFormat:@"type_%@", type]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         [self.iconViews addObject:iconImage];
+        
+        if(iconImage.size.height > self.maxHeight) {
+            self.maxHeight = iconImage.size.height;
+        }
     }
 }
 
@@ -50,13 +58,16 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {    
-    return ((UIImage*)self.iconViews[indexPath.row]).size;
+    return CGSizeMake(((UIImage*)self.iconViews[indexPath.row]).size.width, self.maxHeight);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
+    CGFloat paddingTop = self.maxHeight - ((UIImage*)self.iconViews[indexPath.row]).size.height;
+    
     UIImageView *iconView = [[UIImageView alloc] initWithImage:self.iconViews[indexPath.row]];
+    iconView.frame = CGRectMake(0, paddingTop, iconView.bounds.size.width, iconView.bounds.size.height);
     
     [cell addSubview:iconView];
     
