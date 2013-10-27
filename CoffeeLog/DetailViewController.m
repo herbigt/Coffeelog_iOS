@@ -89,7 +89,7 @@
 
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
     add.tintColor = [UIColor whiteColor];
-       self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationItem.backBarButtonItem.title = @"Coffee Log";
 
     

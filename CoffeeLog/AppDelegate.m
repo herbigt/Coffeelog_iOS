@@ -42,6 +42,7 @@
     SettingsViewController *svc = [[SettingsViewController alloc] init];
     
     UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
+    nv.navigationBar.tintColor = [UIColor whiteColor];
     
     nv.navigationBar.barTintColor = UIColorFromRGB(0xff9500);
     nv.navigationBar.translucent = YES;
