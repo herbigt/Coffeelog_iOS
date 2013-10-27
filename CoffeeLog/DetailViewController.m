@@ -37,8 +37,7 @@
     if (self) {
         _coffeeModel = coffeeModel;
         
-        self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite_detail"]];
-        self.storeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"location_detail"]];
+
         
     }
     return self;
@@ -60,6 +59,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite_detail"]];
+    
+    UIImage *storeIconImage = self.coffeeModel.storeType == CoffeeStoreTypeWeb ? [UIImage imageNamed:@"web_detail"] : [UIImage imageNamed:@"location_detail"];
+    self.storeIcon = [[UIImageView alloc] initWithImage:storeIconImage];
     
     self.tableView.separatorColor = UIColorFromRGB(0xb57252);
     
