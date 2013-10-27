@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		409A6E9ED47642F6B619449F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB3D205518D45F9BC9CECCB /* libPods.a */; };
 		F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05140AB180C870600B7D0D3 /* AddEditViewController.m */; };
 		F05140B2180C941E00B7D0D3 /* type_aero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AD180C941E00B7D0D3 /* type_aero@2x.png */; };
 		F05140B3180C941E00B7D0D3 /* type_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AE180C941E00B7D0D3 /* type_filter@2x.png */; };
@@ -22,6 +23,8 @@
 		F07B039F181D5219001FBBAF /* location_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07B039E181D5219001FBBAF /* location_detail@2x.png */; };
 		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
 		F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A4181D542F001FBBAF /* UserSettings.m */; };
+		F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */; };
+		F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */; };
 		F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A781801E98D00C95EEB /* Foundation.framework */; };
 		F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */; };
 		F0DC9A7D1801E98D00C95EEB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7C1801E98D00C95EEB /* UIKit.framework */; };
@@ -55,6 +58,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5CB3D205518D45F9BC9CECCB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED0018E1A9474D9B9576C708 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F05140AA180C870600B7D0D3 /* AddEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditViewController.h; sourceTree = "<group>"; };
 		F05140AB180C870600B7D0D3 /* AddEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditViewController.m; sourceTree = "<group>"; };
 		F05140AD180C941E00B7D0D3 /* type_aero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_aero@2x.png"; sourceTree = "<group>"; };
@@ -75,6 +80,10 @@
 		F07B03A1181D53A3001FBBAF /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		F07B03A3181D542F001FBBAF /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
 		F07B03A4181D542F001FBBAF /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
+		F07B03A9181D5C49001FBBAF /* VenueSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueSearchViewController.h; sourceTree = "<group>"; };
+		F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueSearchViewController.m; sourceTree = "<group>"; };
+		F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueProvider.h; sourceTree = "<group>"; };
+		F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueProvider.m; sourceTree = "<group>"; };
 		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DC9A781801E98D00C95EEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -113,6 +122,7 @@
 				F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */,
 				F0DC9A7D1801E98D00C95EEB /* UIKit.framework in Frameworks */,
 				F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */,
+				409A6E9ED47642F6B619449F /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +146,7 @@
 				F0DC9A971801E98D00C95EEB /* CoffeeLogTests */,
 				F0DC9A771801E98D00C95EEB /* Frameworks */,
 				F0DC9A761801E98D00C95EEB /* Products */,
+				ED0018E1A9474D9B9576C708 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +166,7 @@
 				F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */,
 				F0DC9A7C1801E98D00C95EEB /* UIKit.framework */,
 				F0DC9A911801E98D00C95EEB /* XCTest.framework */,
+				5CB3D205518D45F9BC9CECCB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -216,6 +228,8 @@
 				F05140AB180C870600B7D0D3 /* AddEditViewController.m */,
 				F07180F3181478F600C6B299 /* SettingsViewController.h */,
 				F07180F4181478F600C6B299 /* SettingsViewController.m */,
+				F07B03A9181D5C49001FBBAF /* VenueSearchViewController.h */,
+				F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +252,8 @@
 				F0DC9AB11801ECBA00C95EEB /* CoffeeModel.m */,
 				F07B03A3181D542F001FBBAF /* UserSettings.h */,
 				F07B03A4181D542F001FBBAF /* UserSettings.m */,
+				F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */,
+				F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -270,9 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0DC9AA11801E98D00C95EEB /* Build configuration list for PBXNativeTarget "CoffeeLog" */;
 			buildPhases = (
+				825A837788664EBEB98668D4 /* Check Pods Manifest.lock */,
 				F0DC9A711801E98D00C95EEB /* Sources */,
 				F0DC9A721801E98D00C95EEB /* Frameworks */,
 				F0DC9A731801E98D00C95EEB /* Resources */,
+				87D791D1153A4D9CBDCDCDFD /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -367,6 +385,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		825A837788664EBEB98668D4 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		87D791D1153A4D9CBDCDCDFD /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F0DC9A711801E98D00C95EEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -381,7 +432,9 @@
 				F07B03A2181D53A3001FBBAF /* Constants.m in Sources */,
 				F0DC9AAE1801EAE000C95EEB /* CoffeeListCell.m in Sources */,
 				F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */,
+				F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */,
 				F0DC9AB21801ECBA00C95EEB /* CoffeeModel.m in Sources */,
+				F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */,
 				F0DC9ABE1801F77100C95EEB /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -498,6 +551,7 @@
 		};
 		F0DC9AA21801E98D00C95EEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0018E1A9474D9B9576C708 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -511,6 +565,7 @@
 		};
 		F0DC9AA31801E98D00C95EEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED0018E1A9474D9B9576C708 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

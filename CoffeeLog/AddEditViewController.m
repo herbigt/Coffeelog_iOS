@@ -11,6 +11,8 @@
 #import "WorksWithCollectionView.h"
 #import "UserSettings.h"
 
+#import "VenueSearchViewController.h"
+
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UIImageView *coffeeImageView;
@@ -288,8 +290,16 @@
     }
     
     return cell;
-    
-    
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 3) {
+        if(indexPath.row == 0) {
+            VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
+            [self.navigationController pushViewController:vsvc animated:YES];
+            return;
+        }
+    }
 }
 
 - (void)openImageActionSheet:(id)sender {
@@ -334,8 +344,6 @@
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSLog(@"done choosing: %@", info);
-    
     self.coffeeImageView.image = info[@"UIImagePickerControllerEditedImage"];
     self.noImageLabel.text = @"";
     
