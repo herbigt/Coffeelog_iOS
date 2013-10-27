@@ -14,8 +14,11 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 
+#import "Constants.h"
+
 #define MAX_X(view) view.frame.origin.x + view.bounds.size.width
 #define MAX_Y(view) view.frame.origin.y + view.bounds.size.height
+#define VCENTERHEIGHT(view1, view2) (view1.bounds.size.height/2 - view2.bounds.size.height/2)
 
 
     #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]

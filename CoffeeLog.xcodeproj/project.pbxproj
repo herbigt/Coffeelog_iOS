@@ -20,6 +20,8 @@
 		F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07180F4181478F600C6B299 /* SettingsViewController.m */; };
 		F07B039D181D5139001FBBAF /* web_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07B039C181D5139001FBBAF /* web_detail@2x.png */; };
 		F07B039F181D5219001FBBAF /* location_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07B039E181D5219001FBBAF /* location_detail@2x.png */; };
+		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
+		F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A4181D542F001FBBAF /* UserSettings.m */; };
 		F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A781801E98D00C95EEB /* Foundation.framework */; };
 		F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */; };
 		F0DC9A7D1801E98D00C95EEB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7C1801E98D00C95EEB /* UIKit.framework */; };
@@ -69,6 +71,10 @@
 		F07180F4181478F600C6B299 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		F07B039C181D5139001FBBAF /* web_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web_detail@2x.png"; sourceTree = "<group>"; };
 		F07B039E181D5219001FBBAF /* location_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_detail@2x.png"; sourceTree = "<group>"; };
+		F07B03A0181D53A3001FBBAF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		F07B03A1181D53A3001FBBAF /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		F07B03A3181D542F001FBBAF /* UserSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserSettings.h; sourceTree = "<group>"; };
+		F07B03A4181D542F001FBBAF /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DC9A781801E98D00C95EEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -175,6 +181,8 @@
 				F0DC9A811801E98D00C95EEB /* InfoPlist.strings */,
 				F0DC9A841801E98D00C95EEB /* main.m */,
 				F0DC9A861801E98D00C95EEB /* CoffeeLog-Prefix.pch */,
+				F07B03A0181D53A3001FBBAF /* Constants.h */,
+				F07B03A1181D53A3001FBBAF /* Constants.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -228,6 +236,8 @@
 			children = (
 				F0DC9AB01801ECBA00C95EEB /* CoffeeModel.h */,
 				F0DC9AB11801ECBA00C95EEB /* CoffeeModel.m */,
+				F07B03A3181D542F001FBBAF /* UserSettings.h */,
+				F07B03A4181D542F001FBBAF /* UserSettings.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -366,7 +376,9 @@
 				F0DC9A851801E98D00C95EEB /* main.m in Sources */,
 				F0DC9AAA1801E9A600C95EEB /* ListViewController.m in Sources */,
 				F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */,
+				F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */,
 				F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */,
+				F07B03A2181D53A3001FBBAF /* Constants.m in Sources */,
 				F0DC9AAE1801EAE000C95EEB /* CoffeeListCell.m in Sources */,
 				F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */,
 				F0DC9AB21801ECBA00C95EEB /* CoffeeModel.m in Sources */,

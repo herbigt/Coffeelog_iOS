@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 
 #import "CoffeeModel.h"
+#import "UserSettings.h"
+
 #import "ListViewController.h"
 #import "AddEditViewController.h"
 #import "DetailViewController.h"
@@ -18,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[UserSettings defaultSettings] loadSettings];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     ListViewController *lvc = [[ListViewController alloc] initWithStyle:UITableViewStylePlain];

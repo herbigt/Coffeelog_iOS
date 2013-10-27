@@ -7,6 +7,7 @@
 //
 
 #import "SettingsViewController.h"
+#import "UserSettings.h"
 
 @interface SettingsViewController ()
 
@@ -14,6 +15,8 @@
 @property (strong, nonatomic) NSArray *currencyArray;
 @property (strong, nonatomic) NSArray *weightArray;
 @property (strong, nonatomic) NSArray *followArray;
+
+@property (strong, nonatomic) UISwitch *dropboxSwitch;
 
 @end
 
@@ -62,15 +65,15 @@
     versionLabel.text = [NSString stringWithFormat:@"Coffeelog %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 ;
     versionLabel.textColor = UIColorFromRGB(0xffffff);
-    versionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
+    versionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
     versionLabel.textAlignment = NSTextAlignmentCenter;
     
     self.tableView.tableFooterView = versionLabel;
 }
 
 - (void)saveAndClose:(id)sender {
-    NSLog(@"save And Close");
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [[UserSettings defaultSettings] saveSettings];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
@@ -118,6 +121,10 @@
     return 1;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 45;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [[UITableViewCell alloc] init];
@@ -126,24 +133,50 @@
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     cell.textLabel.textColor = UIColorFromRGB(0xffffff);
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     if(indexPath.section == 0) {
         cell.textLabel.text = self.currencyArray[indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        
+        if([[UserSettings defaultSettings].currency isEqualToString:self.currencyArray[indexPath.row]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     } else if (indexPath.section == 1) {
         cell.textLabel.text = self.weightArray[indexPath.row];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-
+        
+        if([[UserSettings defaultSettings].weight isEqualToString:self.weightArray[indexPath.row]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     } else if (indexPath.section == 2) {
         cell.textLabel.text = @"Enable Dropbox Backup";
+        
+        self.dropboxSwitch = [[UISwitch alloc] init];
+        self.dropboxSwitch.on = [UserSettings defaultSettings].dropboxEnabled;
+        self.dropboxSwitch.frame = CGRectMake(self.view.bounds.size.width - self.dropboxSwitch.bounds.size.width - 15, 45/2 - self.dropboxSwitch.bounds.size.height/2, self.dropboxSwitch.bounds.size.width, self.dropboxSwitch.bounds.size.height);
+        [self.dropboxSwitch addTarget:self action:@selector(dropboxSwitchToggled) forControlEvents:UIControlEventValueChanged];
+        self.dropboxSwitch.tintColor = UIColorFromRGB(0xff9500);
+        self.dropboxSwitch.onTintColor = UIColorFromRGB(0xff9500);
+        
+        [cell addSubview:self.dropboxSwitch];
     } else if(indexPath.section == 3) {
         cell.textLabel.text = [NSString stringWithFormat:@"@%@", self.followArray[indexPath.row]];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 0) {
+        [UserSettings defaultSettings].currency = self.currencyArray[indexPath.row];
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
+    if(indexPath.section == 1) {
+        [UserSettings defaultSettings].weight = self.weightArray[indexPath.row];
+        [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+    }
+    
     if(indexPath.section == 3) {
         NSArray *testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@", self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"tweetbot://%@/user_profile/%@", self.followArray[indexPath.row], self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"https://twitter.com/%@", self.followArray[indexPath.row]]]];
 
@@ -154,6 +187,12 @@
             }
         }
     }
+}
+
+- (void) dropboxSwitchToggled {
+    [UserSettings defaultSettings].dropboxEnabled = self.dropboxSwitch.on;
+    
+    // Todo: Dropbox authentication stuff.
 }
 
 @end
