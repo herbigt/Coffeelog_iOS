@@ -30,6 +30,14 @@
     return self;
 }
 
+- (NSString *)currencyString:(NSInteger)price {
+    return [NSString stringWithFormat:@"%.2f%@", price/100.f, self.currency];
+}
+
+- (NSString *)weightString:(NSInteger)weight {
+    return [NSString stringWithFormat:@"%d%@", weight, self.weight];
+}
+
 - (void)loadSettings {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     

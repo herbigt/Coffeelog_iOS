@@ -19,4 +19,7 @@
 - (void)loadSettings;
 - (void)saveSettings;
 
+- (NSString*)currencyString:(NSInteger)price;
+- (NSString*)weightString:(NSInteger)weight;
+
 @end

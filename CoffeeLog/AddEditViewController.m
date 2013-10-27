@@ -9,6 +9,7 @@
 #import "AddEditViewController.h"
 
 #import "WorksWithCollectionView.h"
+#import "UserSettings.h"
 
 @interface AddEditViewController ()
 
@@ -255,7 +256,7 @@
     }
     
     if(indexPath.section == 4) {
-        UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 0, 25, cellHeight)];
+        UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 0, 45, cellHeight)];
         unitLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         unitLabel.textColor = UIColorFromRGB(0x61605e);
         
@@ -263,12 +264,12 @@
             self.priceField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
             [cell addSubview:self.priceField];
             
-            unitLabel.text = @"€";
+            unitLabel.text = [UserSettings defaultSettings].currency;
         } else {
             self.weightField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
             [cell addSubview:self.weightField];
             
-            unitLabel.text = @"g";
+            unitLabel.text = [UserSettings defaultSettings].weight;
         }
         
         [cell addSubview:unitLabel];

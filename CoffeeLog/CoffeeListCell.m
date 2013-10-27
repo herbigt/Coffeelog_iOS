@@ -7,6 +7,8 @@
 //
 
 #import "CoffeeListCell.h"
+#import "UserSettings.h"
+
 @interface CoffeeListCell ()
 
 @property (strong, nonatomic) UIImageView *coffeeImageView;
@@ -85,7 +87,7 @@
     [self.nameLabel setText:model.name];
     [self.typeLabel setText:model.type];
     [self.storeLabel setText:model.store];
-    [self.priceLabel setText:[NSString stringWithFormat:@"%.2f€ / %.2fg", (model.price/100.0f), (model.weight/100.0f)]];
+    [self.priceLabel setText:[NSString stringWithFormat:@"%@ / %@", [[UserSettings defaultSettings] currencyString:model.price], [[UserSettings defaultSettings] weightString:model.weight]]];
     
 }
 

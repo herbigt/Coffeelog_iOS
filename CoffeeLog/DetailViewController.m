@@ -9,7 +9,7 @@
 #import "DetailViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
-
+#import "UserSettings.h"
 #import "WorksWithCollectionView.h"
 
 
@@ -167,7 +167,7 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     } else if (indexPath.row == 3) {
-        cell.textLabel.text = [NSString stringWithFormat:@"%.2f€ / %.2fg", (self.coffeeModel.price/100.0f), (self.coffeeModel.weight/100.0f)];
+        cell.textLabel.text = [NSString stringWithFormat:@"%@ / %@", [[UserSettings defaultSettings] currencyString:self.coffeeModel.price], [[UserSettings defaultSettings] weightString:self.coffeeModel.weight]];
     } else if (indexPath.row == 4) {
         UILabel *worksWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
         worksWithLabel.textColor = UIColorFromRGB(0x61605e);
