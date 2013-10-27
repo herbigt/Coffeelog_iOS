@@ -125,6 +125,7 @@
     cell.backgroundColor = UIColorFromRGB(0x8e8e93);
     cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     cell.textLabel.textColor = UIColorFromRGB(0xffffff);
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if(indexPath.section == 0) {
         cell.textLabel.text = self.currencyArray[indexPath.row];
@@ -140,6 +141,19 @@
     }
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 3) {
+        NSArray *testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@", self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"tweetbot://%@/user_profile/%@", self.followArray[indexPath.row], self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"https://twitter.com/%@", self.followArray[indexPath.row]]]];
+
+        for(NSURL *url in testURLs) {
+            if([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+                return;
+            }
+        }
+    }
 }
 
 @end
