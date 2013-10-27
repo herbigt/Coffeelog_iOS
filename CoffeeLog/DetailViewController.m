@@ -180,7 +180,7 @@
         WorksWithCollectionView *wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(15, MAX_Y(worksWithLabel) + 35, self.view.bounds.size.width - 15 * 2, height - MAX_Y(worksWithLabel) - 35)];
         
         
-        
+        [wwcv setActiveTypes:self.coffeeModel.worksWith];
         [wwcv setTypesArray:@[@"aero", @"filter", @"frenchpress", @"sieb", @"turkish"]];
         
         wwcv.tintColor = UIColorFromRGB(0x605f5e);

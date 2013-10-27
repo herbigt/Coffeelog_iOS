@@ -10,4 +10,14 @@
 
 @implementation CoffeeModel
 
+-(id)init {
+    self = [super init];
+    if(self) {
+        self.storeType = CoffeeStoreTypeWeb;
+        self.worksWith = [NSArray array];
+    }
+    
+    return self;
+}
+
 @end

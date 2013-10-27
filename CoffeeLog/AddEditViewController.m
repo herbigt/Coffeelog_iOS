@@ -27,6 +27,8 @@
 @property (strong, nonatomic) UITextField *weightField;
 @property (strong, nonatomic) UITextField *webField;
 
+@property (strong, nonatomic) NSMutableArray *worksWithActiveArray;
+
 @end
 
 @implementation AddEditViewController
@@ -107,6 +109,8 @@
     self.weightField.textColor = UIColorFromRGB(0x8e8e93);
     self.weightField.returnKeyType = UIReturnKeyDone;
     self.weightField.placeholder = @"Weight";
+    
+    self.worksWithActiveArray = [NSMutableArray arrayWithArray:self.coffeeModel.worksWith];
 
 }
 
@@ -204,9 +208,12 @@
             
             CGFloat switchY = cellHeight/2 - 31/2;
             UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
+            [favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
             
             [cell addSubview:favLabel];
             [cell addSubview:favSwitch];
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
         
         return cell;
@@ -220,7 +227,12 @@
         
         [cell addSubview:typeLabel];
         
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if([self.coffeeModel.type isEqualToString:self.typesArray[indexPath.row]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         
         return cell;
     }
@@ -233,7 +245,12 @@
         
         [cell addSubview:stateLabel];
         
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        if([self.coffeeModel.state isEqualToString:self.statesArray[indexPath.row]]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
         
         return cell;
     }
@@ -276,6 +293,9 @@
         
         [cell addSubview:unitLabel];
         
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
         return cell;
     }
     
@@ -285,14 +305,29 @@
         wwcv.tintColor = UIColorFromRGB(0xc6c7c8);
         
         [wwcv setTypesArray:self.worksWithArray];
+        [wwcv setActiveTypes:self.worksWithActiveArray];
         
         [cell addSubview:wwcv];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 1) {
+        self.coffeeModel.type = self.typesArray[indexPath.row];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        return;
+    }
+    
+    if(indexPath.section == 2) {
+        self.coffeeModel.state = self.statesArray[indexPath.row];
+        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
+        return;
+    }
+    
     if(indexPath.section == 3) {
         if(indexPath.row == 0) {
             VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
@@ -340,7 +375,18 @@
 
 - (void)saveAndClose:(id)sender {
     NSLog(@"name: %@, price: %@, weight: %@", self.nameField.text, self.priceField.text, self.weightField.text);
+    
+    self.coffeeModel.name = self.nameField.text;
+    self.coffeeModel.price = ([self.priceField.text floatValue] * 100);
+    self.coffeeModel.weight = [self.weightField.text integerValue];
+    self.coffeeModel.worksWith = [NSArray arrayWithArray:self.worksWithActiveArray];
+    
+    
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)favoriteSwitchToggled:(id)sender {
+    self.coffeeModel.isFavorited = ((UISwitch*)sender).on;
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {

@@ -23,6 +23,7 @@ typedef NS_ENUM(NSInteger, CoffeeStoreType) {
 @property (nonatomic) CoffeeStoreType storeType;
 @property (strong, nonatomic) NSString *store;
 @property (strong, nonatomic) NSString *foursquareID;
+@property (strong, nonatomic) NSArray *worksWith;
 
 @property (nonatomic) NSInteger price;
 @property (nonatomic) NSInteger weight;

@@ -45,7 +45,7 @@
     AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:c1];
     SettingsViewController *svc = [[SettingsViewController alloc] init];
     
-    UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:aevc];
+    UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
     nv.navigationBar.tintColor = [UIColor whiteColor];
     
     nv.navigationBar.barTintColor = UIColorFromRGB(0xff9500);

@@ -11,5 +11,6 @@
 @interface WorksWithCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSArray *typesArray;
+@property (strong, nonatomic) NSMutableArray *activeTypes;
 
 @end

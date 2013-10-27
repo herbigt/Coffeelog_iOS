@@ -13,6 +13,9 @@
 @property (strong, nonatomic) NSMutableArray *iconViews;
 @property (nonatomic) CGFloat maxHeight;
 
+@property (strong, nonatomic) UIColor *activeTintColor;
+@property (strong, nonatomic) UIColor *inactiveTintColor;
+
 @end
 
 @implementation WorksWithCollectionView
@@ -30,9 +33,12 @@
         
         self.scrollEnabled = NO;
         
-        
-        
         [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
+        
+        self.activeTintColor = UIColorFromRGB(0x605f5e);
+        self.inactiveTintColor = UIColorFromRGB(0xc6c7c8);
+        
+        self.activeTypes = [NSMutableArray array];
     }
     return self;
 }
@@ -64,14 +70,37 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     
+    UIImageView *iconView = (UIImageView*)[cell viewWithTag:100];
+    if(!iconView) {
+        iconView = [[UIImageView alloc] init];
+        iconView.tag = 100;
+        
+        [cell addSubview:iconView];
+    }
+    
     CGFloat paddingTop = self.maxHeight - ((UIImage*)self.iconViews[indexPath.row]).size.height;
+    NSString *currentType = self.typesArray[indexPath.row];
     
-    UIImageView *iconView = [[UIImageView alloc] initWithImage:self.iconViews[indexPath.row]];
-    iconView.frame = CGRectMake(0, paddingTop, iconView.bounds.size.width, iconView.bounds.size.height);
-    
-    [cell addSubview:iconView];
+    iconView.image = self.iconViews[indexPath.row];
+    iconView.frame = CGRectMake(0, paddingTop, iconView.image.size.width, iconView.image.size.height);
+    iconView.tintColor = [self.activeTypes containsObject:currentType] ? self.activeTintColor : self.inactiveTintColor;
     
     return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if(![self.activeTypes isKindOfClass:[NSMutableArray class]]) {
+        return;
+    }
+    
+    NSString *currentType = self.typesArray[indexPath.row];
+    if([self.activeTypes containsObject:currentType]) {
+        [self.activeTypes removeObject:currentType];
+    } else {
+        [self.activeTypes addObject:currentType];
+    }
+    
+    [collectionView reloadItemsAtIndexPaths:@[indexPath]];
 }
 
 @end
