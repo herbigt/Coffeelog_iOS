@@ -188,4 +188,23 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row == 2) {
+        NSArray *testURLs = nil;
+        
+        if(self.coffeeModel.storeType == CoffeeStoreTypeWeb) {
+            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", self.coffeeModel.store]]];
+        } else {
+            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"foursquare://venue/%@", self.coffeeModel.foursquareID]], [NSURL URLWithString:[NSString stringWithFormat:@"http://foursquare.com/venue/%@", self.coffeeModel.foursquareID]]];
+        }
+        
+        for(NSURL *url in testURLs) {
+            if([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+                return;
+            }
+        }
+    }
+}
+
 @end

@@ -35,6 +35,7 @@
         c1.type = @"Espresso";
         c1.state = @"Roasted Beans";
         c1.store = @"Kafeee Koojntor";
+        c1.foursquareID = @"3fd66200f964a520c5e31ee3";
         c1.storeType = CoffeeStoreTypeLocation;
         c1.price = 799;
         c1.weight = 250;
