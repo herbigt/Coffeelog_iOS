@@ -34,6 +34,13 @@
     self.searchBar.delegate = self;
     self.searchBar.placeholder = @"Search for a place";
     self.navigationItem.titleView = self.searchBar;
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60)];
+    UIImageView *poweredByView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"powered_by_4sq"]];
+    poweredByView.center = footerView.center;
+    [footerView addSubview:poweredByView];
+    
+    self.tableView.tableFooterView = footerView;
 }
 
 - (void)viewDidAppear:(BOOL)animated {

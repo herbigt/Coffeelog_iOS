@@ -15,6 +15,7 @@
 #import "AddEditViewController.h"
 #import "DetailViewController.h"
 #import "SettingsViewController.h"
+#import "VenueSearchViewController.h"
 
 @implementation AppDelegate
 
@@ -44,6 +45,8 @@
     DetailViewController *dvc = [[DetailViewController alloc] initWithCoffeeModel:c1];
     AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:c1];
     SettingsViewController *svc = [[SettingsViewController alloc] init];
+    
+    VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
     
     UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
     nv.navigationBar.tintColor = [UIColor whiteColor];

@@ -19,6 +19,7 @@
 		F0543FD9181080ED00CDFE2A /* web@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0543FD8181080ED00CDFE2A /* web@2x.png */; };
 		F07180F018146DCE00C6B299 /* favorite_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07180EF18146DCE00C6B299 /* favorite_detail@2x.png */; };
 		F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07180F4181478F600C6B299 /* SettingsViewController.m */; };
+		F07A067E18205E9900B49E13 /* powered_by_4sq@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07A067D18205E9900B49E13 /* powered_by_4sq@2x.png */; };
 		F07B039D181D5139001FBBAF /* web_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07B039C181D5139001FBBAF /* web_detail@2x.png */; };
 		F07B039F181D5219001FBBAF /* location_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07B039E181D5219001FBBAF /* location_detail@2x.png */; };
 		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
@@ -74,6 +75,7 @@
 		F07180EF18146DCE00C6B299 /* favorite_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite_detail@2x.png"; sourceTree = "<group>"; };
 		F07180F3181478F600C6B299 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		F07180F4181478F600C6B299 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		F07A067D18205E9900B49E13 /* powered_by_4sq@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered_by_4sq@2x.png"; sourceTree = "<group>"; };
 		F07B039C181D5139001FBBAF /* web_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web_detail@2x.png"; sourceTree = "<group>"; };
 		F07B039E181D5219001FBBAF /* location_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_detail@2x.png"; sourceTree = "<group>"; };
 		F07B03A0181D53A3001FBBAF /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		F0DC9AB71801F16500C95EEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F07A067D18205E9900B49E13 /* powered_by_4sq@2x.png */,
 				F07B039C181D5139001FBBAF /* web_detail@2x.png */,
 				F07B039E181D5219001FBBAF /* location_detail@2x.png */,
 				F07180EF18146DCE00C6B299 /* favorite_detail@2x.png */,
@@ -363,6 +366,7 @@
 				F0DC9AB61801F16300C95EEB /* location@2x.png in Resources */,
 				F0DC9ABB1801F69400C95EEB /* add@2x.png in Resources */,
 				F0DC9A8B1801E98D00C95EEB /* Images.xcassets in Resources */,
+				F07A067E18205E9900B49E13 /* powered_by_4sq@2x.png in Resources */,
 				F0DC9AB91801F3F100C95EEB /* testimage@2x.png in Resources */,
 				F0DC9AB51801F16300C95EEB /* favorite@2x.png in Resources */,
 				F05140B3180C941E00B7D0D3 /* type_filter@2x.png in Resources */,
