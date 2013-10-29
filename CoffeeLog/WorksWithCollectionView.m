@@ -11,6 +11,8 @@
 @interface WorksWithCollectionView()
 
 @property (strong, nonatomic) NSMutableArray *iconViews;
+@property (strong, nonatomic) NSMutableArray *activeIconViews;
+
 @property (nonatomic) CGFloat maxHeight;
 
 @property (strong, nonatomic) UIColor *activeTintColor;
@@ -34,10 +36,7 @@
         self.scrollEnabled = NO;
         
         [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-        
-        self.activeTintColor = UIColorFromRGB(0x605f5e);
-        self.inactiveTintColor = UIColorFromRGB(0xc6c7c8);
-        
+
         self.activeTypes = [NSMutableArray array];
     }
     return self;
@@ -47,11 +46,15 @@
     _typesArray = typesArray;
     
     self.iconViews = [NSMutableArray array];
+    self.activeIconViews = [NSMutableArray array];
     
     self.maxHeight = 0;
     for(NSString *type in typesArray) {
-        UIImage *iconImage = [[UIImage imageNamed:[NSString stringWithFormat:@"type_%@", type]] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@", type]];
         [self.iconViews addObject:iconImage];
+        
+        UIImage *activeIconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@_active", type]];
+        [self.activeIconViews addObject:activeIconImage];
         
         if(iconImage.size.height > self.maxHeight) {
             self.maxHeight = iconImage.size.height;
@@ -78,13 +81,15 @@
         [cell addSubview:iconView];
     }
     
-    CGFloat paddingTop = self.maxHeight - ((UIImage*)self.iconViews[indexPath.row]).size.height;
+    
     NSString *currentType = self.typesArray[indexPath.row];
+    UIImage *icon = [self.activeTypes containsObject:currentType] ? (UIImage*)self.activeIconViews[indexPath.row] : (UIImage*)self.iconViews[indexPath.row];
     
-    iconView.image = self.iconViews[indexPath.row];
+    CGFloat paddingTop = self.maxHeight - icon.size.height;
+    
+    iconView.image = icon;
     iconView.frame = CGRectMake(0, paddingTop, iconView.image.size.width, iconView.image.size.height);
-    iconView.tintColor = [self.activeTypes containsObject:currentType] ? self.activeTintColor : self.inactiveTintColor;
-    
+
     return cell;
 }
 
