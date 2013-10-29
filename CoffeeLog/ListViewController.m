@@ -115,8 +115,9 @@
 
 - (void)openSettings:(id)sender {
     SettingsViewController *svc = [[SettingsViewController alloc] init];
-    //[self presentViewController:svc animated:YES completion:nil];
-    [self.navigationController pushViewController:svc animated:YES];
+    
+    UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
+    [self presentViewController:snc animated:YES completion:nil];
 }
 
 - (void)addCoffee:(id)sender {

@@ -49,11 +49,11 @@
     add.tintColor = [UIColor whiteColor];
     
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x8e8e93);
+    self.navigationController.navigationBar.translucent = YES;
     
     [self.navigationItem setRightBarButtonItem:add];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationItem.backBarButtonItem.title = @"Settings";
     
     self.tableView.backgroundColor = UIColorFromRGB(0x8e8e93);
     self.tableView.separatorColor = UIColorFromRGB(0xc8c8c8);
@@ -69,11 +69,13 @@
     versionLabel.textAlignment = NSTextAlignmentCenter;
     
     self.tableView.tableFooterView = versionLabel;
+    
+    self.title = @"Settings";
 }
 
 - (void)saveAndClose:(id)sender {
     [[UserSettings defaultSettings] saveSettings];
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 
