@@ -48,7 +48,7 @@
     UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
     nv.navigationBar.tintColor = [UIColor whiteColor];
     
-    nv.navigationBar.barTintColor = UIColorFromRGB(0xff9500);
+    nv.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
     nv.navigationBar.translucent = YES;
     
     [self.window setRootViewController:nv];
