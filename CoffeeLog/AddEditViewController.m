@@ -208,6 +208,8 @@
             
             CGFloat switchY = cellHeight/2 - 31/2;
             UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
+            favSwitch.tintColor = UIColorFromRGB(0xff9500);
+            favSwitch.onTintColor = UIColorFromRGB(0xff9500);
             [favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
             
             [cell addSubview:favLabel];
