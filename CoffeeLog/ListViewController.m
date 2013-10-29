@@ -114,9 +114,7 @@
 }
 
 - (void)openSettings:(id)sender {
-    SettingsViewController *svc = [[SettingsViewController alloc] init];
-    
-    UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:svc];
+    UINavigationController *snc = [[UINavigationController alloc] initWithRootViewController:[[SettingsViewController alloc] init]];
     [self presentViewController:snc animated:YES completion:nil];
 }
 
