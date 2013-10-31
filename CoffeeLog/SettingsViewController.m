@@ -45,7 +45,7 @@
     [super viewDidLoad];
     
 
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
     add.tintColor = [UIColor whiteColor];
     
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0x8e8e93);
@@ -62,7 +62,7 @@
 	[self.navigationController setNavigationBarHidden:NO];
     
     UILabel *versionLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 55)];
-    versionLabel.text = [NSString stringWithFormat:@"Coffeelog %@",[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    versionLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Coffeelog %@", nil),[[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 ;
     versionLabel.textColor = UIColorFromRGB(0xffffff);
     versionLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
@@ -70,7 +70,7 @@
     
     self.tableView.tableFooterView = versionLabel;
     
-    self.title = @"Settings";
+    self.title = NSLocalizedString(@"Settings", nil);
 }
 
 - (void)saveAndClose:(id)sender {
@@ -150,7 +150,7 @@
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
     } else if (indexPath.section == 2) {
-        cell.textLabel.text = @"Enable Dropbox Backup";
+        cell.textLabel.text = NSLocalizedString(@"Enable Dropbox Backup", nil);
         
         self.dropboxSwitch = [[UISwitch alloc] init];
         self.dropboxSwitch.on = [UserSettings defaultSettings].dropboxEnabled;

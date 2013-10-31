@@ -89,7 +89,7 @@
         emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
         emptyLabel.numberOfLines = 3;
         emptyLabel.textAlignment = NSTextAlignmentCenter;
-        emptyLabel.text = @"Welcome, tap here to add your first coffee!";
+        emptyLabel.text = NSLocalizedString(@"Welcome, tap here to add your first coffee!", nil);
         emptyLabel.backgroundColor = [UIColor whiteColor];
         
         UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addCoffee:)];
@@ -99,7 +99,7 @@
         [self.tableView addSubview:emptyLabel];
     }
     
-    UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
     settings.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(addCoffee:)];

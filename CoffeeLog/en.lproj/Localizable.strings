@@ -1,0 +1,46 @@
+/* 
+  Localizable.strings
+  CoffeeLog
+
+  Created by Philipp Waldhauer on 30.10.13.
+  Copyright (c) 2013 CoffeeLog. All rights reserved.
+*/
+
+"Welcome, tap here to add your first coffee!" = "Welcome, tap here to add your first coffee!";
+"Settings" = "Settings";
+
+
+"Share this Coffee" = "Share this Coffee";
+"Edit" = "Edit";
+"Coffee Log" = "Coffee Log";
+"Works with" = "Works with";
+
+
+"Tap to add image" = "Tap to add image";
+"Done" = "Done";
+"Name" = "Name";
+"Price" = "Price";
+"Weight" = "Weight";
+"Type" = "Type";
+"State" = "State";
+"Bought at" = "Bought at";
+"Price & Weight" = "Price & Weight";
+"Works with" = "Works with";
+"Favorite" = "Favorite";
+"Location" = "Location";
+"Website" = "Website";
+
+"Remove current" = "Remove current";
+"Choose image" = "Choose image";
+"Cancel" = "Cancel";
+"From camera" = "From camera";
+"From library" = "From library";
+"Tap to add image" = "Tap to add image";
+
+
+"Enable Dropbox Backup" = "Enable Dropbox Backup";
+"Coffeelog %@" = "Coffeelog %@";
+
+
+
+"Search for a place" = "Search for a place";

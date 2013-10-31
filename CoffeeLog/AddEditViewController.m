@@ -58,7 +58,7 @@
     
     self.noImageLabel = [[UILabel alloc] init];
     self.noImageLabel.frame = self.coffeeImageView.bounds;
-    self.noImageLabel.text = @"Tap to add image";
+    self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
     self.noImageLabel.textColor = UIColorFromRGB(0x8e8e93);
     self.noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
     self.noImageLabel.backgroundColor = [UIColor clearColor];
@@ -76,12 +76,12 @@
     self.tableView.tableHeaderView = self.coffeeImageView;
     
     
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
     add.tintColor = [UIColor whiteColor];
      
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationItem.backBarButtonItem.title = @"Coffee Log";
+    self.navigationItem.backBarButtonItem.title = NSLocalizedString(@"Coffee Log", nil);
     
     self.tableView.backgroundColor = UIColorFromRGB(0xffffff);
     
@@ -94,7 +94,7 @@
     self.nameField = [[UITextField alloc] init];
     self.nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     self.nameField.textColor = UIColorFromRGB(0x8e8e93);
-    self.nameField.placeholder = @"Name";
+    self.nameField.placeholder = NSLocalizedString(@"Name", nil);
     self.nameField.returnKeyType = UIReturnKeyDone;
     //self.nameField.text = self.coffeeModel.name;
     
@@ -102,13 +102,13 @@
     self.priceField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     self.priceField.textColor = UIColorFromRGB(0x8e8e93);
     self.priceField.returnKeyType = UIReturnKeyDone;
-    self.priceField.placeholder = @"Price";
+    self.priceField.placeholder = NSLocalizedString(@"Price", nil);
     
     self.weightField = [[UITextField alloc] init];
     self.weightField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     self.weightField.textColor = UIColorFromRGB(0x8e8e93);
     self.weightField.returnKeyType = UIReturnKeyDone;
-    self.weightField.placeholder = @"Weight";
+    self.weightField.placeholder = NSLocalizedString(@"Weight", nil);
     
     self.worksWithActiveArray = [NSMutableArray arrayWithArray:self.coffeeModel.worksWith];
 
@@ -154,23 +154,23 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if(section == 1) {
-        return @"Type";
+        return NSLocalizedString(@"Type", nil);
     }
     
     if(section == 2) {
-        return @"State";
+        return NSLocalizedString(@"State", nil);
     }
     
     if(section == 3) {
-        return @"Bought at";
+        return NSLocalizedString(@"Bought at", nil);
     }
     
     if(section == 4) {
-        return @"Price & Weight";
+        return NSLocalizedString(@"Price & Weight", nil);
     }
     
     if(section == 5) {
-        return @"Works with";
+        return NSLocalizedString(@"Works with", nil);
     }
     
     return @"";
@@ -204,7 +204,7 @@
             UILabel *favLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
             favLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
             favLabel.textColor = UIColorFromRGB(0x61605e);
-            favLabel.text = @"Favorite";
+            favLabel.text = NSLocalizedString(@"Favorite", nil);
             
             CGFloat switchY = cellHeight/2 - 31/2;
             UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
@@ -265,11 +265,11 @@
         [cell addSubview:boughtLabel];
 
         if(indexPath.row == 0) {
-            boughtLabel.text = @"Location";
+            boughtLabel.text = NSLocalizedString(@"Location", nil);
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         } else {
-            boughtLabel.text = @"Website";
+            boughtLabel.text = NSLocalizedString(@"Website", nil);
         }
         
         
@@ -342,10 +342,10 @@
 - (void)openImageActionSheet:(id)sender {
     NSString *destructiveTitle = nil;
     if(self.coffeeImageView.image) {
-        destructiveTitle = @"Remove current";
+        destructiveTitle = NSLocalizedString(@"Remove current", nil);
     }
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Choose image" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:destructiveTitle otherButtonTitles:@"From camera", @"From library", nil];
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Choose image", nil) delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) destructiveButtonTitle:destructiveTitle otherButtonTitles:NSLocalizedString(@"From camera", nil), NSLocalizedString(@"From library", nil), nil];
     [actionSheet showInView:self.view];
 }
 
@@ -356,7 +356,7 @@
     
     if(buttonIndex == actionSheet.destructiveButtonIndex) {
         self.coffeeImageView.image = nil;
-        self.noImageLabel.text = @"Tap to add image";
+        self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
         return;
     }
     

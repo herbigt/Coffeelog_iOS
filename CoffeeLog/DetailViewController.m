@@ -75,7 +75,7 @@
     self.shareButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [self.shareButton addTarget:self action:@selector(shareButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.shareButton setTintColor:UIColorFromRGB(0xff9500)];
-    [self.shareButton setTitle:@"Share this Coffee" forState:UIControlStateNormal];
+    [self.shareButton setTitle:NSLocalizedString(@"Share this Coffee", nil) forState:UIControlStateNormal];
     self.shareButton.frame = CGRectMake(footerView.bounds.size.width/2 - 290/2, footerView.bounds.size.height/2 - 50/2, 290, 50);
     
     self.shareButton.layer.cornerRadius = 3.0f;
@@ -87,10 +87,10 @@
     self.tableView.tableFooterView = footerView;
 
 
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
     add.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    self.navigationItem.backBarButtonItem.title = @"Coffee Log";
+    self.navigationItem.backBarButtonItem.title = NSLocalizedString(@"Coffee Log", nil);
 
     
     [self.navigationItem setRightBarButtonItem:add];
@@ -172,7 +172,7 @@
         UILabel *worksWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
         worksWithLabel.textColor = UIColorFromRGB(0x61605e);
         worksWithLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
-        worksWithLabel.text = @"Works with";
+        worksWithLabel.text = NSLocalizedString(@"Works with", nil);
         [worksWithLabel sizeToFit];
         
         [cell addSubview:worksWithLabel];

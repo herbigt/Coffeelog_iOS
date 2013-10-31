@@ -32,7 +32,7 @@
  
     self.searchBar = [[UISearchBar alloc] init];
     self.searchBar.delegate = self;
-    self.searchBar.placeholder = @"Search for a place";
+    self.searchBar.placeholder = NSLocalizedString(@"Search for a place", nil);
     self.navigationItem.titleView = self.searchBar;
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 60)];
