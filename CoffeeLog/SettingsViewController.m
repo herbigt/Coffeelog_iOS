@@ -26,10 +26,10 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.sectionArray = @[@"Currency", @"Weight", @"Backup", @"Follow"];
+        self.sectionArray = @[@"Currency", @"Weight", @"Backup", @"Follow us"];
         self.currencyArray = @[@"EUR", @"USD", @"GBP"];
         self.weightArray = @[@"g", @"lb"];
-        self.followArray = @[@"herbigt", @"knuspermagier"];
+        self.followArray = @[@"coffeelogapp", @"herbigt", @"knuspermagier"];
     }
     return self;
 }
