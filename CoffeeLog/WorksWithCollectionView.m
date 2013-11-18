@@ -7,6 +7,7 @@
 //
 
 #import "WorksWithCollectionView.h"
+#import "CoffeeModel.h"
 
 @interface WorksWithCollectionView()
 
@@ -49,11 +50,13 @@
     self.activeIconViews = [NSMutableArray array];
     
     self.maxHeight = 0;
-    for(NSString *type in typesArray) {
-        UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@", type]];
+    for(NSNumber *type in typesArray) {
+        NSString *label = [CoffeeModel labelForWorksWith:[type integerValue]];
+        
+        UIImage *iconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@", label]];
         [self.iconViews addObject:iconImage];
         
-        UIImage *activeIconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@_active", type]];
+        UIImage *activeIconImage = [UIImage imageNamed:[NSString stringWithFormat:@"type_%@_active", label]];
         [self.activeIconViews addObject:activeIconImage];
         
         if(iconImage.size.height > self.maxHeight) {

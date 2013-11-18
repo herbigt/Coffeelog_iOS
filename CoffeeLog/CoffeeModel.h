@@ -13,13 +13,33 @@ typedef NS_ENUM(NSInteger, CoffeeStoreType) {
     CoffeeStoreTypeLocation // Foursquare location
 };
 
+typedef NS_ENUM(NSInteger, CoffeeType) {
+    CoffeeTypeEspresso,
+    CoffeeTypeCoffee,
+    CoffeeTypeBlend
+};
+
+typedef NS_ENUM(NSInteger, CoffeeState) {
+    CoffeeStateGrinded,
+    CoffeeStateBeansRoasted,
+    CoffeeStateBeansUnroasted
+};
+
+typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
+    CoffeeWorksWithAeropress,
+    CoffeeWorksWithFilter,
+    CoffeeWorksWithFrenchpress,
+    CoffeeWorksWithSieb,
+    CoffeeWorksWithTurkish
+};
+
 @interface CoffeeModel : NSObject
 
 @property (strong, nonatomic) UIImage *image;
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *type;
-@property (strong, nonatomic) NSString *state;
+@property (nonatomic) CoffeeType type;
+@property (nonatomic) CoffeeState state;
 @property (nonatomic) CoffeeStoreType storeType;
 @property (strong, nonatomic) NSString *store;
 @property (strong, nonatomic) NSString *foursquareID;
@@ -29,5 +49,13 @@ typedef NS_ENUM(NSInteger, CoffeeStoreType) {
 @property (nonatomic) NSInteger weight;
 
 @property (nonatomic) bool isFavorited;
+
++ (NSArray*)coffeeTypes;
++ (NSArray*)coffeeStates;
++ (NSArray*)coffeeWorksWith;
+
++ (NSString*)labelForCoffeeType:(CoffeeType)type;
++ (NSString*)labelForCoffeeState:(CoffeeState)state;
++ (NSString*)labelForWorksWith:(CoffeeWorksWith)worksWith;
 
 @end

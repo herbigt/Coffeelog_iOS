@@ -85,7 +85,7 @@
     }
     
     [self.nameLabel setText:model.name];
-    [self.typeLabel setText:model.type];
+    [self.typeLabel setText:[CoffeeModel labelForCoffeeType:model.type]];
     [self.storeLabel setText:model.store];
     [self.priceLabel setText:[NSString stringWithFormat:@"%@ / %@", [[UserSettings defaultSettings] currencyString:model.price], [[UserSettings defaultSettings] weightString:model.weight]]];
     

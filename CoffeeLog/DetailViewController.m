@@ -141,13 +141,13 @@
         UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
         typeLabel.textColor = UIColorFromRGB(0x61605e);
         typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
-        typeLabel.text = self.coffeeModel.type;
+        typeLabel.text = [CoffeeModel labelForCoffeeType:self.coffeeModel.type];
         [typeLabel sizeToFit];
         
         UILabel *stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, MAX_Y(typeLabel) + 5, self.view.bounds.size.width, 20)];
         stateLabel.textColor = UIColorFromRGB(0x61605e);
         stateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
-        stateLabel.text = self.coffeeModel.state;
+        stateLabel.text = [CoffeeModel labelForCoffeeState:self.coffeeModel.state];
         [stateLabel sizeToFit];
   
         [cell addSubview:typeLabel];
@@ -184,7 +184,7 @@
         
         
         [wwcv setActiveTypes:self.coffeeModel.worksWith];
-        [wwcv setTypesArray:@[@"aero", @"filter", @"frenchpress", @"sieb", @"turkish"]];
+        [wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
         
         wwcv.tintColor = UIColorFromRGB(0x605f5e);
         

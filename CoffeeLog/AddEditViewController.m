@@ -18,10 +18,6 @@
 @property (strong, nonatomic) UIImageView *coffeeImageView;
 @property (strong, nonatomic) UILabel *noImageLabel;
 
-@property (strong, nonatomic) NSArray *typesArray;
-@property (strong, nonatomic) NSArray *statesArray;
-@property (strong, nonatomic) NSArray *worksWithArray;
-
 @property (strong, nonatomic) UITableViewCell *nameCell;
 
 @property (strong, nonatomic) UITextField *nameField;
@@ -39,10 +35,6 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if(self) {
          _coffeeModel = coffeeModel;
-        
-        self.typesArray = @[@"Espresso", @"Coffee", @"Blend"];
-        self.statesArray = @[@"Grinded", @"Beans (roasted)", @"Beans (unroasted)"];
-        self.worksWithArray = @[@"aero", @"filter", @"frenchpress", @"sieb", @"turkish"];
     }
     
     return self;
@@ -142,11 +134,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if(section == 1) {
-        return self.typesArray.count;
+        return [CoffeeModel coffeeTypes].count;
     }
     
     if(section == 2) {
-        return self.statesArray.count;
+        return [CoffeeModel coffeeStates].count;
     }
     
     if(section == 3) {
@@ -240,12 +232,12 @@
         UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
         typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         typeLabel.textColor = UIColorFromRGB(0x61605e);
-        typeLabel.text = self.typesArray[indexPath.row];
+        typeLabel.text = [CoffeeModel labelForCoffeeType:indexPath.row];
         
         [cell addSubview:typeLabel];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
-        if([self.coffeeModel.type isEqualToString:self.typesArray[indexPath.row]]) {
+        if(self.coffeeModel.type == indexPath.row) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         
@@ -258,12 +250,12 @@
         UILabel *stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
         stateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         stateLabel.textColor = UIColorFromRGB(0x61605e);
-        stateLabel.text = self.statesArray[indexPath.row];
+        stateLabel.text = [CoffeeModel labelForCoffeeState:indexPath.row];
         
         [cell addSubview:stateLabel];
         
         cell.accessoryType = UITableViewCellAccessoryNone;
-        if([self.coffeeModel.state isEqualToString:self.statesArray[indexPath.row]]) {
+        if(self.coffeeModel.state == indexPath.row) {
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
         }
         
@@ -321,7 +313,7 @@
         
         wwcv.tintColor = UIColorFromRGB(0xc6c7c8);
         
-        [wwcv setTypesArray:self.worksWithArray];
+        [wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
         [wwcv setActiveTypes:self.worksWithActiveArray];
         
         [cell addSubview:wwcv];
@@ -334,13 +326,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 1) {
-        self.coffeeModel.type = self.typesArray[indexPath.row];
+        self.coffeeModel.type = indexPath.row;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
     
     if(indexPath.section == 2) {
-        self.coffeeModel.state = self.statesArray[indexPath.row];
+        self.coffeeModel.state = indexPath.row;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
