@@ -119,8 +119,8 @@
 }
 
 - (void)addCoffee:(id)sender {
-    AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:[[CoffeeModel alloc] init]];
-    [self.navigationController pushViewController:aevc animated:YES];
+    UINavigationController *aevc = [[UINavigationController alloc] initWithRootViewController:[[AddEditViewController alloc] initWithCoffeeModel:[[CoffeeModel alloc] init]]];
+    [self presentViewController:aevc animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

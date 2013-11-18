@@ -22,6 +22,8 @@
 @property (strong, nonatomic) NSArray *statesArray;
 @property (strong, nonatomic) NSArray *worksWithArray;
 
+@property (strong, nonatomic) UITableViewCell *nameCell;
+
 @property (strong, nonatomic) UITextField *nameField;
 @property (strong, nonatomic) UITextField *priceField;
 @property (strong, nonatomic) UITextField *weightField;
@@ -75,20 +77,30 @@
     
     self.tableView.tableHeaderView = self.coffeeImageView;
     
+   
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Done", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
+    
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
     add.tintColor = [UIColor whiteColor];
-     
+    
+    
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
+    cancel.tintColor = [UIColor whiteColor];
+    
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationItem.backBarButtonItem.title = NSLocalizedString(@"Coffee Log", nil);
     
     self.tableView.backgroundColor = UIColorFromRGB(0xffffff);
     
-    
+    [self.navigationItem setLeftBarButtonItem:cancel];
     [self.navigationItem setRightBarButtonItem:add];
     
-	[self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     // Initialize the form fields
     self.nameField = [[UITextField alloc] init];
@@ -194,10 +206,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat paddingLeft = 16;
     CGFloat cellHeight = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-    UITableViewCell *cell = [[UITableViewCell alloc] init];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
     if(indexPath.section == 0) {
         if(indexPath.row == 0) {
+           // self.nameCell = cell;
             self.nameField.frame = CGRectMake(paddingLeft, 0, 294, cellHeight);
             [cell addSubview:self.nameField];
         } else if (indexPath.row == 1) {
@@ -384,6 +397,12 @@
     self.coffeeModel.worksWith = [NSArray arrayWithArray:self.worksWithActiveArray];
     
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+- (void)close:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
