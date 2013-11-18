@@ -113,12 +113,14 @@
     self.priceField = [[UITextField alloc] init];
     self.priceField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     self.priceField.textColor = UIColorFromRGB(0x8e8e93);
+    self.priceField.keyboardType = UIKeyboardTypeDecimalPad;
     self.priceField.returnKeyType = UIReturnKeyDone;
     self.priceField.placeholder = NSLocalizedString(@"Price", nil);
     
     self.weightField = [[UITextField alloc] init];
     self.weightField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
     self.weightField.textColor = UIColorFromRGB(0x8e8e93);
+    self.weightField.keyboardType = UIKeyboardTypeDecimalPad;
     self.weightField.returnKeyType = UIReturnKeyDone;
     self.weightField.placeholder = NSLocalizedString(@"Weight", nil);
     
