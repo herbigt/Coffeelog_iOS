@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 CoffeeLog. All rights reserved.
 //
 
+#import <FCModel/FCModel.h>
+
 #import "AppDelegate.h"
 
 #import "CoffeeModel.h"
@@ -21,6 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self initializeDatabase];
+    
     [[UserSettings defaultSettings] loadSettings];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -59,6 +63,66 @@
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void)initializeDatabase {
+    NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog2.sqlite3"];
+    
+    [FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
+        [db beginTransaction];
+        
+        // My custom failure handling. Yours may vary.
+        void (^failedAt)(int statement) = ^(int statement){
+            int lastErrorCode = db.lastErrorCode;
+            NSString *lastErrorMessage = db.lastErrorMessage;
+            
+            [db rollback];
+            
+            NSAssert3(0, @"Migration statement %d failed, code %d: %@", statement, lastErrorCode, lastErrorMessage);
+        };
+        
+        if (*schemaVersion < 1) {
+            if (![db executeUpdate:
+                   @"CREATE TABLE CoffeeModel ("
+                  @"    id           INTEGER PRIMARY KEY AUTOINCREMENT,"
+                  @"    name         TEXT NOT NULL DEFAULT '',"
+                  @"    imagePath         TEXT NOT NULL DEFAULT '',"
+                  @"    type         INTEGER NOT NULL,"
+                  @"    state        INTEGER NOT NULL,"
+                  @"    storeType    INTEGER NOT NULL,"
+                  @"    store        TEXT NOT NULL DEFAULT '',"
+                  @"    foursquareID TEXT NOT NULL DEFAULT '',"
+                  @"    worksWithTypes  TEXT NOT NULL DEFAULT '',"
+                  @"    price        INTEGER NOT NULL,"
+                  @"    weight       INTEGER NOT NULL,"
+                  @"    isFavorited  INTEGER NOT NULL,"
+                   @"   created  INTEGER NOT NULL"
+                   @");"
+                  ]) {
+                failedAt(1);
+            }
+            
+            if (![db executeUpdate:@"CREATE INDEX IF NOT EXISTS name ON CoffeeModel (name);"]) {
+                failedAt(2);
+            }
+            
+            NSLog(@"Created stuff");
+            
+            *schemaVersion = 1;
+        }
+        
+        // If you wanted to change the schema in a later app version, you'd add something like this here:
+        /*
+         if (*schemaVersion < 2) {
+         if (! [db executeUpdate:@"ALTER TABLE Person ADD COLUMN title TEXT NOT NULL DEFAULT ''"]) failedAt(3);
+         *schemaVersion = 2;
+         }
+
+         */
+        
+        [db commit];
+    }];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

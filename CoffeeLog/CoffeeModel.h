@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <FCModel/FCModel.h>
 
 typedef NS_ENUM(NSInteger, CoffeeStoreType) {
     CoffeeStoreTypeWeb = 0, // Website URL
@@ -33,22 +34,30 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
     CoffeeWorksWithTurkish
 };
 
-@interface CoffeeModel : NSObject
+@interface CoffeeModel : FCModel
+
+@property (nonatomic, assign) int64_t id;
 
 @property (strong, nonatomic) UIImage *image;
 
 @property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *imagePath;
+
 @property (nonatomic) CoffeeType type;
 @property (nonatomic) CoffeeState state;
 @property (nonatomic) CoffeeStoreType storeType;
+
 @property (strong, nonatomic) NSString *store;
 @property (strong, nonatomic) NSString *foursquareID;
+@property (strong, nonatomic) NSString *worksWithTypes;
 @property (strong, nonatomic) NSArray *worksWith;
 
 @property (nonatomic) NSInteger price;
 @property (nonatomic) NSInteger weight;
 
 @property (nonatomic) bool isFavorited;
+
+@property (strong, nonatomic) NSDate *created;
 
 + (NSArray*)coffeeTypes;
 + (NSArray*)coffeeStates;

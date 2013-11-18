@@ -28,35 +28,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.coffeeList = [NSMutableArray array];
-        
-        CoffeeModel *c1 = [[CoffeeModel alloc] init];
-        c1.image = [UIImage imageNamed:@"testimage"];
-        c1.name = @"Espresso Excelsior";
-        c1.type = CoffeeTypeEspresso;
-        c1.state = CoffeeStateBeansUnroasted;
-        c1.store = @"Kafeee Koojntor";
-        c1.foursquareID = @"3fd66200f964a520c5e31ee3";
-        c1.storeType = CoffeeStoreTypeLocation;
-        c1.price = 799;
-        c1.worksWith = @[@(CoffeeWorksWithAeropress), @(CoffeeWorksWithFrenchpress)];
-        c1.weight = 250;
-        c1.isFavorited = YES;
-        
-        CoffeeModel *c2 = [[CoffeeModel alloc] init];
-        c2.image = nil;
-        c2.name = @"Frische Hühnerbrühe";
-        c2.state = CoffeeStateBeansRoasted;
-        c2.type = CoffeeTypeBlend;
-        c2.store = @"web.de";
-        c2.storeType = CoffeeStoreTypeWeb;
-        c2.price =  1009;
-        c2.worksWith = @[@(CoffeeWorksWithSieb)];
-        c2.weight = 350;
-        c2.isFavorited = NO;
-        
-        [self.coffeeList addObject:c1];
-        [self.coffeeList addObject:c2];
     }
+    
     return self;
 }
 
@@ -79,6 +52,7 @@
 {
     [super viewDidLoad];
     
+    [self.coffeeList addObjectsFromArray:[CoffeeModel instancesWhere:nil]];
     
     if(self.coffeeList.count == 0) {
         self.tableView.separatorColor = [UIColor whiteColor];
