@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 
 #import <QuartzCore/QuartzCore.h>
+#import <DMActivityInstagram/DMActivityInstagram.h>
 #import "UserSettings.h"
 #import "WorksWithCollectionView.h"
 
@@ -46,10 +47,12 @@
 - (void)shareButton:(id)sender {
     NSLog(@"Share!");
     
-    NSArray *activityItems = @[self.coffeeModel.name, self.coffeeModel.image];
+    DMActivityInstagram *instagramActivity = [[DMActivityInstagram alloc] init];
+    
+    NSArray *activityItems = @[self.coffeeModel.image, self.coffeeModel.name];
 
-    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[instagramActivity]];
+    activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll];
     
     [self presentViewController:activityViewController animated:YES completion:nil];
 }

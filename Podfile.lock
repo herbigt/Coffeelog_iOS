@@ -17,11 +17,14 @@ PODS:
   - AFNetworking/Serialization (2.0.1)
   - AFNetworking/UIKit (2.0.1):
     - AFNetworking/NSURLConnection
+  - DMActivityInstagram (0.0.3)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.0)
+  - DMActivityInstagram (= 0.0.3)
 
 SPEC CHECKSUMS:
   AFNetworking: 867cd74266eeab923f249aa8b3d56899a67cc50e
+  DMActivityInstagram: 5d1f78803b9c5bb0fe582fdc4ca199e6d9e4316b
 
 COCOAPODS: 0.25.0
