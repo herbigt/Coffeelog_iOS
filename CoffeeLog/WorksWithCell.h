@@ -1,5 +1,5 @@
 //
-//  NameCell.h
+//  WorksWithCell.h
 //  CoffeeLog
 //
 //  Created by Philipp Waldhauer on 19.11.13.
@@ -10,7 +10,7 @@
 
 #import "CoffeeModel.h"
 
-@interface NameCell : UITableViewCell <UITextFieldDelegate>
+@interface WorksWithCell : UITableViewCell
 
 @property (strong, nonatomic) CoffeeModel *coffeeModel;
 

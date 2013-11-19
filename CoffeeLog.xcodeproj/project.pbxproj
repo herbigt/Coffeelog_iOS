@@ -34,6 +34,9 @@
 		F0A08D29183AE087001A5370 /* NameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D28183AE087001A5370 /* NameCell.m */; };
 		F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */; };
 		F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D31183AE335001A5370 /* ChooseCell.m */; };
+		F0A08D35183B7841001A5370 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D34183B7841001A5370 /* NumberCell.m */; };
+		F0A08D38183B7A1A001A5370 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D37183B7A1A001A5370 /* LocationCell.m */; };
+		F0A08D3B183B7CD4001A5370 /* WorksWithCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */; };
 		F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */; };
 		F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A781801E98D00C95EEB /* Foundation.framework */; };
 		F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */; };
@@ -108,6 +111,12 @@
 		F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
 		F0A08D30183AE335001A5370 /* ChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCell.h; sourceTree = "<group>"; };
 		F0A08D31183AE335001A5370 /* ChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCell.m; sourceTree = "<group>"; };
+		F0A08D33183B7841001A5370 /* NumberCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumberCell.h; sourceTree = "<group>"; };
+		F0A08D34183B7841001A5370 /* NumberCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NumberCell.m; sourceTree = "<group>"; };
+		F0A08D36183B7A1A001A5370 /* LocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationCell.h; sourceTree = "<group>"; };
+		F0A08D37183B7A1A001A5370 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
+		F0A08D39183B7CD4001A5370 /* WorksWithCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorksWithCell.h; sourceTree = "<group>"; };
+		F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorksWithCell.m; sourceTree = "<group>"; };
 		F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueProvider.h; sourceTree = "<group>"; };
 		F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueProvider.m; sourceTree = "<group>"; };
 		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,6 +183,12 @@
 				F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */,
 				F0A08D30183AE335001A5370 /* ChooseCell.h */,
 				F0A08D31183AE335001A5370 /* ChooseCell.m */,
+				F0A08D33183B7841001A5370 /* NumberCell.h */,
+				F0A08D34183B7841001A5370 /* NumberCell.m */,
+				F0A08D36183B7A1A001A5370 /* LocationCell.h */,
+				F0A08D37183B7A1A001A5370 /* LocationCell.m */,
+				F0A08D39183B7CD4001A5370 /* WorksWithCell.h */,
+				F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -478,6 +493,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0A08D38183B7A1A001A5370 /* LocationCell.m in Sources */,
+				F0A08D3B183B7CD4001A5370 /* WorksWithCell.m in Sources */,
 				F0DC9A891801E98D00C95EEB /* AppDelegate.m in Sources */,
 				F0DC9A851801E98D00C95EEB /* main.m in Sources */,
 				F0DC9AAA1801E9A600C95EEB /* ListViewController.m in Sources */,
@@ -486,6 +503,7 @@
 				F0A08D29183AE087001A5370 /* NameCell.m in Sources */,
 				F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */,
 				F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */,
+				F0A08D35183B7841001A5370 /* NumberCell.m in Sources */,
 				F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */,
 				F07B03A2181D53A3001FBBAF /* Constants.m in Sources */,
 				F0DC9AAE1801EAE000C95EEB /* CoffeeListCell.m in Sources */,

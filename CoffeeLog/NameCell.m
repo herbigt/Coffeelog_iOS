@@ -8,13 +8,29 @@
 
 #import "NameCell.h"
 
+@interface NameCell()
+@property (strong, nonatomic) UITextField *nameField;
+
+
+@end
+
 @implementation NameCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
+        self.nameField = [[UITextField alloc] init];
+        self.nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        self.nameField.textColor = UIColorFromRGB(0x8e8e93);
+        self.nameField.placeholder = NSLocalizedString(@"Name", nil);
+        self.nameField.returnKeyType = UIReturnKeyDone;
+        self.nameField.delegate = self;
         
+        self.nameField.frame = CGRectMake(16, 0, 294, self.bounds.size.height);
+        
+        [self addSubview:self.nameField];
+
     }
     return self;
 }
@@ -22,15 +38,18 @@
 - (void)setCoffeeModel:(CoffeeModel *)coffeeModel {
     _coffeeModel = coffeeModel;
     
-    UITextField *nameField = [[UITextField alloc] init];
-    nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    nameField.textColor = UIColorFromRGB(0x8e8e93);
-    nameField.placeholder = NSLocalizedString(@"Name", nil);
-    nameField.returnKeyType = UIReturnKeyDone;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    NSLog(@"didend");
     
-    nameField.frame = CGRectMake(16, 0, 294, self.bounds.size.height);
     
-    [self addSubview:nameField];
+    self.coffeeModel.name = textField.text;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 @end

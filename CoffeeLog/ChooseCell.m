@@ -35,12 +35,9 @@
     
     self.typeLabel.text = self.choiceLabel;
     
-    NSInteger modelChoice = (NSInteger)[self.coffeeModel valueForKey:self.choiceProperty];
+    NSInteger modelChoice = [[self.coffeeModel valueForKey:self.choiceProperty] integerValue];
     
-    if(modelChoice == self.currentIndex) {
-        self.accessoryType = UITableViewCellAccessoryCheckmark;
-    }
-    
+    self.accessoryType = (modelChoice == self.currentIndex) ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     self.selectionStyle = UITableViewCellSelectionStyleDefault;
 }
 

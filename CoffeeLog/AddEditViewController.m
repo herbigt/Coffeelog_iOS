@@ -16,20 +16,14 @@
 #import "NameCell.h"
 #import "FavoriteCell.h"
 #import "ChooseCell.h"
+#import "NumberCell.h"
+#import "LocationCell.h"
+#import "WorksWithCell.h"
 
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UIImageView *coffeeImageView;
 @property (strong, nonatomic) UILabel *noImageLabel;
-
-@property (strong, nonatomic) UITableViewCell *nameCell;
-
-@property (strong, nonatomic) UITextField *nameField;
-@property (strong, nonatomic) UITextField *priceField;
-@property (strong, nonatomic) UITextField *weightField;
-@property (strong, nonatomic) UITextField *webField;
-
-@property (strong, nonatomic) NSMutableArray *worksWithActiveArray;
 
 @end
 
@@ -73,11 +67,13 @@
     
     self.tableView.tableHeaderView = self.coffeeImageView;
     
-    
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+
     [self.tableView registerClass:[NameCell class] forCellReuseIdentifier:@"NameCell"];
     [self.tableView registerClass:[FavoriteCell class] forCellReuseIdentifier:@"FavoriteCell"];
     [self.tableView registerClass:[ChooseCell class] forCellReuseIdentifier:@"ChooseCell"];
+    [self.tableView registerClass:[NumberCell class] forCellReuseIdentifier:@"NumberCell"];
+    [self.tableView registerClass:[LocationCell class] forCellReuseIdentifier:@"LocationCell"];
+    [self.tableView registerClass:[WorksWithCell class] forCellReuseIdentifier:@"WorksWithCell"];
     
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
@@ -100,26 +96,7 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
-    
-    // Initialize the form fields
-    
-    //self.nameField.text = self.coffeeModel.name;
-    
-    self.priceField = [[UITextField alloc] init];
-    self.priceField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    self.priceField.textColor = UIColorFromRGB(0x8e8e93);
-    self.priceField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.priceField.returnKeyType = UIReturnKeyDone;
-    self.priceField.placeholder = NSLocalizedString(@"Price", nil);
-    
-    self.weightField = [[UITextField alloc] init];
-    self.weightField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    self.weightField.textColor = UIColorFromRGB(0x8e8e93);
-    self.weightField.keyboardType = UIKeyboardTypeDecimalPad;
-    self.weightField.returnKeyType = UIReturnKeyDone;
-    self.weightField.placeholder = NSLocalizedString(@"Weight", nil);
-    
-    self.worksWithActiveArray = [NSMutableArray arrayWithArray:self.coffeeModel.worksWith];
+
 
 }
 
@@ -201,9 +178,7 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    CGFloat paddingLeft = 16;
-    CGFloat cellHeight = [self tableView:tableView heightForRowAtIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
+    UITableViewCell *cell;
     
     if(indexPath.section == 0) {
         if(indexPath.row == 0) {
@@ -241,59 +216,36 @@
     
     
     if(indexPath.section == 3) {
-        UILabel *boughtLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
-        boughtLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        boughtLabel.textColor = UIColorFromRGB(0x8e8e93);
-        [cell addSubview:boughtLabel];
-
-        if(indexPath.row == 0) {
-            boughtLabel.text = NSLocalizedString(@"Location", nil);
-            
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        } else {
-            boughtLabel.text = NSLocalizedString(@"Website", nil);
-        }
+        cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
         
+        ((LocationCell*)cell).isWebsite = indexPath.row == 1;
+        ((LocationCell*)cell).coffeeModel = self.coffeeModel;
         
         return cell;
     }
     
     if(indexPath.section == 4) {
-        UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 0, 45, cellHeight)];
-        unitLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        unitLabel.textColor = UIColorFromRGB(0x61605e);
+        cell = [tableView dequeueReusableCellWithIdentifier:@"NumberCell"];
         
         if(indexPath.row == 0) {
-            self.priceField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
-            [cell addSubview:self.priceField];
-            
-            unitLabel.text = [UserSettings defaultSettings].currency;
+            ((NumberCell*)cell).numberProperty = @"price";
+            ((NumberCell*)cell).numberLabel = [UserSettings defaultSettings].currency;
+            ((NumberCell*)cell).numberUnit = [UserSettings defaultSettings].currency;
         } else {
-            self.weightField.frame = CGRectMake(paddingLeft, 0, 60, cellHeight);
-            [cell addSubview:self.weightField];
             
-            unitLabel.text = [UserSettings defaultSettings].weight;
+            ((NumberCell*)cell).numberProperty = @"weight";
+            ((NumberCell*)cell).numberLabel = [UserSettings defaultSettings].weight;
+            ((NumberCell*)cell).numberUnit = [UserSettings defaultSettings].weight;
         }
-        
-        [cell addSubview:unitLabel];
-        
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+
+        ((NumberCell*)cell).coffeeModel = self.coffeeModel;
+
         return cell;
     }
     
     if(indexPath.section == 5) {
-        WorksWithCollectionView *wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(paddingLeft, paddingLeft, self.view.bounds.size.width - paddingLeft*2, cellHeight - paddingLeft)];
-        
-        wwcv.tintColor = UIColorFromRGB(0xc6c7c8);
-        
-        [wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
-        [wwcv setActiveTypes:self.worksWithActiveArray];
-        
-        [cell addSubview:wwcv];
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"WorksWithCell"];
+        ((WorksWithCell*)cell).coffeeModel = self.coffeeModel;
     }
     
     return cell;
@@ -358,14 +310,14 @@
 
 
 - (void)saveAndClose:(id)sender {
-    NSLog(@"name: %@, price: %@, weight: %@", self.nameField.text, self.priceField.text, self.weightField.text);
-    
+   
+    /*
     self.coffeeModel.name = self.nameField.text;
     self.coffeeModel.price = ([self.priceField.text floatValue] * 100);
     self.coffeeModel.weight = [self.weightField.text integerValue];
     self.coffeeModel.worksWith = [NSArray arrayWithArray:self.worksWithActiveArray];
     
-    
+    */
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
