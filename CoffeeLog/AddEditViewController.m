@@ -102,6 +102,11 @@
  
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    
+    if(self.coffeeModel.imagePath) {
+        self.coffeeImageView.image = [UIImage imageWithContentsOfFile:self.coffeeModel.imagePath];
+        self.noImageLabel.hidden = YES;
+    }
    
 }
 

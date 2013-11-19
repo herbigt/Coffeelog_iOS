@@ -10,6 +10,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <DMActivityInstagram/DMActivityInstagram.h>
+#import "AddEditViewController.h"
 #import "UserSettings.h"
 #import "WorksWithCollectionView.h"
 
@@ -57,7 +58,10 @@
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
-
+- (void)viewDidAppear:(BOOL)animated {
+    self.coffeeImageView.image = self.coffeeModel.image;
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad
 {
@@ -71,7 +75,7 @@
     self.tableView.separatorColor = UIColorFromRGB(0xb57252);
     
     self.coffeeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
-    self.coffeeImageView.image = self.coffeeModel.image;
+
     self.tableView.tableHeaderView = self.coffeeImageView;
     
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 135)];
@@ -90,7 +94,7 @@
     self.tableView.tableFooterView = footerView;
 
 
-    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Edit", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openEdit:)];
     add.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     self.navigationItem.backBarButtonItem.title = NSLocalizedString(@"Coffee Log", nil);
@@ -100,6 +104,11 @@
     
 	[self.navigationController setNavigationBarHidden:NO];
  
+}
+
+- (void)openEdit:(id)sender {
+    UINavigationController *aevc = [[UINavigationController alloc] initWithRootViewController:[[AddEditViewController alloc] initWithCoffeeModel:self.coffeeModel]];
+    [self presentViewController:aevc animated:YES completion:nil];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
