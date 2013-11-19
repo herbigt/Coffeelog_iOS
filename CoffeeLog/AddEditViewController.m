@@ -13,6 +13,10 @@
 
 #import "VenueSearchViewController.h"
 
+#import "NameCell.h"
+#import "FavoriteCell.h"
+#import "ChooseCell.h"
+
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UIImageView *coffeeImageView;
@@ -69,8 +73,11 @@
     
     self.tableView.tableHeaderView = self.coffeeImageView;
     
-   
+    
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
+    [self.tableView registerClass:[NameCell class] forCellReuseIdentifier:@"NameCell"];
+    [self.tableView registerClass:[FavoriteCell class] forCellReuseIdentifier:@"FavoriteCell"];
+    [self.tableView registerClass:[ChooseCell class] forCellReuseIdentifier:@"ChooseCell"];
     
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
@@ -95,11 +102,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     // Initialize the form fields
-    self.nameField = [[UITextField alloc] init];
-    self.nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    self.nameField.textColor = UIColorFromRGB(0x8e8e93);
-    self.nameField.placeholder = NSLocalizedString(@"Name", nil);
-    self.nameField.returnKeyType = UIReturnKeyDone;
+    
     //self.nameField.text = self.coffeeModel.name;
     
     self.priceField = [[UITextField alloc] init];
@@ -204,62 +207,34 @@
     
     if(indexPath.section == 0) {
         if(indexPath.row == 0) {
-           // self.nameCell = cell;
-            self.nameField.frame = CGRectMake(paddingLeft, 0, 294, cellHeight);
-            [cell addSubview:self.nameField];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"NameCell"];
+            ((NameCell*)cell).coffeeModel = self.coffeeModel;
+            return cell;
         } else if (indexPath.row == 1) {
-            UILabel *favLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
-            favLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-            favLabel.textColor = UIColorFromRGB(0x61605e);
-            favLabel.text = NSLocalizedString(@"Favorite", nil);
-            
-            CGFloat switchY = cellHeight/2 - 31/2;
-            UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
-            favSwitch.tintColor = UIColorFromRGB(0xff9500);
-            favSwitch.onTintColor = UIColorFromRGB(0xff9500);
-            [favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
-            
-            [cell addSubview:favLabel];
-            [cell addSubview:favSwitch];
-            
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell = [tableView dequeueReusableCellWithIdentifier:@"FavoriteCell"];
+            ((NameCell*)cell).coffeeModel = self.coffeeModel;
+            return cell;
         }
         
         return cell;
     }
     
     if(indexPath.section == 1) {
-        UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
-        typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        typeLabel.textColor = UIColorFromRGB(0x61605e);
-        typeLabel.text = [CoffeeModel labelForCoffeeType:indexPath.row];
-        
-        [cell addSubview:typeLabel];
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        if(self.coffeeModel.type == indexPath.row) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChooseCell"];
+        ((ChooseCell*)cell).currentIndex = indexPath.row;
+        ((ChooseCell*)cell).choiceProperty = @"type";
+        ((ChooseCell*)cell).choiceLabel = [CoffeeModel labelForCoffeeType:indexPath.row];
+        ((ChooseCell*)cell).coffeeModel = self.coffeeModel;
         
         return cell;
     }
     
     if(indexPath.section == 2) {
-        UILabel *stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(paddingLeft, 0, 250, cellHeight)];
-        stateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-        stateLabel.textColor = UIColorFromRGB(0x61605e);
-        stateLabel.text = [CoffeeModel labelForCoffeeState:indexPath.row];
-        
-        [cell addSubview:stateLabel];
-        
-        cell.accessoryType = UITableViewCellAccessoryNone;
-        if(self.coffeeModel.state == indexPath.row) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        }
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        cell = [tableView dequeueReusableCellWithIdentifier:@"ChooseCell"];
+        ((ChooseCell*)cell).currentIndex = indexPath.row;
+        ((ChooseCell*)cell).choiceProperty = @"state";
+        ((ChooseCell*)cell).choiceLabel = [CoffeeModel labelForCoffeeState:indexPath.row];
+        ((ChooseCell*)cell).coffeeModel = self.coffeeModel;
         
         return cell;
     }

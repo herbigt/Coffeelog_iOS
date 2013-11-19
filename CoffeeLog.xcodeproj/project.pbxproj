@@ -31,6 +31,9 @@
 		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
 		F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A4181D542F001FBBAF /* UserSettings.m */; };
 		F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */; };
+		F0A08D29183AE087001A5370 /* NameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D28183AE087001A5370 /* NameCell.m */; };
+		F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */; };
+		F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D31183AE335001A5370 /* ChooseCell.m */; };
 		F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */; };
 		F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A781801E98D00C95EEB /* Foundation.framework */; };
 		F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */; };
@@ -87,9 +90,9 @@
 		F07A06811820607400B49E13 /* type_frenchpress_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_frenchpress_active@2x.png"; sourceTree = "<group>"; };
 		F07A06821820607400B49E13 /* type_sieb_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_sieb_active@2x.png"; sourceTree = "<group>"; };
 		F07A06831820607400B49E13 /* type_turkish_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_turkish_active@2x.png"; sourceTree = "<group>"; };
-		F07A068C1821534F00B49E13 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F07A068C1821534F00B49E13 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F07A068E1821585700B49E13 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F07A068F1821585700B49E13 /* de */ = {isa = PBXFileReference; lastKnownFileType = file; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F07A068F1821585700B49E13 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F07A06901821585700B49E13 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F07B039C181D5139001FBBAF /* web_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web_detail@2x.png"; sourceTree = "<group>"; };
 		F07B039E181D5219001FBBAF /* location_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_detail@2x.png"; sourceTree = "<group>"; };
@@ -99,6 +102,12 @@
 		F07B03A4181D542F001FBBAF /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		F07B03A9181D5C49001FBBAF /* VenueSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueSearchViewController.h; sourceTree = "<group>"; };
 		F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueSearchViewController.m; sourceTree = "<group>"; };
+		F0A08D27183AE087001A5370 /* NameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameCell.h; sourceTree = "<group>"; };
+		F0A08D28183AE087001A5370 /* NameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameCell.m; sourceTree = "<group>"; };
+		F0A08D2A183AE1DE001A5370 /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
+		F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteCell.m; sourceTree = "<group>"; };
+		F0A08D30183AE335001A5370 /* ChooseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseCell.h; sourceTree = "<group>"; };
+		F0A08D31183AE335001A5370 /* ChooseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseCell.m; sourceTree = "<group>"; };
 		F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueProvider.h; sourceTree = "<group>"; };
 		F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueProvider.m; sourceTree = "<group>"; };
 		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +165,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0A08D26183AE028001A5370 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F0A08D27183AE087001A5370 /* NameCell.h */,
+				F0A08D28183AE087001A5370 /* NameCell.m */,
+				F0A08D2A183AE1DE001A5370 /* FavoriteCell.h */,
+				F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */,
+				F0A08D30183AE335001A5370 /* ChooseCell.h */,
+				F0A08D31183AE335001A5370 /* ChooseCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		F0DC9A6C1801E98D00C95EEB = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +277,7 @@
 		F0DC9AAB1801EAC900C95EEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0A08D26183AE028001A5370 /* Cells */,
 				F0DC9AAC1801EAE000C95EEB /* CoffeeListCell.h */,
 				F0DC9AAD1801EAE000C95EEB /* CoffeeListCell.m */,
 				F05140B7180C953800B7D0D3 /* WorksWithCollectionView.h */,
@@ -459,8 +482,11 @@
 				F0DC9A851801E98D00C95EEB /* main.m in Sources */,
 				F0DC9AAA1801E9A600C95EEB /* ListViewController.m in Sources */,
 				F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */,
+				F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */,
+				F0A08D29183AE087001A5370 /* NameCell.m in Sources */,
 				F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */,
 				F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */,
+				F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */,
 				F07B03A2181D53A3001FBBAF /* Constants.m in Sources */,
 				F0DC9AAE1801EAE000C95EEB /* CoffeeListCell.m in Sources */,
 				F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */,
