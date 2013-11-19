@@ -47,6 +47,10 @@
     [self.searchBar becomeFirstResponder];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.searchBar resignFirstResponder];
+}
+
 
 #pragma mark - UISearchBarDelegate
 
