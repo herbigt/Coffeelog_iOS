@@ -49,9 +49,13 @@
     _coffeeModel = coffeeModel;
     
     self.unitLabel.text = self.numberUnit;
-    self.unitField.text = [NSString stringWithFormat:@"%d", [[self.coffeeModel valueForKey:self.numberProperty] integerValue]];
+    self.unitField.text = [NSString stringWithFormat:@"%f", [[self.coffeeModel valueForKey:self.numberProperty] integerValue]/100.f];
 }
 
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.coffeeModel setValue:[NSNumber numberWithInteger:([textField.text floatValue] * 100)] forKey:self.numberProperty];
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];

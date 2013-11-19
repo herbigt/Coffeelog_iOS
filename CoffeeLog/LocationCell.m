@@ -58,6 +58,11 @@
     }
 }
 
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    self.coffeeModel.store = textField.text;
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     return NO;

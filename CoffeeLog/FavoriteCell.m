@@ -8,13 +8,35 @@
 
 #import "FavoriteCell.h"
 
+@interface FavoriteCell()
+
+@property (strong, nonatomic) UILabel *favLabel;
+@property (strong, nonatomic) UISwitch *favSwitch;
+
+@end
+
 @implementation FavoriteCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        // Initialization code
+        self.favLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 250, self.bounds.size.height)];
+        self.favLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
+        self.favLabel.textColor = UIColorFromRGB(0x61605e);
+        self.favLabel.text = NSLocalizedString(@"Favorite", nil);
+        
+        CGFloat switchY = self.bounds.size.height/2 - 31/2;
+        self.favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
+        self.favSwitch.tintColor = UIColorFromRGB(0xff9500);
+        self.favSwitch.onTintColor = UIColorFromRGB(0xff9500);
+        [self.favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
+        
+        [self addSubview:self.favLabel];
+        [self addSubview:self.favSwitch];
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+
     }
     return self;
 }
@@ -22,24 +44,11 @@
 - (void)setCoffeeModel:(CoffeeModel *)coffeeModel {
     _coffeeModel = coffeeModel;
     
-    
-    CGFloat cellHeight = self.bounds.size.height;
-    
-    UILabel *favLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 0, 250, cellHeight)];
-    favLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
-    favLabel.textColor = UIColorFromRGB(0x61605e);
-    favLabel.text = NSLocalizedString(@"Favorite", nil);
-    
-    CGFloat switchY = cellHeight/2 - 31/2;
-    UISwitch *favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
-    favSwitch.tintColor = UIColorFromRGB(0xff9500);
-    favSwitch.onTintColor = UIColorFromRGB(0xff9500);
-    //[favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
-    
-    [self addSubview:favLabel];
-    [self addSubview:favSwitch];
-    
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    self.favSwitch.on = self.coffeeModel.isFavorited;
+}
+
+- (void)favoriteSwitchToggled:(id)sender {
+    self.coffeeModel.isFavorited = self.favSwitch.on;
 }
 
 @end

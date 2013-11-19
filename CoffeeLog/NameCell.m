@@ -38,12 +38,12 @@
 - (void)setCoffeeModel:(CoffeeModel *)coffeeModel {
     _coffeeModel = coffeeModel;
     
+    if(![self.coffeeModel.name isEqualToString:@""]) {
+        self.nameField.text = self.coffeeModel.name;
+    }
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    NSLog(@"didend");
-    
-    
+- (void)textFieldDidEndEditing:(UITextField *)textField {    
     self.coffeeModel.name = textField.text;
 }
 

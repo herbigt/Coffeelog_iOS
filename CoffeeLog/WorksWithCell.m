@@ -41,6 +41,8 @@
     
     [self.wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
     [self.wwcv setActiveTypes:active];
+    
+    coffeeModel.worksWith = active;
 }
 
 @end

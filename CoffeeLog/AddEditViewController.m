@@ -22,6 +22,7 @@
 
 @interface AddEditViewController ()
 
+@property (strong, nonatomic) UITapGestureRecognizer *dismissRecognizer;
 @property (strong, nonatomic) UIImageView *coffeeImageView;
 @property (strong, nonatomic) UILabel *noImageLabel;
 
@@ -96,8 +97,28 @@
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+    
+    self.dismissRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissAllKeyboards:)];
+ 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+   
+}
 
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
+- (void)keyboardWillShow:(NSNotification *)note {
+    [self.view addGestureRecognizer:self.dismissRecognizer];
+}
+
+- (void)keyboardWillHide:(NSNotification *)note {
+    [self.view removeGestureRecognizer:self.dismissRecognizer];
+}
+
+- (void)dismissAllKeyboards:(id)sender {
+    [self.view endEditing:YES];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -253,13 +274,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 1) {
-        self.coffeeModel.type = indexPath.row;
+      //  self.coffeeModel.type = indexPath.row;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
     
     if(indexPath.section == 2) {
-        self.coffeeModel.state = indexPath.row;
+    //    self.coffeeModel.state = indexPath.row;
         [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
         return;
     }
@@ -310,30 +331,22 @@
 
 
 - (void)saveAndClose:(id)sender {
-   
-    /*
-    self.coffeeModel.name = self.nameField.text;
-    self.coffeeModel.price = ([self.priceField.text floatValue] * 100);
-    self.coffeeModel.weight = [self.weightField.text integerValue];
-    self.coffeeModel.worksWith = [NSArray arrayWithArray:self.worksWithActiveArray];
+    NSLog(@"Coffee: %@", self.coffeeModel);
     
-    */
+    [self.coffeeModel save];
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 - (void)close:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)favoriteSwitchToggled:(id)sender {
-    self.coffeeModel.isFavorited = ((UISwitch*)sender).on;
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.coffeeImageView.image = info[@"UIImagePickerControllerEditedImage"];
     self.noImageLabel.text = @"";
+    
+    [self.coffeeModel saveImage:info[@"UIImagePickerControllerEditedImage"]];
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

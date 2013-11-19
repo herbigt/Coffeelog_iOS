@@ -67,7 +67,7 @@
 
 - (void)initializeDatabase {
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog2.sqlite3"];
+    NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog3.sqlite3"];
     
     [FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
         [db beginTransaction];

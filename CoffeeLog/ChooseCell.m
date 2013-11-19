@@ -30,6 +30,14 @@
     return self;
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+    
+    if(selected) {
+        [self.coffeeModel setValue:[NSNumber numberWithInt:self.currentIndex] forKey:self.choiceProperty];
+    }
+}
+
 - (void)setCoffeeModel:(CoffeeModel *)coffeeModel {
     _coffeeModel = coffeeModel;
     

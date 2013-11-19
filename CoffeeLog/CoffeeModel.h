@@ -67,4 +67,6 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
 + (NSString*)labelForCoffeeState:(CoffeeState)state;
 + (NSString*)labelForWorksWith:(CoffeeWorksWith)worksWith;
 
+- (void)saveImage:(UIImage*)image;
+
 @end

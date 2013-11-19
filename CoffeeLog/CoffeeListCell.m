@@ -71,8 +71,13 @@
     _coffeeModel = model;
     
     if(model.image == nil) {
+        model.image = [UIImage imageWithContentsOfFile:model.imagePath];
+    }
+    
+    if(model.image == nil) {
         [self.coffeeImageView setImage:[UIImage imageNamed:@"placeholder_image"]];
     } else {
+        
         [self.coffeeImageView setImage:model.image];
     }
     

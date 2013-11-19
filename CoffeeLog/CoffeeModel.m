@@ -20,6 +20,28 @@
     return self;
 }
 
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ (%d, %d) From %@, %d, %d, %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
+}
+
+- (void)saveImage:(UIImage *)image {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"image_%f.jpg", [[NSDate date] timeIntervalSince1970]]];
+    
+    // Resize it.
+    CGSize newSize = CGSizeMake(640, 640);
+    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    NSData *webData = UIImageJPEGRepresentation(newImage, 85);
+    [webData writeToFile:imagePath atomically:YES];
+
+    self.imagePath = imagePath;
+}
+
 + (NSArray *)coffeeStates {
     static NSArray *states = nil;
     if(!states) {
