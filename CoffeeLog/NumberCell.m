@@ -21,14 +21,14 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(75, 0, 45, self.bounds.size.height)];
+        self.unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(95, 0, 45, self.bounds.size.height)];
         self.unitLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         self.unitLabel.textColor = UIColorFromRGB(0x61605e);
         
         [self addSubview:self.unitLabel];
         
         self.unitField = [[UITextField alloc] init];
-        self.unitField.frame = CGRectMake(16, 0, 60, self.bounds.size.height);
+        self.unitField.frame = CGRectMake(16, 0, 80, self.bounds.size.height);
         self.unitField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         self.unitField.textColor = UIColorFromRGB(0x8e8e93);
         self.unitField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -51,7 +51,7 @@
     
     NSInteger unit = [[self.coffeeModel valueForKey:self.numberProperty] integerValue];
     if(unit != 0) {
-        self.unitField.text = [NSString stringWithFormat:@"%f", unit/100.f];
+        self.unitField.text = [NSString stringWithFormat:@"%.2f", unit/100.f];
     }
     
     self.unitLabel.text = self.numberUnit;

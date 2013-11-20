@@ -50,12 +50,18 @@
         [self.label setHidden:YES];
         [self.websiteField setHidden:NO];
         
+        if(self.coffeeModel.storeType == CoffeeStoreTypeWeb && ![self.coffeeModel.store isEqualToString:@""]) {
+            self.websiteField.text = self.coffeeModel.store;
+        } else {
+            self.websiteField.placeholder = NSLocalizedString(@"Website", nil);
+        }
+
         self.accessoryType = UITableViewCellAccessoryNone;
     } else {
         [self.label setHidden:NO];
         [self.websiteField setHidden:YES];
         
-        if(![self.coffeeModel.store isEqualToString:@""]) {
+        if(self.coffeeModel.storeType == CoffeeStoreTypeLocation && ![self.coffeeModel.store isEqualToString:@""]) {
             self.label.text = self.coffeeModel.store;
         } else {
             self.label.text = NSLocalizedString(@"Location", nil);
@@ -68,6 +74,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     self.coffeeModel.store = textField.text;
+    self.coffeeModel.storeType = CoffeeStoreTypeWeb;
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

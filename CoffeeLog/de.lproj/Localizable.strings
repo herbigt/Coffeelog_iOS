@@ -1,45 +1,114 @@
-/* 
-  Localizable.strings
-  CoffeeLog
+/* No comment provided by engineer. */
+"aero" = "aero";
 
-  Created by Philipp Waldhauer on 30.10.13.
-  Copyright (c) 2013 CoffeeLog. All rights reserved.
-*/
+/* CoffeeState */
+"Beans (roasted)" = "Beans (roasted)";
 
-"Welcome, tap here to add your first coffee!" = "Willkommen, tappen um hinzuzufügen!";
-"Settings" = "Einstellungen";
+/* No comment provided by engineer. */
+"Beans (unroasted)" = "Beans (unroasted)";
 
-"Share this Coffee" = "Diesen Kaffee teilen";
-"Edit" = "Editieren";
+/* No comment provided by engineer. */
+"Blend" = "Blend";
+
+/* No comment provided by engineer. */
+"Bought at" = "Bought at";
+
+/* No comment provided by engineer. */
+"Cancel" = "Cancel";
+
+/* No comment provided by engineer. */
+"Choose image" = "Choose image";
+
+/* No comment provided by engineer. */
+"Coffee" = "Coffee";
+
+/* No comment provided by engineer. */
 "Coffee Log" = "Coffee Log";
-"Works with" = "Works with";
 
-
-
-"Tap to add image" = "Tappen um Bild hinzuzufügen";
-"Done" = "Fertig";
-"Name" = "Name";
-"Price" = "Preis";
-"Weight" = "Gewicht";
-"Type" = "Typ";
-"State" = "Status";
-"Bought at" = "Gekauft bei";
-"Price & Weight" = "Preis und Gewicht";
-"Works with" = "Works with";
-"Favorite" = "Favorit";
-"Location" = "Ort";
-"Website" = "Website";
-
-"Remove current" = "Aktuelles entfernen";
-"Choose image" = "Bild wählen";
-"Cancel" = "Abbrechen";
-"From camera" = "Bild aufnehmen";
-"From library" = "Bibliothek";
-
-
-"Enable Dropbox Backup" = "Dropbox Backup aktivieren";
+/* No comment provided by engineer. */
 "Coffeelog %@" = "Coffeelog %@";
 
+/* No comment provided by engineer. */
+"Done" = "Done";
 
+/* No comment provided by engineer. */
+"Edit" = "Edit";
 
-"Search for a place" = "Suche nach einem Ort";
+/* No comment provided by engineer. */
+"Enable Dropbox Backup" = "Enable Dropbox Backup";
+
+/* No comment provided by engineer. */
+"Espresso" = "Espresso";
+
+/* No comment provided by engineer. */
+"Favorite" = "Favorite";
+
+/* No comment provided by engineer. */
+"filter" = "filter";
+
+/* No comment provided by engineer. */
+"frenchpress" = "frenchpress";
+
+/* No comment provided by engineer. */
+"From camera" = "From camera";
+
+/* No comment provided by engineer. */
+"From library" = "From library";
+
+/* No comment provided by engineer. */
+"Grinded" = "Grinded";
+
+/* No comment provided by engineer. */
+"Location" = "Location";
+
+/* No comment provided by engineer. */
+"Name" = "Name";
+
+/* No comment provided by engineer. */
+"Price" = "Price";
+
+/* No comment provided by engineer. */
+"Price & Weight" = "Price & Weight";
+
+/* No comment provided by engineer. */
+"Remove current" = "Remove current";
+
+/* No comment provided by engineer. */
+"Save" = "Save";
+
+/* No comment provided by engineer. */
+"Search for a place" = "Search for a place";
+
+/* No comment provided by engineer. */
+"Settings" = "Settings";
+
+/* No comment provided by engineer. */
+"Share this Coffee" = "Share this Coffee";
+
+/* No comment provided by engineer. */
+"sieb" = "sieb";
+
+/* No comment provided by engineer. */
+"State" = "State";
+
+/* No comment provided by engineer. */
+"Tap to add image" = "Tap to add image";
+
+/* No comment provided by engineer. */
+"turkish" = "turkish";
+
+/* No comment provided by engineer. */
+"Type" = "Type";
+
+/* No comment provided by engineer. */
+"Website" = "Website";
+
+/* No comment provided by engineer. */
+"Weight" = "Weight";
+
+/* No comment provided by engineer. */
+"Welcome, tap here to add your first coffee!" = "Welcome, tap here to add your first coffee!";
+
+/* No comment provided by engineer. */
+"Works with" = "Works with";
+

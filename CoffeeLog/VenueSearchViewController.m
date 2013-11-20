@@ -63,6 +63,12 @@
     self.navigationItem.titleView = self.searchBar;
     self.searchBar.tintColor = UIColorFromRGB(0xFF9500);
     
+    
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil) style:UIBarButtonItemStylePlain target:self action:@selector(close:)];
+    cancel.tintColor = [UIColor whiteColor];
+    
+    [self.navigationItem setLeftBarButtonItem:cancel];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
     self.navigationController.navigationBar.translucent = YES;
@@ -76,6 +82,10 @@
     [footerView addSubview:poweredByView];
     
     self.tableView.tableFooterView = footerView;
+}
+
+- (void)close:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

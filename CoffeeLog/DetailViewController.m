@@ -72,8 +72,7 @@
     
     self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite_detail"]];
     
-    UIImage *storeIconImage = self.coffeeModel.storeType == CoffeeStoreTypeWeb ? [UIImage imageNamed:@"web_detail"] : [UIImage imageNamed:@"location_detail"];
-    self.storeIcon = [[UIImageView alloc] initWithImage:storeIconImage];
+    self.storeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"web_detail"]];
     
     self.tableView.separatorColor = UIColorFromRGB(0xb57252);
     
@@ -168,7 +167,8 @@
 
         
     } else if (indexPath.row == 2) {
-        self.storeIcon.frame = CGRectMake(15, (height/2) - (self.storeIcon.bounds.size.height/2), self.storeIcon.bounds.size.width, self.storeIcon.bounds.size.height);
+        self.storeIcon.image = self.coffeeModel.storeType == CoffeeStoreTypeWeb ? [UIImage imageNamed:@"web_detail"] : [UIImage imageNamed:@"location_detail"];
+        self.storeIcon.frame = CGRectMake(15, (height/2) - (self.storeIcon.image.size.height/2), self.storeIcon.image.size.width, self.storeIcon.image.size.height);
         [cell addSubview:self.storeIcon];
         
         UILabel *locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(MAX_X(self.storeIcon) + 5, 0, self.view.bounds.size.width - MAX_X(self.storeIcon) * 2 - 5, height)];
@@ -177,9 +177,7 @@
         locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
         
         [cell addSubview:locationLabel];
-        
-
-        
+    
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
     } else if (indexPath.row == 3) {

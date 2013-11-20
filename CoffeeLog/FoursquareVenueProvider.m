@@ -24,7 +24,6 @@
 - (void)searchVenuesWithTerm:(NSString *)searchTerm andLocation:(CLLocation *)location andCompletionBlock:(void (^)(NSError *, NSArray *))completionBlock {
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    
     NSDictionary *params = @{
                              @"client_id": @"MQHRP0XYN5YKVA1NZSBR2HMGZQPR2CUUZHESKVNM0ZDAGGP4",
                              @"client_secret": @"EJ3524XZ5SKAFQNQFJJINNUQN3NYM1UASLEFAJ2P11OYJFE1",
@@ -35,7 +34,6 @@
     };
     
     [manager GET:@"https://api.foursquare.com/v2/venues/search" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"JSON: %@", responseObject);
         if(!responseObject[@"meta"]) {
             completionBlock([NSError errorWithDomain:@"Coffeelog" code:900 userInfo:nil], nil);
             return;

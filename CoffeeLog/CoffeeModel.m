@@ -72,7 +72,7 @@
 +(NSString *)labelForCoffeeState:(CoffeeState)state {
     static NSArray *states = nil;
     if(!states) {
-        states = @[NSLocalizedString(@"Grinded", nil), NSLocalizedString(@"Beans (roasted)", nil), NSLocalizedString(@"Beans (unroasted)", nil)];
+        states = @[NSLocalizedString(@"Grinded", nil), NSLocalizedString(@"Beans (roasted)", @"CoffeeState"), NSLocalizedString(@"Beans (unroasted)", nil)];
     }
     
     return states[state];
