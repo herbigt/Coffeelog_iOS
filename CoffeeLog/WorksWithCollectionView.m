@@ -35,6 +35,7 @@
         self.backgroundColor = [UIColor clearColor];
         
         self.scrollEnabled = NO;
+        self.isEditable = YES;
         
         [self registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
 
@@ -97,7 +98,7 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if(![self.activeTypes isKindOfClass:[NSMutableArray class]]) {
+    if(!self.isEditable) {
         return;
     }
     

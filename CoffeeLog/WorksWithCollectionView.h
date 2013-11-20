@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) NSArray *typesArray;
 @property (strong, nonatomic) NSMutableArray *activeTypes;
+@property (nonatomic) BOOL isEditable;
 
 @end

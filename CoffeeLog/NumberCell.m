@@ -33,7 +33,6 @@
         self.unitField.textColor = UIColorFromRGB(0x8e8e93);
         self.unitField.keyboardType = UIKeyboardTypeDecimalPad;
         self.unitField.returnKeyType = UIReturnKeyDone;
-        self.unitField.placeholder = NSLocalizedString(@"Weight", nil);
         self.unitField.delegate = self;
         
         [self addSubview:self.unitField];
@@ -48,8 +47,14 @@
 - (void)setCoffeeModel:(CoffeeModel *)coffeeModel {
     _coffeeModel = coffeeModel;
     
+    self.unitField.placeholder = self.numberPlaceholder;
+    
+    NSInteger unit = [[self.coffeeModel valueForKey:self.numberProperty] integerValue];
+    if(unit != 0) {
+        self.unitField.text = [NSString stringWithFormat:@"%f", unit/100.f];
+    }
+    
     self.unitLabel.text = self.numberUnit;
-    self.unitField.text = [NSString stringWithFormat:@"%f", [[self.coffeeModel valueForKey:self.numberProperty] integerValue]/100.f];
 }
 
 

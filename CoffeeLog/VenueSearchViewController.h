@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface VenueSearchViewController : UITableViewController <UISearchBarDelegate>
+#import "CoffeeModel.h"
+
+@interface VenueSearchViewController : UITableViewController <UISearchBarDelegate, CLLocationManagerDelegate>
+
+@property (strong, nonatomic) CoffeeModel *coffeeModel;
+
+- (id)initWithCoffeeModel:(CoffeeModel*)model;
 
 @end

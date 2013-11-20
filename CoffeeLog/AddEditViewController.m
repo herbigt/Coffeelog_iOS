@@ -39,6 +39,11 @@
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad
 {
@@ -53,6 +58,7 @@
     self.noImageLabel.frame = self.coffeeImageView.bounds;
     self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
     self.noImageLabel.textColor = UIColorFromRGB(0x8e8e93);
+    self.noImageLabel.numberOfLines = 2;
     self.noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
     self.noImageLabel.backgroundColor = [UIColor clearColor];
     self.noImageLabel.textAlignment = NSTextAlignmentCenter;
@@ -103,7 +109,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
-    if(self.coffeeModel.imagePath) {
+    if(![self.coffeeModel.imagePath isEqualToString:@""]) {
         self.coffeeImageView.image = [UIImage imageWithContentsOfFile:self.coffeeModel.imagePath];
         self.noImageLabel.hidden = YES;
     }
@@ -255,11 +261,12 @@
         
         if(indexPath.row == 0) {
             ((NumberCell*)cell).numberProperty = @"price";
+            ((NumberCell*)cell).numberPlaceholder =  NSLocalizedString(@"Price", nil);
             ((NumberCell*)cell).numberLabel = [UserSettings defaultSettings].currency;
             ((NumberCell*)cell).numberUnit = [UserSettings defaultSettings].currency;
         } else {
-            
             ((NumberCell*)cell).numberProperty = @"weight";
+            ((NumberCell*)cell).numberPlaceholder =  NSLocalizedString(@"Weight", nil);
             ((NumberCell*)cell).numberLabel = [UserSettings defaultSettings].weight;
             ((NumberCell*)cell).numberUnit = [UserSettings defaultSettings].weight;
         }
@@ -292,8 +299,8 @@
     
     if(indexPath.section == 3) {
         if(indexPath.row == 0) {
-            VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
-            [self.navigationController pushViewController:vsvc animated:YES];
+            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[VenueSearchViewController alloc] initWithCoffeeModel:self.coffeeModel]];
+            [self.navigationController presentViewController:nvc animated:YES completion:nil];
             return;
         }
     }

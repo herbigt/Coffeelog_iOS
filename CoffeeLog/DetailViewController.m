@@ -59,7 +59,10 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.coffeeImageView.image = self.coffeeModel.image;
+    if(![self.coffeeModel.imagePath isEqualToString:@""]) {
+        self.coffeeImageView.image = [UIImage imageWithContentsOfFile:self.coffeeModel.imagePath];
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -145,6 +148,7 @@
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:24.0];
         
         self.favoriteIcon.frame = CGRectMake(MAX_X(cell) - self.favoriteIcon.bounds.size.width - 15, (height/2) - (self.favoriteIcon.bounds.size.height/2), self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
+        self.favoriteIcon.hidden = !self.coffeeModel.isFavorited;
         [cell addSubview:self.favoriteIcon];
     } else if (indexPath.row == 1) {
         UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
@@ -194,6 +198,7 @@
         
         [wwcv setActiveTypes:self.coffeeModel.worksWith];
         [wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
+        wwcv.isEditable = NO;
         
         wwcv.tintColor = UIColorFromRGB(0x605f5e);
         
@@ -209,9 +214,12 @@
         NSArray *testURLs = nil;
         
         if(self.coffeeModel.storeType == CoffeeStoreTypeWeb) {
-            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", self.coffeeModel.store]]];
+            NSString *urlString = [self.coffeeModel.store stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+            urlString = [urlString stringByReplacingOccurrencesOfString:@"Http://" withString:@""];
+            
+            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"http://%@", urlString]]];
         } else {
-            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"foursquare://venue/%@", self.coffeeModel.foursquareID]], [NSURL URLWithString:[NSString stringWithFormat:@"http://foursquare.com/venue/%@", self.coffeeModel.foursquareID]]];
+            testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"foursquare://venues/%@", self.coffeeModel.foursquareID]], [NSURL URLWithString:[NSString stringWithFormat:@"http://foursquare.com/venue/%@", self.coffeeModel.foursquareID]]];
         }
         
         for(NSURL *url in testURLs) {

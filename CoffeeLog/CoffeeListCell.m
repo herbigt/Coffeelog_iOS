@@ -81,6 +81,8 @@
         [self.coffeeImageView setImage:model.image];
     }
     
+    self.favoriteIcon.hidden = !self.coffeeModel.isFavorited;
+    
     if(model.storeType == CoffeeStoreTypeLocation) {
         self.storeIcon.image = [UIImage imageNamed:@"location"];
         self.storeIcon.frame = CGRectMake(0, MAX_Y(self.typeLabel) + 10, self.storeIcon.image.size.width, self.storeIcon.image.size.height);

@@ -54,7 +54,7 @@
         self.tableView.scrollEnabled = NO;
         
         if(!self.emptyLabel) {
-            self.emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, self.view.bounds.size.width - 80, self.view.bounds.size.height - 60)];
+            self.emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 60)];
             self.emptyLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:34.0f];
             self.emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
             self.emptyLabel.numberOfLines = 3;

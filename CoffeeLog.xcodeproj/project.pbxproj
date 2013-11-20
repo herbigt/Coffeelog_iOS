@@ -37,6 +37,8 @@
 		F0A08D35183B7841001A5370 /* NumberCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D34183B7841001A5370 /* NumberCell.m */; };
 		F0A08D38183B7A1A001A5370 /* LocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D37183B7A1A001A5370 /* LocationCell.m */; };
 		F0A08D3B183B7CD4001A5370 /* WorksWithCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */; };
+		F0C5E308183D523D001F407F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0C5E307183D523D001F407F /* CoreLocation.framework */; };
+		F0C5E30B183D59BE001F407F /* VenueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C5E30A183D59BE001F407F /* VenueCell.m */; };
 		F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */; };
 		F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A781801E98D00C95EEB /* Foundation.framework */; };
 		F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */; };
@@ -117,6 +119,9 @@
 		F0A08D37183B7A1A001A5370 /* LocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationCell.m; sourceTree = "<group>"; };
 		F0A08D39183B7CD4001A5370 /* WorksWithCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorksWithCell.h; sourceTree = "<group>"; };
 		F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorksWithCell.m; sourceTree = "<group>"; };
+		F0C5E307183D523D001F407F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F0C5E309183D59BE001F407F /* VenueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueCell.h; sourceTree = "<group>"; };
+		F0C5E30A183D59BE001F407F /* VenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueCell.m; sourceTree = "<group>"; };
 		F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueProvider.h; sourceTree = "<group>"; };
 		F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueProvider.m; sourceTree = "<group>"; };
 		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0C5E308183D523D001F407F /* CoreLocation.framework in Frameworks */,
 				F0DC9A7B1801E98D00C95EEB /* CoreGraphics.framework in Frameworks */,
 				F0DC9A7D1801E98D00C95EEB /* UIKit.framework in Frameworks */,
 				F0DC9A791801E98D00C95EEB /* Foundation.framework in Frameworks */,
@@ -174,7 +180,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F0A08D26183AE028001A5370 /* Cells */ = {
+		F0A08D26183AE028001A5370 /* AddEditCells */ = {
 			isa = PBXGroup;
 			children = (
 				F0A08D27183AE087001A5370 /* NameCell.h */,
@@ -190,7 +196,7 @@
 				F0A08D39183B7CD4001A5370 /* WorksWithCell.h */,
 				F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */,
 			);
-			name = Cells;
+			name = AddEditCells;
 			sourceTree = "<group>";
 		};
 		F0DC9A6C1801E98D00C95EEB = {
@@ -216,6 +222,7 @@
 		F0DC9A771801E98D00C95EEB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0C5E307183D523D001F407F /* CoreLocation.framework */,
 				F0DC9A781801E98D00C95EEB /* Foundation.framework */,
 				F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */,
 				F0DC9A7C1801E98D00C95EEB /* UIKit.framework */,
@@ -292,11 +299,13 @@
 		F0DC9AAB1801EAC900C95EEB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F0A08D26183AE028001A5370 /* Cells */,
+				F0A08D26183AE028001A5370 /* AddEditCells */,
 				F0DC9AAC1801EAE000C95EEB /* CoffeeListCell.h */,
 				F0DC9AAD1801EAE000C95EEB /* CoffeeListCell.m */,
 				F05140B7180C953800B7D0D3 /* WorksWithCollectionView.h */,
 				F05140B8180C953800B7D0D3 /* WorksWithCollectionView.m */,
+				F0C5E309183D59BE001F407F /* VenueCell.h */,
+				F0C5E30A183D59BE001F407F /* VenueCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -506,6 +515,7 @@
 				F0A08D35183B7841001A5370 /* NumberCell.m in Sources */,
 				F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */,
 				F07B03A2181D53A3001FBBAF /* Constants.m in Sources */,
+				F0C5E30B183D59BE001F407F /* VenueCell.m in Sources */,
 				F0DC9AAE1801EAE000C95EEB /* CoffeeListCell.m in Sources */,
 				F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */,
 				F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */,

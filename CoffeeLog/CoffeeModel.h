@@ -48,6 +48,9 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
 @property (nonatomic) CoffeeStoreType storeType;
 
 @property (strong, nonatomic) NSString *store;
+@property (nonatomic) double storeLatitude;
+@property (nonatomic) double storeLongitude;
+
 @property (strong, nonatomic) NSString *foursquareID;
 @property (strong, nonatomic) NSString *worksWithTypes;
 @property (strong, nonatomic) NSArray *worksWith;

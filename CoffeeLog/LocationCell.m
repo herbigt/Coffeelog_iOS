@@ -32,6 +32,7 @@
         self.websiteField.textColor = UIColorFromRGB(0x8e8e93);
         self.websiteField.placeholder = NSLocalizedString(@"Website", nil);
         self.websiteField.returnKeyType = UIReturnKeyDone;
+        self.websiteField.autocapitalizationType = UITextAutocapitalizationTypeNone;
         self.websiteField.delegate = self;
         
         self.websiteField.frame = CGRectMake(16, 0, 294, self.bounds.size.height);
@@ -53,6 +54,12 @@
     } else {
         [self.label setHidden:NO];
         [self.websiteField setHidden:YES];
+        
+        if(![self.coffeeModel.store isEqualToString:@""]) {
+            self.label.text = self.coffeeModel.store;
+        } else {
+            self.label.text = NSLocalizedString(@"Location", nil);
+        }
         
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }

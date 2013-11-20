@@ -7,11 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface FoursquareVenueProvider : NSObject
 
 + (instancetype) defaultProvider;
 
-- (void) searchVenuesWithTerm:(NSString*)searchTerm andCompletionBlock:(void (^)(NSError *error, NSDictionary *venues))completionBlock;
+- (void) searchVenuesWithTerm:(NSString*)searchTerm andLocation:(CLLocation*)location andCompletionBlock:(void (^)(NSError *error, NSArray *venues))completionBlock;
 
 @end

@@ -17,6 +17,7 @@
 
 @property (strong, nonatomic) NSString *numberUnit;
 @property (strong, nonatomic) NSString *numberLabel;
+@property (strong, nonatomic) NSString *numberPlaceholder;
 @property (strong, nonatomic) NSString *numberProperty;
 
 @end

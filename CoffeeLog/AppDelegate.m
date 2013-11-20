@@ -67,7 +67,7 @@
 
 - (void)initializeDatabase {
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog3.sqlite3"];
+    NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog6.sqlite3"];
     
     [FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
         [db beginTransaction];
@@ -92,11 +92,13 @@
                   @"    state        INTEGER NOT NULL,"
                   @"    storeType    INTEGER NOT NULL,"
                   @"    store        TEXT NOT NULL DEFAULT '',"
+                  @"    storeLatitude        DOUBLE NOT NULL,"
+                  @"    storeLongitude        DOUBLE NOT NULL,"
                   @"    foursquareID TEXT NOT NULL DEFAULT '',"
                   @"    worksWithTypes  TEXT NOT NULL DEFAULT '',"
                   @"    price        INTEGER NOT NULL,"
                   @"    weight       INTEGER NOT NULL,"
-                  @"    isFavorited  INTEGER NOT NULL,"
+                  @"    isFavorited  BOOLEAN NOT NULL,"
                    @"   created  INTEGER NOT NULL"
                    @");"
                   ]) {
