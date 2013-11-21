@@ -195,7 +195,7 @@
         
         
         [wwcv setActiveTypes:self.coffeeModel.worksWith];
-        [wwcv setTypesArray:[CoffeeModel coffeeWorksWith]];
+        [wwcv setTypesArray:self.coffeeModel.worksWith];
         wwcv.isEditable = NO;
         
         wwcv.tintColor = UIColorFromRGB(0x605f5e);
