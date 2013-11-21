@@ -140,4 +140,27 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return indexPath.section == 0 && self.coffeeList.count != 0;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        CoffeeModel *model = self.coffeeList[indexPath.row];
+        [model delete];
+        
+        [self.coffeeList removeObjectAtIndex:indexPath.row];
+        
+        
+        if(self.coffeeList.count == 0) {
+            [self.tableView setEditing:NO animated:YES];
+            [tableView reloadData];
+        } else {
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }
+        
+    }
+}
+
 @end
