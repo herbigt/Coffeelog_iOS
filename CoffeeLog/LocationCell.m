@@ -73,6 +73,10 @@
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
+    if([textField.text isEqualToString:@""]) {
+        return;
+    }
+    
     self.coffeeModel.store = textField.text;
     self.coffeeModel.storeType = CoffeeStoreTypeWeb;
 }
