@@ -110,6 +110,10 @@
     }
     
     [collectionView reloadItemsAtIndexPaths:@[indexPath]];
+    
+    if(self.worksWithDelegate != nil) {
+        [self.worksWithDelegate worksWithCollectionViewUpdatedChoice:self];
+    }
 }
 
 @end

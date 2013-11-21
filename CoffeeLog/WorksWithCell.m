@@ -24,6 +24,7 @@
     if (self) {
         self.wwcv = [[WorksWithCollectionView alloc] initWithFrame:CGRectMake(16, 16, self.bounds.size.width - 16*2, self.bounds.size.height - 16)];
         self.wwcv.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        self.wwcv.worksWithDelegate = self;
         
         self.wwcv.tintColor = UIColorFromRGB(0xc6c7c8);
         
@@ -43,6 +44,10 @@
     [self.wwcv setActiveTypes:active];
     
     coffeeModel.worksWith = active;
+}
+
+-(void)worksWithCollectionViewUpdatedChoice:(WorksWithCollectionView *)wwcv {
+    self.coffeeModel.worksWith = wwcv.activeTypes;
 }
 
 @end

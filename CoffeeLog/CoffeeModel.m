@@ -10,11 +10,13 @@
 
 @implementation CoffeeModel
 
+@synthesize worksWith=_worksWith;
+
 -(id)init {
     self = [super init];
     if(self) {
         self.storeType = CoffeeStoreTypeWeb;
-        self.worksWith = [NSArray array];
+        self.worksWith = nil;
     }
     
     return self;
@@ -23,6 +25,34 @@
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ (%d, %d) From %@, %d, %d, %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
 }
+
+- (void)setWorksWith:(NSArray *)worksWith {
+    
+    _worksWith = worksWith;
+    
+    if(worksWith == nil) {
+        return;
+    }
+    
+    NSError *error;
+    NSData *json = [NSJSONSerialization dataWithJSONObject:worksWith options:0 error:&error];
+    
+    self.worksWithTypes = [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding];
+}
+
+- (NSArray *)worksWith {
+    if(_worksWith == nil) {
+        if(self.worksWithTypes == nil || [self.worksWithTypes isEqualToString:@""]) {
+            return [NSArray array];
+        }
+        
+        NSError *error;
+        _worksWith = [NSJSONSerialization JSONObjectWithData:[self.worksWithTypes dataUsingEncoding:NSUTF8StringEncoding] options:0 error:&error];
+    }
+    
+    return _worksWith;
+}
+
 
 - (void)saveImage:(UIImage *)image {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);

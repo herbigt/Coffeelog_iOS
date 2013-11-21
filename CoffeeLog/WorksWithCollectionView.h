@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class WorksWithCollectionView;
+
+@protocol WorksWithCollectionViewDelegate
+
+- (void)worksWithCollectionViewUpdatedChoice:(WorksWithCollectionView*)wwcv;
+
+@end
+
 @interface WorksWithCollectionView : UICollectionView <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 
 @property (strong, nonatomic) NSArray *typesArray;
 @property (strong, nonatomic) NSMutableArray *activeTypes;
 @property (nonatomic) BOOL isEditable;
 
+@property (weak, nonatomic) id<WorksWithCollectionViewDelegate> worksWithDelegate;
+
 @end
+

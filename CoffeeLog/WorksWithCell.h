@@ -10,7 +10,9 @@
 
 #import "CoffeeModel.h"
 
-@interface WorksWithCell : UITableViewCell
+#import "WorksWithCollectionView.h"
+
+@interface WorksWithCell : UITableViewCell <WorksWithCollectionViewDelegate>
 
 @property (strong, nonatomic) CoffeeModel *coffeeModel;
 
