@@ -26,8 +26,13 @@
     return [NSString stringWithFormat:@"%@ (%d, %d) From %@, %d, %d, %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
 }
 
+- (void)setImagePath:(NSString *)imagePath {
+    _imagePath = imagePath;
+
+    self.image = [UIImage imageWithContentsOfFile:imagePath];
+}
+
 - (void)setWorksWith:(NSArray *)worksWith {
-    
     _worksWith = worksWith;
     
     if(worksWith == nil) {

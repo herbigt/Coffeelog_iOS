@@ -65,9 +65,8 @@
     
     [self.coffeeImageView addSubview:self.noImageLabel];
     
-    UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)];
-    [self.coffeeImageView addGestureRecognizer:tgr];
-    [self.noImageLabel addGestureRecognizer:tgr];
+    [self.coffeeImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)]];
+    [self.noImageLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)]];
     
     self.coffeeImageView.userInteractionEnabled = YES;
     self.noImageLabel.userInteractionEnabled = YES;
@@ -324,6 +323,7 @@
     if(buttonIndex == actionSheet.destructiveButtonIndex) {
         self.coffeeImageView.image = nil;
         self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
+        self.noImageLabel.hidden = NO;
         return;
     }
     
