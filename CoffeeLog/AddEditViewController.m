@@ -43,6 +43,8 @@
     [super viewDidAppear:animated];
     
     [self.tableView reloadData];
+    
+    [TrackingHelper trackScreen:kTrackingScreenAddEditView];
 }
 
 - (void)viewDidLoad
@@ -345,7 +347,15 @@
 - (void)saveAndClose:(id)sender {
     NSLog(@"Coffee: %@", self.coffeeModel);
     
+    NSString *label = (self.coffeeModel.existsInDatabase ? kTrackingEventCoffeeEventSaveExisting : kTrackingEventCoffeeEventSaveNew);
+    if([CoffeeModel count] == 0) {
+        label = kTrackingEventCoffeeEventSaveFirst;
+    }
+    
+    [TrackingHelper trackEvent:kTrackingEventCoffeeEvent withLabel:label];
+    
     [self.coffeeModel save];
+    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -89,7 +89,11 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     [self.searchBar becomeFirstResponder];
+    
+    [TrackingHelper trackScreen:kTrackingScreenVenueSearchView];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

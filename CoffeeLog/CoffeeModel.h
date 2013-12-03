@@ -72,4 +72,6 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
 
 - (void)saveImage:(UIImage*)image;
 
++ (NSInteger)count;
+
 @end

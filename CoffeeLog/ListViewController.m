@@ -46,6 +46,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
+    [TrackingHelper trackScreen:kTrackingScreenListView];
     
     [self reloadListData];
     
@@ -109,6 +110,8 @@
 }
 
 - (void)addCoffee:(id)sender {
+    [TrackingHelper trackEvent:kTrackingEventCoffeeEvent withLabel:self.coffeeList.count == 0 ? kTrackingEventCoffeeEventAddFirst : kTrackingEventCoffeeEventAdd];
+    
     UINavigationController *aevc = [[UINavigationController alloc] initWithRootViewController:[[AddEditViewController alloc] initWithCoffeeModel:[CoffeeModel new]]];
     [self presentViewController:aevc animated:YES completion:nil];
 }
@@ -151,6 +154,8 @@
         [model delete];
         
         [self.coffeeList removeObjectAtIndex:indexPath.row];
+        
+        [TrackingHelper trackEvent:kTrackingEventCoffeeEvent withLabel:kTrackingEventCoffeeEventDelete];
         
         
         if(self.coffeeList.count == 0) {

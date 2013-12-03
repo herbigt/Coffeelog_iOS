@@ -22,6 +22,10 @@
     return self;
 }
 
++ (NSInteger)count {
+    return [[CoffeeModel firstValueFromQuery:@"SELECT COUNT(*) FROM $T"] integerValue];
+}
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ (%d, %d) From %@, %d, %d, %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
 }

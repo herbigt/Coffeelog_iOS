@@ -27,6 +27,8 @@
     
     [[UserSettings defaultSettings] loadSettings];
     
+    [TrackingHelper initTrackingWithID:@"UA-44565611-1"];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
     ListViewController *lvc = [[ListViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -59,7 +61,6 @@
     nv.navigationBar.translucent = YES;
     
     [self.window setRootViewController:nv];
-    
     
     [self.window makeKeyAndVisible];
     return YES;

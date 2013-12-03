@@ -31,6 +31,7 @@
 		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
 		F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A4181D542F001FBBAF /* UserSettings.m */; };
 		F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */; };
+		F0976CDD184E9610004F81C4 /* TrackingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0976CDC184E9610004F81C4 /* TrackingHelper.m */; };
 		F0A08D29183AE087001A5370 /* NameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D28183AE087001A5370 /* NameCell.m */; };
 		F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */; };
 		F0A08D32183AE335001A5370 /* ChooseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D31183AE335001A5370 /* ChooseCell.m */; };
@@ -107,6 +108,8 @@
 		F07B03A4181D542F001FBBAF /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		F07B03A9181D5C49001FBBAF /* VenueSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueSearchViewController.h; sourceTree = "<group>"; };
 		F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueSearchViewController.m; sourceTree = "<group>"; };
+		F0976CDB184E9610004F81C4 /* TrackingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingHelper.h; sourceTree = "<group>"; };
+		F0976CDC184E9610004F81C4 /* TrackingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingHelper.m; sourceTree = "<group>"; };
 		F0A08D27183AE087001A5370 /* NameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameCell.h; sourceTree = "<group>"; };
 		F0A08D28183AE087001A5370 /* NameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameCell.m; sourceTree = "<group>"; };
 		F0A08D2A183AE1DE001A5370 /* FavoriteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteCell.h; sourceTree = "<group>"; };
@@ -180,6 +183,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0976CDA184E9603004F81C4 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F0976CDB184E9610004F81C4 /* TrackingHelper.h */,
+				F0976CDC184E9610004F81C4 /* TrackingHelper.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		F0A08D26183AE028001A5370 /* AddEditCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +247,7 @@
 		F0DC9A7E1801E98D00C95EEB /* CoffeeLog */ = {
 			isa = PBXGroup;
 			children = (
+				F0976CDA184E9603004F81C4 /* Helpers */,
 				F0DC9AAF1801ECAE00C95EEB /* Models */,
 				F0DC9AAB1801EAC900C95EEB /* Views */,
 				F0DC9AA71801E99700C95EEB /* ViewControllers */,
@@ -520,6 +533,7 @@
 				F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */,
 				F0CFEF92181D5D5000ECA05B /* FoursquareVenueProvider.m in Sources */,
 				F0DC9AB21801ECBA00C95EEB /* CoffeeModel.m in Sources */,
+				F0976CDD184E9610004F81C4 /* TrackingHelper.m in Sources */,
 				F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */,
 				F0DC9ABE1801F77100C95EEB /* DetailViewController.m in Sources */,
 			);

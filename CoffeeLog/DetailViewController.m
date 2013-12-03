@@ -54,6 +54,28 @@
 
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[instagramActivity]];
     activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll];
+
+    [activityViewController setCompletionHandler:^void(NSString *activityType, BOOL completed) {
+        if(!completed) {
+            return;
+        }
+        
+        NSString *action = @"Unknown";
+        if([activityType isEqualToString:UIActivityTypePostToFacebook]) {
+            action = kTrackingEventCoffeeShareEventFacebook;
+        }
+        
+        if([activityType isEqualToString:UIActivityTypePostToTwitter]) {
+            action = kTrackingEventCoffeeShareEventTwitter;
+        }
+        
+        if([activityType isEqualToString:@"UIActivityTypePostToInstagram"]) {
+            action = kTrackingEventCoffeeShareEventInstagram;
+        }
+        
+        [TrackingHelper trackEvent:kTrackingEventCoffeeShareEvent withLabel:action];
+        
+    }];
     
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
@@ -64,6 +86,8 @@
     }
     
     [self.tableView reloadData];
+    
+    [TrackingHelper trackScreen:kTrackingScreenDetailView];
 }
 
 - (void)viewDidLoad

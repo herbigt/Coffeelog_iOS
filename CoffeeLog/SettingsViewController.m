@@ -40,6 +40,13 @@
     self.navigationController.navigationBar.barTintColor = UIColorFromRGB(0xff9500);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    
+    [TrackingHelper trackScreen:kTrackingScreenSettingsView];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -170,16 +177,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0) {
+        [TrackingHelper trackEvent:kTrackingEventSettingsEvent withLabel:kTrackingEventSettingsEventChooseCurrency andValue:[NSNumber numberWithInteger:indexPath.row]];
+        
         [UserSettings defaultSettings].currency = self.currencyArray[indexPath.row];
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     if(indexPath.section == 1) {
+        [TrackingHelper trackEvent:kTrackingEventSettingsEvent withLabel:kTrackingEventSettingsEventChooseUnit andValue:[NSNumber numberWithInteger:indexPath.row]];
+        
         [UserSettings defaultSettings].weight = self.weightArray[indexPath.row];
         [tableView reloadSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationNone];
     }
     
     if(indexPath.section == 3) {
+        [TrackingHelper trackEvent:kTrackingEventSettingsEvent withLabel:kTrackingEventSettingsEventFollow andValue:[NSNumber numberWithInteger:indexPath.row]];
+        
         NSArray *testURLs = @[[NSURL URLWithString:[NSString stringWithFormat:@"tweetbot://%@/user_profile/%@", self.followArray[indexPath.row], self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"twitter://user?screen_name=%@", self.followArray[indexPath.row]]], [NSURL URLWithString:[NSString stringWithFormat:@"https://twitter.com/%@", self.followArray[indexPath.row]]]];
 
         for(NSURL *url in testURLs) {
@@ -192,6 +205,10 @@
 }
 
 - (void) dropboxSwitchToggled {
+    if([UserSettings defaultSettings].dropboxEnabled != self.dropboxSwitch.on) {
+        [TrackingHelper trackEvent:kTrackingEventSettingsEvent withLabel:kTrackingEventSettingsEventChooseDropbox andValue:[NSNumber numberWithBool:self.dropboxSwitch.on]];
+    }
+    
     [UserSettings defaultSettings].dropboxEnabled = self.dropboxSwitch.on;
     
     // Todo: Dropbox authentication stuff.
