@@ -206,6 +206,14 @@
 
 - (void) dropboxSwitchToggled {
     if([UserSettings defaultSettings].dropboxEnabled != self.dropboxSwitch.on) {
+        
+        // Show Dropbox Auth if switched to "on"
+        if(self.dropboxSwitch.on) {
+            [[UserSettings defaultSettings] saveSettings];
+            [[DropboxHelper sharedHelper] linkFromController:self];
+        }
+        
+        
         [TrackingHelper trackEvent:kTrackingEventSettingsEvent withLabel:kTrackingEventSettingsEventChooseDropbox andValue:[NSNumber numberWithBool:self.dropboxSwitch.on]];
     }
     

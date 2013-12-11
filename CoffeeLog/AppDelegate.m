@@ -19,6 +19,8 @@
 #import "SettingsViewController.h"
 #import "VenueSearchViewController.h"
 
+#import <Dropbox-iOS-SDK/DropboxSDK.h>
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -28,6 +30,12 @@
     [[UserSettings defaultSettings] loadSettings];
     
     [TrackingHelper initTrackingWithID:@"UA-44565611-1"];
+    
+    [[DropboxHelper sharedHelper] initSessionWithKey:@"bqu8hq5ggaeh1ai" andSecret:@"xqi9dvp4uyhozdq"];
+    
+    if([UserSettings defaultSettings].dropboxEnabled) {
+        [[DropboxHelper sharedHelper] doBackup];
+    }
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     
@@ -69,6 +77,8 @@
 - (void)initializeDatabase {
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
     NSString *dbPath = [documentsPath stringByAppendingPathComponent:@"coffeelog6.sqlite3"];
+    
+    [[DropboxHelper sharedHelper] setDatabasePath:dbPath];
     
     [FCModel openDatabaseAtPath:dbPath withSchemaBuilder:^(FMDatabase *db, int *schemaVersion) {
         [db beginTransaction];
@@ -126,6 +136,15 @@
         
         [db commit];
     }];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    if([[DropboxHelper sharedHelper] handleAuth:url]) {
+        [[DropboxHelper sharedHelper] doBackup];
+        return YES;
+    }
+  
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

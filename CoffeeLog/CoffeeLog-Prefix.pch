@@ -15,6 +15,7 @@
     #import <Foundation/Foundation.h>
 
 #import "TrackingHelper.h"
+#import "DropboxHelper.h"
 #import "Constants.h"
 
 #define MAX_X(view) view.frame.origin.x + view.bounds.size.width
