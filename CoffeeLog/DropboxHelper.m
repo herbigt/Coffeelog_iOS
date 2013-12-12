@@ -44,6 +44,7 @@
 -(void)doBackup {
     if (![[DBSession sharedSession] isLinked]) {
         NSLog(@"Cannot perform backup, not linked");
+        return;
     }
     
     static DBRestClient *restClient = nil;
@@ -51,29 +52,47 @@
         restClient = [[DBRestClient alloc] initWithSession:[DBSession sharedSession]];
         restClient.delegate = self;
     }
-    
-    NSString *filename = [self.databasePath lastPathComponent];
+
     NSString *destinationDirectory = @"/";
+    NSString *basePath = [self.databasePath stringByDeletingLastPathComponent];
     
-    [restClient loadRevisionsForFile:[destinationDirectory stringByAppendingPathComponent:filename] limit:1];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSArray *images = [[fileManager enumeratorAtPath:basePath] allObjects];
+    
+    for(NSString *image in images) {
+        [restClient loadRevisionsForFile:[destinationDirectory stringByAppendingPathComponent:image] limit:1];
+    }
+    
 }
 
-- (void)restClient:(DBRestClient *)client loadedRevisions:(NSArray *)revisions forFile:(NSString *)path {    
+- (void)restClient:(DBRestClient *)client loadedRevisions:(NSArray *)revisions forFile:(NSString *)path {
+    // Don't re-upload images
+    if([[path pathExtension] isEqualToString:@"jpg"]) {
+        NSLog(@"Image already exists. skipping");
+        return;
+    }
+    
     NSString *rev = nil;
     if(revisions.count > 0) {
         DBMetadata *metadata = [revisions lastObject];
         rev = metadata.rev;
     }
     
-    [client uploadFile:[self.databasePath lastPathComponent] toPath:@"/" withParentRev:rev fromPath:self.databasePath];
+    NSString *basePath = [self.databasePath stringByDeletingLastPathComponent];
+    [client uploadFile:path toPath:@"/" withParentRev:rev fromPath:[basePath stringByAppendingPathComponent:path]];
 }
 
 - (void)restClient:(DBRestClient*)client uploadedFile:(NSString*)destPath from:(NSString*)srcPath metadata:(DBMetadata*)metadata {
     NSLog(@"File uploaded successfully to path: %@", metadata.path);
 }
 
+- (void)restClient:(DBRestClient *)client loadRevisionsFailedWithError:(NSError *)error {
+    NSString *basePath = [[self.databasePath stringByDeletingLastPathComponent] stringByAppendingPathComponent:[error.userInfo[@"path"] lastPathComponent]];
+    [client uploadFile:[error.userInfo[@"path"] lastPathComponent] toPath:@"/" withParentRev:nil fromPath:basePath];
+}
+
 - (void)restClient:(DBRestClient*)client uploadFileFailedWithError:(NSError*)error {
-    NSLog(@"File upload failed with error - %@", error);
+     NSLog(@"File upload failed with error - %@", error);
 }
 
 @end
