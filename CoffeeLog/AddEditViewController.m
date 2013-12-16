@@ -333,9 +333,9 @@
     
     imagePicker.delegate = self;
     
-    if(buttonIndex == 0) {
+    if(buttonIndex == actionSheet.firstOtherButtonIndex) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else if(buttonIndex == 1) {
+    } else if(buttonIndex == actionSheet.firstOtherButtonIndex + 1) {
         imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }
     
