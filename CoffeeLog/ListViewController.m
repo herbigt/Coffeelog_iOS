@@ -18,7 +18,7 @@
 
 @property (strong, nonatomic) NSMutableArray *coffeeList;
 
-@property (strong, nonatomic) UILabel *emptyLabel;
+@property (strong, nonatomic) UIView *emptyView;
 
 
 @end
@@ -54,27 +54,31 @@
         self.tableView.separatorColor = [UIColor whiteColor];
         self.tableView.scrollEnabled = NO;
         
-        if(!self.emptyLabel) {
-            self.emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 60)];
-            self.emptyLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:34.0f];
-            self.emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
-            self.emptyLabel.numberOfLines = 3;
-            self.emptyLabel.textAlignment = NSTextAlignmentCenter;
-            self.emptyLabel.text = NSLocalizedString(@"Welcome, tap here to add your first coffee!", nil);
-            self.emptyLabel.backgroundColor = [UIColor whiteColor];
+        if(!self.emptyView) {
+            UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, self.view.bounds.size.width - 80, self.view.bounds.size.height - 60)];
+            emptyLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:34.0f];
+            emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
+            emptyLabel.numberOfLines = 3;
+            emptyLabel.textAlignment = NSTextAlignmentCenter;
+            emptyLabel.text = NSLocalizedString(@"Welcome, tap here to add your first coffee!", nil);
+            emptyLabel.backgroundColor = [UIColor whiteColor];
+
+            self.emptyView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height - 60)];
+            self.emptyView.backgroundColor = [UIColor whiteColor];
+            [self.emptyView addSubview:emptyLabel];
             
             UITapGestureRecognizer *tgr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(addCoffee:)];
-            [self.emptyLabel addGestureRecognizer:tgr];
-            self.emptyLabel.userInteractionEnabled = YES;
+            [emptyLabel addGestureRecognizer:tgr];
+            emptyLabel.userInteractionEnabled = YES;
             
-            self.emptyLabel.hidden = YES;
+            self.emptyView.hidden = YES;
             
-            [self.tableView addSubview:self.emptyLabel];
+            [self.tableView addSubview:self.emptyView];
         }
         
-        self.emptyLabel.hidden = NO;
+        self.emptyView.hidden = NO;
     } else {
-        self.emptyLabel.hidden = YES;
+        self.emptyView.hidden = YES;
         self.tableView.separatorColor = UIColorFromRGB(0xb57252);
         self.tableView.scrollEnabled = YES;
     }
