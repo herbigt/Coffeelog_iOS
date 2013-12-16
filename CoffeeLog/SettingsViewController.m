@@ -26,7 +26,7 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        self.sectionArray = @[@"Currency", @"Weight", @"Backup", @"Follow us"];
+        self.sectionArray = @[NSLocalizedString(@"Currency", nil), NSLocalizedString(@"Weight", nil), NSLocalizedString(@"Backup", nil), NSLocalizedString(@"Follow us", nil)];
         self.currencyArray = @[@"EUR", @"USD", @"GBP"];
         self.weightArray = @[@"g", @"lb"];
         self.followArray = @[@"coffeelogapp", @"herbigt", @"knuspermagier"];
@@ -78,6 +78,13 @@
     self.tableView.tableFooterView = versionLabel;
     
     self.title = NSLocalizedString(@"Settings", nil);
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserverForName:kDropboxAuthUnsuccessfulNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
+        [self.dropboxSwitch setOn:NO animated:YES];
+        [UserSettings defaultSettings].dropboxEnabled = NO;
+        [[UserSettings defaultSettings] saveSettings];
+    }];
 }
 
 - (void)saveAndClose:(id)sender {
@@ -211,6 +218,10 @@
         if(self.dropboxSwitch.on) {
             [[UserSettings defaultSettings] saveSettings];
             [[DropboxHelper sharedHelper] linkFromController:self];
+        }
+        
+        if(!self.dropboxSwitch.on) {
+            [[DropboxHelper sharedHelper] unlink];
         }
         
         

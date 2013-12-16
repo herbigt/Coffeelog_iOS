@@ -20,6 +20,8 @@
 
 -(void)linkFromController:(UIViewController*)controller;
 
+-(void)unlink;
+
 -(bool)handleAuth:(NSURL*)url;
 
 -(void)doBackup;

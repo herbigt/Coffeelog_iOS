@@ -11,3 +11,6 @@
 extern NSString *kSettingsCurrencySetting;
 extern NSString *kSettingsWeightSetting;
 extern NSString *kSettingsDropboxEnabledSetting;
+
+extern NSString *kDropboxAuthSuccessfulNotification;
+extern NSString *kDropboxAuthUnsuccessfulNotification;

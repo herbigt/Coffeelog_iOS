@@ -11,3 +11,6 @@
 NSString *kSettingsCurrencySetting = @"kSettingsCurrencySetting";
 NSString *kSettingsWeightSetting = @"kSettingsWeightSetting";
 NSString *kSettingsDropboxEnabledSetting = @"kSettingsDropboxEnabledSetting";
+
+NSString *kDropboxAuthSuccessfulNotification = @"kDropboxAuthSuccessfulNotification";
+NSString *kDropboxAuthUnsuccessfulNotification = @"kDropboxAuthUnsuccessfulNotification";

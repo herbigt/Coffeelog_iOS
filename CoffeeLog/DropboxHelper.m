@@ -31,13 +31,20 @@
     }
 }
 
+-(void)unlink {
+    [[DBSession sharedSession] unlinkAll];
+}
+
+
 -(bool)handleAuth:(NSURL*)url {
     if([[DBSession sharedSession] handleOpenURL:url]) {
         if ([[DBSession sharedSession] isLinked]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:kDropboxAuthSuccessfulNotification object:nil];
             return YES;
         }
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDropboxAuthUnsuccessfulNotification object:nil];
     return NO;
 }
 
