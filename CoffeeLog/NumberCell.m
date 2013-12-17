@@ -59,7 +59,11 @@
 
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self.coffeeModel setValue:[NSNumber numberWithInteger:([textField.text floatValue] * 100)] forKey:self.numberProperty];
+    CGFloat f = [[textField.text stringByReplacingOccurrencesOfString:@"," withString:@"."] floatValue];
+    
+    NSLog(@"%f", f);
+    
+    [self.coffeeModel setValue:[NSNumber numberWithInteger:(f * 100)] forKey:self.numberProperty];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
