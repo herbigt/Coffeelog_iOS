@@ -31,7 +31,7 @@
     
     [TrackingHelper initTrackingWithID:@"UA-44565611-1"];
     
-    [[DropboxHelper sharedHelper] initSessionWithKey:@"bqu8hq5ggaeh1ai" andSecret:@"xqi9dvp4uyhozdq"];
+    [[DropboxHelper sharedHelper] initSessionWithKey:@"riasd030rzeqnam" andSecret:@"wa5lllu9xe7uuz6"];
     
     if([UserSettings defaultSettings].dropboxEnabled) {
         [[DropboxHelper sharedHelper] doBackup];

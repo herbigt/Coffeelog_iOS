@@ -58,7 +58,7 @@
             UILabel *emptyLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, self.view.bounds.size.width - 80, self.view.bounds.size.height - 60)];
             emptyLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:34.0f];
             emptyLabel.textColor = UIColorFromRGB(0x8e8e93);
-            emptyLabel.numberOfLines = 3;
+            emptyLabel.numberOfLines = 5;
             emptyLabel.textAlignment = NSTextAlignmentCenter;
             emptyLabel.text = NSLocalizedString(@"Welcome, tap here to add your first coffee!", nil);
             emptyLabel.backgroundColor = [UIColor whiteColor];
@@ -104,7 +104,7 @@
     [self.navigationItem setRightBarButtonItem:add];
     
 	[self.navigationController setNavigationBarHidden:NO];
-    [self setTitle:@"Coffee Log"];
+    [self setTitle:NSLocalizedString(@"Coffee Log", nil)];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
 }
 
