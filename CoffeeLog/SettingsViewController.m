@@ -104,8 +104,12 @@
     NSString *title = [self tableView:tableView titleForHeaderInSection:section];
     
     UIView *headerView = [[UIView alloc] init];
+    CGFloat y = 3;
+    if(section == 0) {
+        y = 20;
+    }
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, 3, self.view.bounds.size.width, 35)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(16, y, self.view.bounds.size.width, 35)];
     titleLabel.text = title;
     titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:14];
     titleLabel.textColor = UIColorFromRGB(0x000000);
