@@ -35,7 +35,7 @@
 }
 
 - (NSString *)weightString:(NSInteger)weight {
-    return [NSString stringWithFormat:@"%.0f%@", weight/100.f, self.weight];
+    return [NSString stringWithFormat:@"%.2f%@", weight/100.f, self.weight];
 }
 
 - (void)loadSettings {

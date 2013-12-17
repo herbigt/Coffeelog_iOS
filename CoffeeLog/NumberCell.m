@@ -38,6 +38,10 @@
         [self addSubview:self.unitField];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        // Add a "textFieldDidChange" notification method to the text field control.
+        [self.unitField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+
 
     }
     return self;
@@ -58,7 +62,7 @@
 }
 
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
+- (void)textFieldDidChange:(UITextField *)textField {
     CGFloat f = [[textField.text stringByReplacingOccurrencesOfString:@"," withString:@"."] floatValue];
     
     NSLog(@"%f", f);

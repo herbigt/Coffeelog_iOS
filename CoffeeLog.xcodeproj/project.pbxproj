@@ -130,7 +130,7 @@
 		F0C5E30A183D59BE001F407F /* VenueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueCell.m; sourceTree = "<group>"; };
 		F0CFEF90181D5D5000ECA05B /* FoursquareVenueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FoursquareVenueProvider.h; sourceTree = "<group>"; };
 		F0CFEF91181D5D5000ECA05B /* FoursquareVenueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FoursquareVenueProvider.m; sourceTree = "<group>"; };
-		F0DC9A751801E98D00C95EEB /* CoffeeLog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoffeeLog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0DC9A751801E98D00C95EEB /* Coffeelog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coffeelog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0DC9A781801E98D00C95EEB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0DC9A7A1801E98D00C95EEB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F0DC9A7C1801E98D00C95EEB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -230,7 +230,7 @@
 		F0DC9A761801E98D00C95EEB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F0DC9A751801E98D00C95EEB /* CoffeeLog.app */,
+				F0DC9A751801E98D00C95EEB /* Coffeelog.app */,
 				F0DC9A901801E98D00C95EEB /* CoffeeLogTests.xctest */,
 			);
 			name = Products;
@@ -387,7 +387,7 @@
 			);
 			name = CoffeeLog;
 			productName = CoffeeLog;
-			productReference = F0DC9A751801E98D00C95EEB /* CoffeeLog.app */;
+			productReference = F0DC9A751801E98D00C95EEB /* Coffeelog.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F0DC9A8F1801E98D00C95EEB /* CoffeeLogTests */ = {
@@ -676,7 +676,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Coffeelog;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -691,7 +691,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Coffeelog;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

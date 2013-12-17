@@ -27,7 +27,7 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@ (%d, %d) From %@, %d, %d, %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
+    return [NSString stringWithFormat:@"%@ (%d, %d) From %@, prize: %d, weight: %d, fav: %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
 }
 
 - (void)setImagePath:(NSString *)imagePath {
