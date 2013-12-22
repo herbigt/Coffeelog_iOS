@@ -417,6 +417,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = CoffeeLog;
 				TargetAttributes = {
+					F0DC9A741801E98D00C95EEB = {
+						DevelopmentTeam = 2X9C294JJQ;
+					};
 					F0DC9A8F1801E98D00C95EEB = {
 						TestTargetID = F0DC9A741801E98D00C95EEB;
 					};
@@ -673,6 +676,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
@@ -688,6 +692,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
