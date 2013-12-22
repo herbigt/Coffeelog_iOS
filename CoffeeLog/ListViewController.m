@@ -94,7 +94,7 @@
 {
     [super viewDidLoad];
     
-    UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Settings", nil) style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
+    UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"settings"] style:UIBarButtonItemStylePlain target:self action:@selector(openSettings:)];
     settings.tintColor = [UIColor whiteColor];
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add_thick"] style:UIBarButtonItemStylePlain target:self action:@selector(addCoffee:)];
