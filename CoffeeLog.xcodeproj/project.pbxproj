@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		409A6E9ED47642F6B619449F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB3D205518D45F9BC9CECCB /* libPods.a */; };
+		C512920918679BFB004AC1F5 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C512920818679BFB004AC1F5 /* settings@2x.png */; };
+		C512920A18679BFB004AC1F5 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C512920818679BFB004AC1F5 /* settings@2x.png */; };
+		C5E98E71186798AE005A0A3E /* add_thick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E98E70186798AE005A0A3E /* add_thick@2x.png */; };
 		F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05140AB180C870600B7D0D3 /* AddEditViewController.m */; };
 		F05140B2180C941E00B7D0D3 /* type_aero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AD180C941E00B7D0D3 /* type_aero@2x.png */; };
 		F05140B3180C941E00B7D0D3 /* type_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AE180C941E00B7D0D3 /* type_filter@2x.png */; };
@@ -76,6 +79,8 @@
 
 /* Begin PBXFileReference section */
 		5CB3D205518D45F9BC9CECCB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C512920818679BFB004AC1F5 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		C5E98E70186798AE005A0A3E /* add_thick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_thick@2x.png"; sourceTree = "<group>"; };
 		ED0018E1A9474D9B9576C708 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		F05140AA180C870600B7D0D3 /* AddEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditViewController.h; sourceTree = "<group>"; };
 		F05140AB180C870600B7D0D3 /* AddEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditViewController.m; sourceTree = "<group>"; };
@@ -353,6 +358,7 @@
 				F07A067F1820607400B49E13 /* type_aero_active@2x.png */,
 				F07A06801820607400B49E13 /* type_filter_active@2x.png */,
 				F07A06811820607400B49E13 /* type_frenchpress_active@2x.png */,
+				C512920818679BFB004AC1F5 /* settings@2x.png */,
 				F07A06821820607400B49E13 /* type_sieb_active@2x.png */,
 				F07A06831820607400B49E13 /* type_turkish_active@2x.png */,
 				F05140AD180C941E00B7D0D3 /* type_aero@2x.png */,
@@ -361,6 +367,7 @@
 				F05140B0180C941E00B7D0D3 /* type_sieb@2x.png */,
 				F05140B1180C941E00B7D0D3 /* type_turkish@2x.png */,
 				F0DC9ABA1801F69400C95EEB /* add@2x.png */,
+				C5E98E70186798AE005A0A3E /* add_thick@2x.png */,
 				F0DC9AB81801F3F100C95EEB /* testimage@2x.png */,
 				F0DC9AB31801F16300C95EEB /* favorite@2x.png */,
 				F0DC9AB41801F16300C95EEB /* location@2x.png */,
@@ -417,6 +424,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = CoffeeLog;
 				TargetAttributes = {
+					F0DC9A741801E98D00C95EEB = {
+						DevelopmentTeam = 2X9C294JJQ;
+					};
 					F0DC9A8F1801E98D00C95EEB = {
 						TestTargetID = F0DC9A741801E98D00C95EEB;
 					};
@@ -462,9 +472,11 @@
 				F05140B3180C941E00B7D0D3 /* type_filter@2x.png in Resources */,
 				F05140B2180C941E00B7D0D3 /* type_aero@2x.png in Resources */,
 				F07180F018146DCE00C6B299 /* favorite_detail@2x.png in Resources */,
+				C5E98E71186798AE005A0A3E /* add_thick@2x.png in Resources */,
 				F07A06861820607400B49E13 /* type_frenchpress_active@2x.png in Resources */,
 				F07A06851820607400B49E13 /* type_filter_active@2x.png in Resources */,
 				F07A06881820607400B49E13 /* type_turkish_active@2x.png in Resources */,
+				C512920918679BFB004AC1F5 /* settings@2x.png in Resources */,
 				F0543FD9181080ED00CDFE2A /* web@2x.png in Resources */,
 				F07B039D181D5139001FBBAF /* web_detail@2x.png in Resources */,
 				F07B039F181D5219001FBBAF /* location_detail@2x.png in Resources */,
@@ -477,6 +489,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0DC9A9C1801E98D00C95EEB /* InfoPlist.strings in Resources */,
+				C512920A18679BFB004AC1F5 /* settings@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -673,6 +686,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
@@ -688,6 +702,7 @@
 				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
