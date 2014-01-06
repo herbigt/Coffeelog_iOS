@@ -50,7 +50,12 @@
     
     DMActivityInstagram *instagramActivity = [[DMActivityInstagram alloc] init];
     
-    NSArray *activityItems = @[self.coffeeModel.image, self.coffeeModel.name];
+    NSMutableArray *activityItems = @[].mutableCopy;
+    if(self.coffeeModel.image) {
+        [activityItems addObject:self.coffeeModel.image];
+    }
+    
+    [activityItems addObject:self.coffeeModel.name];
 
     UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:@[instagramActivity]];
     activityViewController.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact, UIActivityTypeCopyToPasteboard, UIActivityTypePrint, UIActivityTypeSaveToCameraRoll];
