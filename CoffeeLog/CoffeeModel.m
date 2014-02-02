@@ -102,7 +102,7 @@
 + (NSArray *)coffeeWorksWith {
     static NSArray *worksWiths = nil;
     if(!worksWiths) {
-        worksWiths = @[@(CoffeeWorksWithAeropress), @(CoffeeWorksWithFilter), @(CoffeeWorksWithFrenchpress), @(CoffeeWorksWithSieb), @(CoffeeWorksWithTurkish)];
+        worksWiths = @[@(CoffeeWorksWithAeropress), @(CoffeeWorksWithFilter), @(CoffeeWorksWithFrenchpress), @(CoffeeWorksWithSieb), @(CoffeeWorksWithTurkish), @(CoffeeWorksWithChemex), @(CoffeeWorksWithEspresskocher), @(CoffeeWorksWithSyphon)];
     }
     
     return worksWiths;
@@ -129,7 +129,7 @@
 +(NSString *)labelForWorksWith:(CoffeeWorksWith)worksWith {
     static NSArray *worksWiths = nil;
     if(!worksWiths) {
-        worksWiths = @[NSLocalizedString(@"aero", nil), NSLocalizedString(@"filter", nil), NSLocalizedString(@"frenchpress", nil), NSLocalizedString(@"sieb", nil), NSLocalizedString(@"turkish", nil)];
+        worksWiths = @[NSLocalizedString(@"aero", nil), NSLocalizedString(@"filter", nil), NSLocalizedString(@"frenchpress", nil), NSLocalizedString(@"sieb", nil), NSLocalizedString(@"turkish", nil), NSLocalizedString(@"syphon", nil), NSLocalizedString(@"espressokocher", nil), NSLocalizedString(@"chemex", nil)];
     }
     
     return worksWiths[worksWith];

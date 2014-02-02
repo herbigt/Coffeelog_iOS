@@ -152,7 +152,11 @@
     }
     
     if(indexPath.row == 4) {
-        return 140;
+        if(self.coffeeModel.worksWith.count > 4) {
+            return 210;
+        } else {
+            return 140;
+        }
     }
     
     return 50;

@@ -31,7 +31,10 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
     CoffeeWorksWithFilter,
     CoffeeWorksWithFrenchpress,
     CoffeeWorksWithSieb,
-    CoffeeWorksWithTurkish
+    CoffeeWorksWithTurkish,
+    CoffeeWorksWithSyphon,
+    CoffeeWorksWithEspresskocher,
+    CoffeeWorksWithChemex
 };
 
 @interface CoffeeModel : FCModel

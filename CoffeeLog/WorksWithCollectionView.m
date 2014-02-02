@@ -26,7 +26,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
-    layout.minimumInteritemSpacing = 25;
+    layout.minimumInteritemSpacing = 20;
     
     self = [super initWithFrame:frame collectionViewLayout:layout];
     if (self) {
@@ -71,7 +71,7 @@
 }
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {    
-    return CGSizeMake(((UIImage*)self.iconViews[indexPath.row]).size.width, self.maxHeight);
+    return CGSizeMake(50, self.maxHeight);
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,7 +92,8 @@
     CGFloat paddingTop = self.maxHeight - icon.size.height;
     
     iconView.image = icon;
-    iconView.frame = CGRectMake(0, paddingTop, iconView.image.size.width, iconView.image.size.height);
+    iconView.frame = CGRectMake(0, paddingTop, 50, iconView.image.size.height);
+    iconView.contentMode = UIViewContentModeCenter;
 
     return cell;
 }
