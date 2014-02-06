@@ -19,7 +19,7 @@
 #import "NumberCell.h"
 #import "LocationCell.h"
 #import "WorksWithCell.h"
-
+#import "CLNavigationBar.h"
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UITapGestureRecognizer *dismissRecognizer;
@@ -300,7 +300,8 @@
     
     if(indexPath.section == 3) {
         if(indexPath.row == 0) {
-            UINavigationController *nvc = [[UINavigationController alloc] initWithRootViewController:[[VenueSearchViewController alloc] initWithCoffeeModel:self.coffeeModel]];
+            UINavigationController *nvc = [[UINavigationController alloc] initWithNavigationBarClass:[CLNavigationBar class] toolbarClass:[UIToolbar class]];
+            nvc.viewControllers = @[[[VenueSearchViewController alloc] initWithCoffeeModel:self.coffeeModel]];
             [self.navigationController presentViewController:nvc animated:YES completion:nil];
             return;
         }

@@ -11,6 +11,8 @@
 		C512920918679BFB004AC1F5 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C512920818679BFB004AC1F5 /* settings@2x.png */; };
 		C512920A18679BFB004AC1F5 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C512920818679BFB004AC1F5 /* settings@2x.png */; };
 		C5E98E71186798AE005A0A3E /* add_thick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C5E98E70186798AE005A0A3E /* add_thick@2x.png */; };
+		F03F737018A2FF1500D0F1C8 /* location_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F03F736F18A2FF1500D0F1C8 /* location_arrow@2x.png */; };
+		F03F737218A2FF1B00D0F1C8 /* disclose_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F03F737118A2FF1B00D0F1C8 /* disclose_button@2x.png */; };
 		F05140AC180C870600B7D0D3 /* AddEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F05140AB180C870600B7D0D3 /* AddEditViewController.m */; };
 		F05140B2180C941E00B7D0D3 /* type_aero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AD180C941E00B7D0D3 /* type_aero@2x.png */; };
 		F05140B3180C941E00B7D0D3 /* type_filter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F05140AE180C941E00B7D0D3 /* type_filter@2x.png */; };
@@ -26,6 +28,7 @@
 		F0680BD5189E888200F6AA4D /* type_syphon_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BD3189E888200F6AA4D /* type_syphon_active@2x.png */; };
 		F0680BD8189E889700F6AA4D /* type_espressokocher_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BD6189E889700F6AA4D /* type_espressokocher_active@2x.png */; };
 		F0680BD9189E889700F6AA4D /* type_espressokocher@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BD7189E889700F6AA4D /* type_espressokocher@2x.png */; };
+		F0680BDC189E94D500F6AA4D /* CLNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = F0680BDB189E94D500F6AA4D /* CLNavigationBar.m */; };
 		F06EB91518591A7E00D4B760 /* DropboxHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F06EB91418591A7E00D4B760 /* DropboxHelper.m */; };
 		F07180F018146DCE00C6B299 /* favorite_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F07180EF18146DCE00C6B299 /* favorite_detail@2x.png */; };
 		F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07180F4181478F600C6B299 /* SettingsViewController.m */; };
@@ -88,6 +91,8 @@
 		C512920818679BFB004AC1F5 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		C5E98E70186798AE005A0A3E /* add_thick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_thick@2x.png"; sourceTree = "<group>"; };
 		ED0018E1A9474D9B9576C708 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		F03F736F18A2FF1500D0F1C8 /* location_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_arrow@2x.png"; sourceTree = "<group>"; };
+		F03F737118A2FF1B00D0F1C8 /* disclose_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "disclose_button@2x.png"; sourceTree = "<group>"; };
 		F05140AA180C870600B7D0D3 /* AddEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEditViewController.h; sourceTree = "<group>"; };
 		F05140AB180C870600B7D0D3 /* AddEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEditViewController.m; sourceTree = "<group>"; };
 		F05140AD180C941E00B7D0D3 /* type_aero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_aero@2x.png"; sourceTree = "<group>"; };
@@ -105,6 +110,8 @@
 		F0680BD3189E888200F6AA4D /* type_syphon_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_syphon_active@2x.png"; sourceTree = "<group>"; };
 		F0680BD6189E889700F6AA4D /* type_espressokocher_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_espressokocher_active@2x.png"; sourceTree = "<group>"; };
 		F0680BD7189E889700F6AA4D /* type_espressokocher@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_espressokocher@2x.png"; sourceTree = "<group>"; };
+		F0680BDA189E94D500F6AA4D /* CLNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLNavigationBar.h; sourceTree = "<group>"; };
+		F0680BDB189E94D500F6AA4D /* CLNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLNavigationBar.m; sourceTree = "<group>"; };
 		F06EB91318591A7E00D4B760 /* DropboxHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropboxHelper.h; sourceTree = "<group>"; };
 		F06EB91418591A7E00D4B760 /* DropboxHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropboxHelper.m; sourceTree = "<group>"; };
 		F07180EF18146DCE00C6B299 /* favorite_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorite_detail@2x.png"; sourceTree = "<group>"; };
@@ -210,6 +217,8 @@
 				F0976CDC184E9610004F81C4 /* TrackingHelper.m */,
 				F06EB91318591A7E00D4B760 /* DropboxHelper.h */,
 				F06EB91418591A7E00D4B760 /* DropboxHelper.m */,
+				F0680BDA189E94D500F6AA4D /* CLNavigationBar.h */,
+				F0680BDB189E94D500F6AA4D /* CLNavigationBar.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -361,6 +370,8 @@
 		F0DC9AB71801F16500C95EEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F03F737118A2FF1B00D0F1C8 /* disclose_button@2x.png */,
+				F03F736F18A2FF1500D0F1C8 /* location_arrow@2x.png */,
 				F07A067D18205E9900B49E13 /* powered_by_4sq@2x.png */,
 				F07B039C181D5139001FBBAF /* web_detail@2x.png */,
 				F07B039E181D5219001FBBAF /* location_detail@2x.png */,
@@ -475,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F05140B6180C941E00B7D0D3 /* type_turkish@2x.png in Resources */,
+				F03F737218A2FF1B00D0F1C8 /* disclose_button@2x.png in Resources */,
 				F0DC9A831801E98D00C95EEB /* InfoPlist.strings in Resources */,
 				F07A068B1821534F00B49E13 /* Localizable.strings in Resources */,
 				F0680BD4189E888200F6AA4D /* type_syphon@2x.png in Resources */,
@@ -495,6 +507,7 @@
 				F05140B2180C941E00B7D0D3 /* type_aero@2x.png in Resources */,
 				F07180F018146DCE00C6B299 /* favorite_detail@2x.png in Resources */,
 				C5E98E71186798AE005A0A3E /* add_thick@2x.png in Resources */,
+				F03F737018A2FF1500D0F1C8 /* location_arrow@2x.png in Resources */,
 				F07A06861820607400B49E13 /* type_frenchpress_active@2x.png in Resources */,
 				F07A06851820607400B49E13 /* type_filter_active@2x.png in Resources */,
 				F07A06881820607400B49E13 /* type_turkish_active@2x.png in Resources */,
@@ -562,6 +575,7 @@
 				F0DC9A891801E98D00C95EEB /* AppDelegate.m in Sources */,
 				F0DC9A851801E98D00C95EEB /* main.m in Sources */,
 				F0DC9AAA1801E9A600C95EEB /* ListViewController.m in Sources */,
+				F0680BDC189E94D500F6AA4D /* CLNavigationBar.m in Sources */,
 				F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */,
 				F06EB91518591A7E00D4B760 /* DropboxHelper.m in Sources */,
 				F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */,

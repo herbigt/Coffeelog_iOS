@@ -31,13 +31,40 @@
                              @"ll": [NSString stringWithFormat:@"%f,%f", location.coordinate.latitude, location.coordinate.longitude],
                              @"query": searchTerm,
                              @"radius": @(5000)
-    };
+                             };
     
     [manager GET:@"https://api.foursquare.com/v2/venues/search" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         if(!responseObject[@"meta"]) {
             completionBlock([NSError errorWithDomain:@"Coffeelog" code:900 userInfo:nil], nil);
             return;
         }
+        
+        NSArray *results = [NSArray arrayWithArray:responseObject[@"response"][@"venues"]];
+        completionBlock(nil, results);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        completionBlock(error, [NSArray array]);
+    }];
+}
+
+- (void)searchVenuesWithTerm:(NSString *)searchTerm andCompletionBlock:(void (^)(NSError *, NSArray *))completionBlock {
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSDictionary *params = @{
+                             @"client_id": @"MQHRP0XYN5YKVA1NZSBR2HMGZQPR2CUUZHESKVNM0ZDAGGP4",
+                             @"client_secret": @"EJ3524XZ5SKAFQNQFJJINNUQN3NYM1UASLEFAJ2P11OYJFE1",
+                             @"v": @"20131120",
+                             @"intent": @"global",
+                             @"query": searchTerm,
+                             @"radius": @(5000)
+                             };
+    
+    [manager GET:@"https://api.foursquare.com/v2/venues/search" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(!responseObject[@"meta"]) {
+            completionBlock([NSError errorWithDomain:@"Coffeelog" code:900 userInfo:nil], nil);
+            return;
+        }
+        
+        NSLog(@"LL: %@", responseObject);
         
         NSArray *results = [NSArray arrayWithArray:responseObject[@"response"][@"venues"]];
         completionBlock(nil, results);

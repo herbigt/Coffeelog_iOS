@@ -19,6 +19,8 @@
 #import "SettingsViewController.h"
 #import "VenueSearchViewController.h"
 
+#import "CLNavigationBar.h"
+
 #import <Dropbox-iOS-SDK/DropboxSDK.h>
 
 @implementation AppDelegate
@@ -45,7 +47,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.tintColor = UIColorFromRGB(0xb57252);
     
-    
+    /*
     CoffeeModel *c1 = [[CoffeeModel alloc] init];
     c1.image = [UIImage imageNamed:@"testimage"];
     c1.name = @"Espresso Excelsior";
@@ -58,17 +60,19 @@
     
     DetailViewController *dvc = [[DetailViewController alloc] initWithCoffeeModel:c1];
     AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:c1];
-    SettingsViewController *svc = [[SettingsViewController alloc] init];
+    SettingsViewController *svc = [[SettingsViewController alloc] init];*/
     
     VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
     
-    UINavigationController *nv = [[UINavigationController alloc] initWithRootViewController:lvc];
-    nv.navigationBar.tintColor = [UIColor whiteColor];
+    UINavigationController *nvg = [[UINavigationController alloc] init];
+    [nvg setViewControllers:@[lvc] animated:NO];
     
-    nv.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
-    nv.navigationBar.translucent = YES;
+    nvg.navigationBar.tintColor = [UIColor whiteColor];
     
-    [self.window setRootViewController:nv];
+    nvg.navigationBar.barTintColor = [UIColor colorWithRed:1 green:139/255.0 blue:0 alpha:0.65];
+    nvg.navigationBar.translucent = YES;
+    
+    [self.window setRootViewController:nvg];
     
     [self.window makeKeyAndVisible];
     return YES;

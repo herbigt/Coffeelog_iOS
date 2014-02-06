@@ -14,5 +14,5 @@
 + (instancetype) defaultProvider;
 
 - (void) searchVenuesWithTerm:(NSString*)searchTerm andLocation:(CLLocation*)location andCompletionBlock:(void (^)(NSError *error, NSArray *venues))completionBlock;
-
+- (void) searchVenuesWithTerm:(NSString*)searchTerm andCompletionBlock:(void (^)(NSError *error, NSArray *venues))completionBlock;
 @end
