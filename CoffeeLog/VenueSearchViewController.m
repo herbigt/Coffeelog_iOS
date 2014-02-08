@@ -87,7 +87,7 @@
     self.searchBarNear = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 30)];
     self.searchBarNear.tag = 400;
     self.searchBarNear.delegate = self;
-    self.searchBarNear.placeholder = @"Enter address or city name";
+    self.searchBarNear.placeholder = NSLocalizedString(@"Enter address or city name", nil);
     self.searchBarNear.tintColor = UIColorFromRGB(0xFF9500);
     self.searchBarNear.hidden = YES;
     
@@ -97,7 +97,7 @@
     self.searchNearView.tag = 100;
     
     self.searchNearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-    self.searchNearLabel.text = @"Search near: Current position";
+    self.searchNearLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Search near: %@", nil), NSLocalizedString(@"Current Position", nil)];
     self.searchNearLabel.textAlignment = NSTextAlignmentCenter;
     self.searchNearLabel.textColor = [UIColor whiteColor];
     self.searchNearLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f];
@@ -138,7 +138,7 @@
     titleView.font = [UIFont systemFontOfSize:18];
     titleView.textAlignment = NSTextAlignmentCenter;
     titleView.textColor = [UIColor whiteColor];
-    titleView.text = @"Change Position";
+    titleView.text = NSLocalizedString(@"Change Position", nil);
     
     self.navigationItem.titleView = titleView;
     
@@ -199,7 +199,9 @@
                 return;
             }
             
-            self.searchResults = [NSMutableArray arrayWithArray:venues];
+            self.searchResults = [NSMutableArray array];
+            [self.searchResults addObject:@{@"name": NSLocalizedString(@"Current Position", nil), @"isdefault": @YES}];
+            [self.searchResults addObjectsFromArray:venues];
         
             [self.tableView reloadData];
         }];
@@ -240,11 +242,13 @@
 
     if(self.currentSearchBar == self.searchBarNear) {
         self.searchBarNear.hidden = YES;
-        self.searchNearLabel.text = [NSString stringWithFormat:@"Search near: %@", venue[@"name"]];
+        self.searchNearLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Search near: %@", nil), venue[@"name"]];
         self.searchNearView.hidden = NO;
         
-        self.currentPosition = venue;
-        
+        if(!venue[@"isdefault"]) {
+            self.currentPosition = venue;
+        }
+  
         self.navigationItem.titleView = self.searchBar;
         
         [self.searchBar becomeFirstResponder];

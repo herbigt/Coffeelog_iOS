@@ -93,7 +93,7 @@
 + (NSArray *)coffeeTypes {
     static NSArray *types = nil;
     if(!types) {
-        types = @[@(CoffeeTypeEspresso), @(CoffeeTypeCoffee), @(CoffeeTypeBlend)];
+        types = @[@(CoffeeTypeEspresso), @(CoffeeTypeCoffee), @(CoffeeTypeBlend), @(CoffeeTypeEspressoBlend)];
     }
     
     return types;
@@ -120,7 +120,7 @@
 +(NSString *)labelForCoffeeType:(CoffeeType)type {
     static NSArray *types = nil;
     if(!types) {
-        types = @[NSLocalizedString(@"Espresso", nil), NSLocalizedString(@"Coffee", nil), NSLocalizedString(@"Blend", nil)];
+        types = @[NSLocalizedString(@"Espresso", nil), NSLocalizedString(@"Coffee", nil), NSLocalizedString(@"Coffee Blend", nil), NSLocalizedString(@"Espresso Blend", nil)];
     }
     
     return types[type];

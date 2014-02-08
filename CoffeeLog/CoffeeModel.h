@@ -17,7 +17,8 @@ typedef NS_ENUM(NSInteger, CoffeeStoreType) {
 typedef NS_ENUM(NSInteger, CoffeeType) {
     CoffeeTypeEspresso,
     CoffeeTypeCoffee,
-    CoffeeTypeBlend
+    CoffeeTypeBlend, // now coffee blend
+    CoffeeTypeEspressoBlend
 };
 
 typedef NS_ENUM(NSInteger, CoffeeState) {
