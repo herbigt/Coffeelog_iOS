@@ -93,7 +93,7 @@
 + (NSArray *)coffeeTypes {
     static NSArray *types = nil;
     if(!types) {
-        types = @[@(CoffeeTypeEspresso), @(CoffeeTypeCoffee), @(CoffeeTypeBlend), @(CoffeeTypeEspressoBlend)];
+        types = @[@(CoffeeTypeEspresso), @(CoffeeTypeEspressoBlend), @(CoffeeTypeCoffee), @(CoffeeTypeBlend)];
     }
     
     return types;

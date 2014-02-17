@@ -25,6 +25,7 @@
 @property (strong, nonatomic) UITapGestureRecognizer *dismissRecognizer;
 @property (strong, nonatomic) UIImageView *coffeeImageView;
 @property (strong, nonatomic) UILabel *noImageLabel;
+@property (strong, nonatomic) NSArray *coffeeTypes;
 
 @end
 
@@ -34,6 +35,7 @@
     self = [super initWithStyle:UITableViewStyleGrouped];
     if(self) {
          _coffeeModel = coffeeModel;
+        self.coffeeTypes = [CoffeeModel coffeeTypes];
     }
     
     return self;
@@ -229,9 +231,9 @@
     
     if(indexPath.section == 1) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"ChooseCell"];
-        ((ChooseCell*)cell).currentIndex = indexPath.row;
+        ((ChooseCell*)cell).currentIndex = [self.coffeeTypes[indexPath.row] integerValue];
         ((ChooseCell*)cell).choiceProperty = @"type";
-        ((ChooseCell*)cell).choiceLabel = [CoffeeModel labelForCoffeeType:indexPath.row];
+        ((ChooseCell*)cell).choiceLabel = [CoffeeModel labelForCoffeeType:[self.coffeeTypes[indexPath.row] integerValue]];
         ((ChooseCell*)cell).coffeeModel = self.coffeeModel;
         
         return cell;
