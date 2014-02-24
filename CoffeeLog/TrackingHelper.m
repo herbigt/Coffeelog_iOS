@@ -39,6 +39,10 @@ NSString *const kTrackingEventCoffeeShareEventFacebook = @"Facebook";
 NSString *const kTrackingEventCoffeeShareEventTwitter = @"Twitter";
 NSString *const kTrackingEventCoffeeShareEventInstagram = @"Instagram";
 
+NSString *const kTrackingEventCoffeeWorksWithOn = @"WorksWithOn";
+NSString *const kTrackingEventCoffeeWorksWithOff = @"WorksWithOff";
+NSString *const kTrackingEventCurrentPositionChange = @"CurrentPositionChange";
+
 @implementation TrackingHelper
 
 + (void)initTrackingWithID:(NSString *)identifier {
@@ -54,6 +58,9 @@ NSString *const kTrackingEventCoffeeShareEventInstagram = @"Instagram";
 
 + (void)trackEvent:(NSString *)event withLabel:(NSString *)label andValue:(NSNumber *)value {
     id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    NSLog(@"Tracking: %@ %@", event, label);
+    
     [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_action" action:event label:label value:value] build]];
 }
 

@@ -37,6 +37,11 @@ extern NSString *const kTrackingEventCoffeeShareEventFacebook;
 extern NSString *const kTrackingEventCoffeeShareEventTwitter;
 extern NSString *const kTrackingEventCoffeeShareEventInstagram;
 
+extern NSString *const kTrackingEventCoffeeWorksWithOn;
+extern NSString *const kTrackingEventCoffeeWorksWithOff;
+extern NSString *const kTrackingEventCurrentPositionChange;
+
+
 @interface TrackingHelper : NSObject
 
 +(void)initTrackingWithID:(NSString*)identifier;

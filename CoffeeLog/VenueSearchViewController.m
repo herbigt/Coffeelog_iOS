@@ -10,6 +10,7 @@
 #import "FoursquareVenueProvider.h"
 #import "VenueCell.h"
 #import "CLNavigationBar.h"
+#import "TrackingHelper.h"
 
 @interface VenueSearchViewController ()
 
@@ -133,6 +134,8 @@
 }
 
 - (void)showSearchNearSearchInput:(id)sender {
+    [TrackingHelper trackEvent:kTrackingEventCurrentPositionChange withLabel:@""];
+    
     UILabel *titleView = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 35)];
     titleView.tag = 200;
     titleView.font = [UIFont systemFontOfSize:18];

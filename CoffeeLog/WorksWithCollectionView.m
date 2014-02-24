@@ -105,8 +105,10 @@
     
     NSString *currentType = self.typesArray[indexPath.row];
     if([self.activeTypes containsObject:currentType]) {
+        [TrackingHelper trackEvent:kTrackingEventCoffeeWorksWithOff withLabel:[CoffeeModel labelForWorksWith:[currentType integerValue]]];
         [self.activeTypes removeObject:currentType];
     } else {
+        [TrackingHelper trackEvent:kTrackingEventCoffeeWorksWithOn withLabel:[CoffeeModel labelForWorksWith:[currentType integerValue]]];
         [self.activeTypes addObject:currentType];
     }
     
