@@ -11,6 +11,7 @@
 @implementation CoffeeModel
 
 @synthesize worksWith=_worksWith;
+@synthesize imagePath=_imagePath;
 
 -(id)init {
     self = [super init];
@@ -26,6 +27,7 @@
     return [[CoffeeModel firstValueFromQuery:@"SELECT COUNT(*) FROM $T"] integerValue];
 }
 
+
 - (NSString *)description {
     return [NSString stringWithFormat:@"%@ (%d, %d) From %@, prize: %d, weight: %d, fav: %d", self.name, self.type, self.state, self.store, self.price, self.weight, self.isFavorited];
 }
@@ -34,6 +36,17 @@
     _imagePath = imagePath;
 
     self.image = [UIImage imageWithContentsOfFile:imagePath];
+}
+
+- (NSString *)imagePath {
+
+    static NSString *documentsDirectory = nil;
+    if(!documentsDirectory) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        documentsDirectory = [paths objectAtIndex:0];
+    }
+        
+    return [documentsDirectory stringByAppendingPathComponent:[_imagePath lastPathComponent]];
 }
 
 - (void)setWorksWith:(NSArray *)worksWith {
