@@ -68,6 +68,7 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
     
     self.searchBar = [[UISearchBar alloc] init];
+    self.searchBar.frame = CGRectMake(self.view.frame.origin.x, 10, self.view.bounds.size.width, 20);
     self.searchBar.tag = 300;
     self.searchBar.delegate = self;
     self.searchBar.placeholder = NSLocalizedString(@"Search for a place", nil);
@@ -85,23 +86,23 @@
     self.navigationController.navigationBar.translucent = YES;
  
     
-    self.searchBarNear = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 30)];
-    self.searchBarNear.tag = 400;
-    self.searchBarNear.delegate = self;
-    self.searchBarNear.placeholder = NSLocalizedString(@"Enter address or city name", nil);
-    self.searchBarNear.tintColor = UIColorFromRGB(0xFF9500);
-    self.searchBarNear.hidden = YES;
-    
-    [self.navigationController.navigationBar addSubview:self.searchBarNear];
-    
     self.searchNearView = [[UIView alloc] init];
+    self.searchNearView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 44);
+    self.searchNearView.backgroundColor = UIColorFromRGB(0xc9c9ce);
     self.searchNearView.tag = 100;
     
     self.searchNearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     self.searchNearLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Search near: %@", nil), NSLocalizedString(@"Current Position", nil)];
     self.searchNearLabel.textAlignment = NSTextAlignmentCenter;
-    self.searchNearLabel.textColor = [UIColor whiteColor];
+    self.searchNearLabel.textColor = [UIColor blackColor];
     self.searchNearLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f];
+    
+    self.searchBarNear = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
+    self.searchBarNear.tag = 400;
+    self.searchBarNear.delegate = self;
+    self.searchBarNear.placeholder = NSLocalizedString(@"Enter address or city name", nil);
+    self.searchBarNear.tintColor = UIColorFromRGB(0xFF9500);
+    self.searchBarNear.hidden = NO;
     
     [self.searchNearView addSubview:self.searchNearLabel];
     
@@ -116,8 +117,9 @@
     disclosure.contentMode = UIViewContentModeCenter;
     
     [self.searchNearView addSubview:disclosure];
+    self.tableView.tableHeaderView = self.searchNearView;
     
-    [self.navigationController.navigationBar addSubview:self.searchNearView];
+  //  [self.navigationController.navigationBar addSubview:self.searchNearView];
     
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSearchNearSearchInput:)];
     self.searchNearLabel.userInteractionEnabled = YES;
@@ -145,10 +147,10 @@
     
     self.navigationItem.titleView = titleView;
     
+    self.tableView.tableHeaderView = self.searchBarNear;
+    
     self.searchBarNear.hidden = NO;
     [self.searchBarNear becomeFirstResponder];
-
-    self.searchNearView.hidden = YES;
 }
 
 - (void)close:(id)sender {
@@ -244,7 +246,8 @@
     NSDictionary *venue = self.searchResults[indexPath.row];
 
     if(self.currentSearchBar == self.searchBarNear) {
-        self.searchBarNear.hidden = YES;
+        self.tableView.tableHeaderView = self.searchNearView;
+        
         self.searchNearLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Search near: %@", nil), venue[@"name"]];
         self.searchNearView.hidden = NO;
         
