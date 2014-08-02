@@ -721,16 +721,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED0018E1A9474D9B9576C708 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Philipp Waldhauer (54GX4CKLWX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Philipp Waldhauer (54GX4CKLWX)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
 				PRODUCT_NAME = Coffeelog;
-				PROVISIONING_PROFILE = "9406AF7B-5007-4E31-9824-4297A3BF2209";
+				PROVISIONING_PROFILE = "625B2EBE-6CB0-4E3E-A9BA-C03B42093D92";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -739,16 +742,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = ED0018E1A9474D9B9576C708 /* Pods.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
+				ARCHS = (
+					armv7s,
+					armv7,
+				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Philipp Waldhauer (54GX4CKLWX)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Philipp Waldhauer (54GX4CKLWX)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CoffeeLog/CoffeeLog-Prefix.pch";
 				INFOPLIST_FILE = "CoffeeLog/CoffeeLog-Info.plist";
 				PRODUCT_NAME = Coffeelog;
-				PROVISIONING_PROFILE = "9406AF7B-5007-4E31-9824-4297A3BF2209";
+				PROVISIONING_PROFILE = "625B2EBE-6CB0-4E3E-A9BA-C03B42093D92";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

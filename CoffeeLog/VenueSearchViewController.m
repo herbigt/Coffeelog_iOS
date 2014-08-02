@@ -88,20 +88,21 @@
     
     self.searchNearView = [[UIView alloc] init];
     self.searchNearView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 44);
-    self.searchNearView.backgroundColor = UIColorFromRGB(0xc9c9ce);
+    self.searchNearView.backgroundColor = UIColorFromRGB(0xfdba69);
     self.searchNearView.tag = 100;
     
     self.searchNearLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     self.searchNearLabel.text = [NSString stringWithFormat:NSLocalizedString(@"Search near: %@", nil), NSLocalizedString(@"Current Position", nil)];
     self.searchNearLabel.textAlignment = NSTextAlignmentCenter;
-    self.searchNearLabel.textColor = [UIColor blackColor];
+    self.searchNearLabel.textColor = [UIColor whiteColor];
     self.searchNearLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:13.0f];
     
     self.searchBarNear = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
     self.searchBarNear.tag = 400;
     self.searchBarNear.delegate = self;
     self.searchBarNear.placeholder = NSLocalizedString(@"Enter address or city name", nil);
-    self.searchBarNear.tintColor = UIColorFromRGB(0xFF9500);
+    self.searchBarNear.tintColor = UIColorFromRGB(0xfdba69);
+    self.searchBarNear.backgroundColor = UIColorFromRGB(0xfdba69);
     self.searchBarNear.hidden = NO;
     
     [self.searchNearView addSubview:self.searchNearLabel];
