@@ -46,24 +46,7 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.tintColor = UIColorFromRGB(0xb57252);
-    
-    /*
-    CoffeeModel *c1 = [[CoffeeModel alloc] init];
-    c1.image = [UIImage imageNamed:@"testimage"];
-    c1.name = @"Espresso Excelsior";
-    c1.type = @"Espresso";
-    c1.state = @"Roasted Beans";
-    c1.store = @"Kafeee Koojntor";
-    c1.price = 799;
-    c1.weight = 250;
-    c1.isFavorited = YES;
-    
-    DetailViewController *dvc = [[DetailViewController alloc] initWithCoffeeModel:c1];
-    AddEditViewController *aevc = [[AddEditViewController alloc] initWithCoffeeModel:c1];
-    SettingsViewController *svc = [[SettingsViewController alloc] init];*/
-    
-    VenueSearchViewController *vsvc = [[VenueSearchViewController alloc] init];
-    
+        
     UINavigationController *nvg = [[UINavigationController alloc] init];
     [nvg setViewControllers:@[lvc] animated:NO];
     
