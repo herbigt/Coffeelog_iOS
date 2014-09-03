@@ -12,20 +12,24 @@
 	<dict>
 		<key>53387BD0-AEAC-4EF2-8B84-A7FF375F220D</key>
 		<string>ssh://github.com/herbigt/Coffeelog_iOS.git</string>
+		<key>BDAEDEF3F59A8A4226D12CF3F57F7521E606CCE3</key>
+		<string>github.com:herbigt/Coffeelog_iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>CoffeeLog.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>53387BD0-AEAC-4EF2-8B84-A7FF375F220D</key>
+		<string>../../CoffeeLog</string>
+		<key>BDAEDEF3F59A8A4226D12CF3F57F7521E606CCE3</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/herbigt/Coffeelog_iOS.git</string>
+	<string>github.com:herbigt/Coffeelog_iOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>53387BD0-AEAC-4EF2-8B84-A7FF375F220D</string>
+	<string>BDAEDEF3F59A8A4226D12CF3F57F7521E606CCE3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>53387BD0-AEAC-4EF2-8B84-A7FF375F220D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>CoffeeLog</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDAEDEF3F59A8A4226D12CF3F57F7521E606CCE3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Coffeelog_iOS</string>
 		</dict>
 	</array>
 </dict>
