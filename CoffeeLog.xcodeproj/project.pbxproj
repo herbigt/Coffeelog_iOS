@@ -21,6 +21,8 @@
 		F05140B9180C953800B7D0D3 /* WorksWithCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = F05140B8180C953800B7D0D3 /* WorksWithCollectionView.m */; };
 		F0543FD7181080AB00CDFE2A /* placeholder_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0543FD6181080AB00CDFE2A /* placeholder_image@2x.png */; };
 		F0543FD9181080ED00CDFE2A /* web@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0543FD8181080ED00CDFE2A /* web@2x.png */; };
+		F057965219B7A98D0015B8BF /* NoteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F057965119B7A98D0015B8BF /* NoteCell.m */; };
+		F057965619B7AB760015B8BF /* AUIAutoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = F057965519B7AB760015B8BF /* AUIAutoGrowingTextView.m */; };
 		F0680BD0189E886500F6AA4D /* type_chemex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BCE189E886500F6AA4D /* type_chemex@2x.png */; };
 		F0680BD1189E886500F6AA4D /* type_chemex_active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BCF189E886500F6AA4D /* type_chemex_active@2x.png */; };
 		F0680BD4189E888200F6AA4D /* type_syphon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F0680BD2189E888200F6AA4D /* type_syphon@2x.png */; };
@@ -88,6 +90,10 @@
 		F05140B8180C953800B7D0D3 /* WorksWithCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorksWithCollectionView.m; sourceTree = "<group>"; };
 		F0543FD6181080AB00CDFE2A /* placeholder_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder_image@2x.png"; sourceTree = "<group>"; };
 		F0543FD8181080ED00CDFE2A /* web@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "web@2x.png"; sourceTree = "<group>"; };
+		F057965019B7A98D0015B8BF /* NoteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoteCell.h; sourceTree = "<group>"; };
+		F057965119B7A98D0015B8BF /* NoteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoteCell.m; sourceTree = "<group>"; };
+		F057965419B7AB760015B8BF /* AUIAutoGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AUIAutoGrowingTextView.h; sourceTree = "<group>"; };
+		F057965519B7AB760015B8BF /* AUIAutoGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AUIAutoGrowingTextView.m; sourceTree = "<group>"; };
 		F0680BCE189E886500F6AA4D /* type_chemex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_chemex@2x.png"; sourceTree = "<group>"; };
 		F0680BCF189E886500F6AA4D /* type_chemex_active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_chemex_active@2x.png"; sourceTree = "<group>"; };
 		F0680BD2189E888200F6AA4D /* type_syphon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "type_syphon@2x.png"; sourceTree = "<group>"; };
@@ -183,9 +189,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F057965319B7AB630015B8BF /* 3rd Party */ = {
+			isa = PBXGroup;
+			children = (
+				F057965419B7AB760015B8BF /* AUIAutoGrowingTextView.h */,
+				F057965519B7AB760015B8BF /* AUIAutoGrowingTextView.m */,
+			);
+			name = "3rd Party";
+			sourceTree = "<group>";
+		};
 		F0976CDA184E9603004F81C4 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F057965319B7AB630015B8BF /* 3rd Party */,
 				F0976CDB184E9610004F81C4 /* TrackingHelper.h */,
 				F0976CDC184E9610004F81C4 /* TrackingHelper.m */,
 				F06EB91318591A7E00D4B760 /* DropboxHelper.h */,
@@ -211,6 +227,8 @@
 				F0A08D37183B7A1A001A5370 /* LocationCell.m */,
 				F0A08D39183B7CD4001A5370 /* WorksWithCell.h */,
 				F0A08D3A183B7CD4001A5370 /* WorksWithCell.m */,
+				F057965019B7A98D0015B8BF /* NoteCell.h */,
+				F057965119B7A98D0015B8BF /* NoteCell.m */,
 			);
 			name = AddEditCells;
 			sourceTree = "<group>";
@@ -517,6 +535,7 @@
 				F0DC9A851801E98D00C95EEB /* main.m in Sources */,
 				F0DC9AAA1801E9A600C95EEB /* ListViewController.m in Sources */,
 				F0680BDC189E94D500F6AA4D /* CLNavigationBar.m in Sources */,
+				F057965619B7AB760015B8BF /* AUIAutoGrowingTextView.m in Sources */,
 				F07180F5181478F600C6B299 /* SettingsViewController.m in Sources */,
 				F06EB91518591A7E00D4B760 /* DropboxHelper.m in Sources */,
 				F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */,
@@ -534,6 +553,7 @@
 				F0976CDD184E9610004F81C4 /* TrackingHelper.m in Sources */,
 				F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */,
 				F0DC9ABE1801F77100C95EEB /* DetailViewController.m in Sources */,
+				F057965219B7A98D0015B8BF /* NoteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

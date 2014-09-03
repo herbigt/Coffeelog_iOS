@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, CoffeeWorksWith) {
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *imagePath;
+@property (strong, nonatomic) NSString *notes;
 
 @property (nonatomic) CoffeeType type;
 @property (nonatomic) CoffeeState state;

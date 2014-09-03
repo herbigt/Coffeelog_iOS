@@ -20,6 +20,8 @@
 #import "LocationCell.h"
 #import "WorksWithCell.h"
 #import "CLNavigationBar.h"
+#import "NoteCell.h"
+
 @interface AddEditViewController ()
 
 @property (strong, nonatomic) UITapGestureRecognizer *dismissRecognizer;
@@ -84,6 +86,7 @@
     [self.tableView registerClass:[NumberCell class] forCellReuseIdentifier:@"NumberCell"];
     [self.tableView registerClass:[LocationCell class] forCellReuseIdentifier:@"LocationCell"];
     [self.tableView registerClass:[WorksWithCell class] forCellReuseIdentifier:@"WorksWithCell"];
+    [self.tableView registerClass:[NoteCell class] forCellReuseIdentifier:@"NoteCell"];
     
     
     UIBarButtonItem *add = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Save", nil) style:UIBarButtonItemStylePlain target:self action:@selector(saveAndClose:)];
@@ -136,10 +139,14 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 6;
+    return 7;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.section == 6) {
+        return 175;
+    }
+    
     if(indexPath.section == 5) {
         return 175;
     }
@@ -168,6 +175,10 @@
         return 1;
     }
     
+    if (section == 6) {
+        return 1;
+    }
+    
     return 2;
 }
 
@@ -191,6 +202,10 @@
     }
     
     if(section == 5) {
+        return NSLocalizedString(@"Notes", nil);
+    }
+    
+    if(section == 6) {
         return NSLocalizedString(@"Works with", nil);
     }
     
@@ -280,6 +295,11 @@
     }
     
     if(indexPath.section == 5) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
+        ((WorksWithCell*)cell).coffeeModel = self.coffeeModel;
+    }
+    
+    if(indexPath.section == 6) {
         cell = [tableView dequeueReusableCellWithIdentifier:@"WorksWithCell"];
         ((WorksWithCell*)cell).coffeeModel = self.coffeeModel;
     }

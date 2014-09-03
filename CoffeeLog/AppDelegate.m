@@ -107,19 +107,18 @@
                 failedAt(2);
             }
             
-            NSLog(@"Created stuff");
-            
             *schemaVersion = 1;
         }
         
-        // If you wanted to change the schema in a later app version, you'd add something like this here:
-        /*
-         if (*schemaVersion < 2) {
-         if (! [db executeUpdate:@"ALTER TABLE Person ADD COLUMN title TEXT NOT NULL DEFAULT ''"]) failedAt(3);
-         *schemaVersion = 2;
-         }
-
-         */
+        if (*schemaVersion < 2) {
+            
+            if (![db executeUpdate:@"ALTER TABLE CoffeeModel ADD COLUMN notes TEXT NOT NULL DEFAULT ''"]) {
+                failedAt(1);
+            }
+        
+            
+            *schemaVersion = 2;
+        }
         
         [db commit];
     }];

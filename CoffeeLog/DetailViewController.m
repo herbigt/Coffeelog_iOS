@@ -152,7 +152,11 @@
         return 75;
     }
     
-    if(indexPath.row == 4) {
+    if(![self.coffeeModel.notes isEqualToString:@""] && indexPath.row == 4) {
+        return [self heightForNoteCell];
+    }
+    
+    if(([self.coffeeModel.notes isEqualToString:@""] && indexPath.row == 4) || indexPath.row == 5) {
         if(self.coffeeModel.worksWith.count > 4) {
             return 210;
         } else {
@@ -163,8 +167,27 @@
     return 50;
 }
 
+- (CGFloat)heightForNoteCell {
+    static UILabel *sizingLabel = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingLabel = [[UILabel alloc] init];
+    });
+    
+    sizingLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    sizingLabel.text = self.coffeeModel.notes;
+    [sizingLabel sizeToFit];
+    sizingLabel.numberOfLines = 0;
+    
+    [sizingLabel setNeedsLayout];
+    [sizingLabel layoutIfNeeded];
+    
+    CGSize size = sizingLabel.frame.size;
+    return MAX(65, size.height);
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return [self.coffeeModel.notes isEqualToString:@""] ? 5 : 6;
 }
 
 // Whoa, das ist echt nicht so hübsch gemacht, funktioniert aber. Naja.
@@ -221,7 +244,13 @@
         
     } else if (indexPath.row == 3) {
         cell.textLabel.text = [NSString stringWithFormat:@"%@ / %@", [[UserSettings defaultSettings] currencyString:self.coffeeModel.price], [[UserSettings defaultSettings] weightString:self.coffeeModel.weight]];
-    } else if (indexPath.row == 4) {
+    } else if (![self.coffeeModel.notes isEqualToString:@""] && indexPath.row == 4) {
+        cell.textLabel.text = self.coffeeModel.notes;
+        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+        cell.textLabel.numberOfLines = 0;
+        
+    }
+    else if (([self.coffeeModel.notes isEqualToString:@""] && indexPath.row == 4) || indexPath.row == 5) {
         UILabel *worksWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
         worksWithLabel.textColor = UIColorFromRGB(0x61605e);
         worksWithLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
@@ -240,7 +269,7 @@
         wwcv.tintColor = UIColorFromRGB(0x605f5e);
         
         [cell addSubview:wwcv];
-
+        
     }
     
     return cell;
