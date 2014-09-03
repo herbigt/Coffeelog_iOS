@@ -348,7 +348,7 @@
 
 
 - (void)saveAndClose:(id)sender {
-    NSLog(@"Coffee: %@", self.coffeeModel);
+    [self.view endEditing:YES];
     
     NSString *label = (self.coffeeModel.existsInDatabase ? kTrackingEventCoffeeEventSaveExisting : kTrackingEventCoffeeEventSaveNew);
     if([CoffeeModel count] == 0) {
@@ -362,7 +362,6 @@
     }
     
     [self.coffeeModel save];
-    
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
