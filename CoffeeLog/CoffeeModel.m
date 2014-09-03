@@ -39,6 +39,10 @@
 }
 
 - (NSString *)imagePath {
+    
+    if([_imagePath isEqualToString:@""]) {
+        return _imagePath;
+    }
 
     static NSString *documentsDirectory = nil;
     if(!documentsDirectory) {
