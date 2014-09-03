@@ -26,14 +26,20 @@
         self.favLabel.textColor = UIColorFromRGB(0x61605e);
         self.favLabel.text = NSLocalizedString(@"Favorite", nil);
         
-        CGFloat switchY = self.bounds.size.height/2 - 31/2;
-        self.favSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(255, switchY, 52, 31)];
+        self.favSwitch = [[UISwitch alloc] init];
+        
+        self.favSwitch.translatesAutoresizingMaskIntoConstraints = NO;
+        
         self.favSwitch.tintColor = UIColorFromRGB(0xff9500);
         self.favSwitch.onTintColor = UIColorFromRGB(0xff9500);
         [self.favSwitch addTarget:self action:@selector(favoriteSwitchToggled:) forControlEvents:UIControlEventValueChanged];
         
         [self addSubview:self.favLabel];
         [self addSubview:self.favSwitch];
+        
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.favSwitch attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-20]];
+        [self addConstraint:[NSLayoutConstraint constraintWithItem:self.favSwitch attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+        
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;
 
