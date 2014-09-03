@@ -21,6 +21,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         self.nameField = [[UITextField alloc] init];
+        self.nameField.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.nameField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         self.nameField.textColor = UIColorFromRGB(0x8e8e93);
         self.nameField.placeholder = NSLocalizedString(@"Name", nil);

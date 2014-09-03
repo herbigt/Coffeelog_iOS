@@ -100,6 +100,7 @@
     [super viewDidLoad];
     
     self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite_detail"]];
+    self.favoriteIcon.translatesAutoresizingMaskIntoConstraints = NO;
     
     self.storeIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"web_detail"]];
     
@@ -166,6 +167,7 @@
     return 5;
 }
 
+// Whoa, das ist echt nicht so hübsch gemacht, funktioniert aber. Naja.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = [self tableView:tableView heightForRowAtIndexPath:indexPath];
     
@@ -182,6 +184,10 @@
         self.favoriteIcon.frame = CGRectMake(MAX_X(cell) - self.favoriteIcon.bounds.size.width - 15, (height/2) - (self.favoriteIcon.bounds.size.height/2), self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
         self.favoriteIcon.hidden = !self.coffeeModel.isFavorited;
         [cell addSubview:self.favoriteIcon];
+        
+        [cell addConstraint:[NSLayoutConstraint constraintWithItem:self.favoriteIcon attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:cell attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-40]];
+        [cell addConstraint:[NSLayoutConstraint constraintWithItem:self.favoriteIcon attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:cell attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
+        
     } else if (indexPath.row == 1) {
         UILabel *typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
         typeLabel.textColor = UIColorFromRGB(0x61605e);

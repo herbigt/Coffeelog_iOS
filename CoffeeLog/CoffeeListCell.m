@@ -32,16 +32,29 @@
         [self addSubview:self.coffeeImageView];
         
         self.infoView = [[UIView alloc] initWithFrame:CGRectMake(115, 10, 180, 85)];
+        self.infoView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [self addSubview:self.infoView];
+        
+        
         
         self.favoriteIcon = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"favorite"]];
         self.favoriteIcon.frame = CGRectMake(self.infoView.bounds.size.width - self.favoriteIcon.bounds.size.width, 5, self.favoriteIcon.bounds.size.width, self.favoriteIcon.bounds.size.height);
+        self.favoriteIcon.translatesAutoresizingMaskIntoConstraints = NO;
         [self.infoView addSubview:self.favoriteIcon];
         
         self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 160, 25)];
         self.nameLabel.font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
         self.nameLabel.textColor = UIColorFromRGB(0x61605e);
         [self.infoView addSubview:self.nameLabel];
+        
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        
+         [self.infoView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.infoView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0]];
+        [self.infoView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.infoView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0]];
+        [self.infoView addConstraint:[NSLayoutConstraint constraintWithItem:self.nameLabel attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.infoView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-40]];
+        
+        [self.infoView addConstraint:[NSLayoutConstraint constraintWithItem:self.favoriteIcon attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.infoView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:-5]];
+        [self.infoView addConstraint:[NSLayoutConstraint constraintWithItem:self.favoriteIcon attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.nameLabel attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0]];
         
         self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, MAX_Y(self.nameLabel) - 5, 160, 25)];
         self.typeLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:15.0];

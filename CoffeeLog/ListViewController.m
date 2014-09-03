@@ -38,6 +38,8 @@
 - (void)loadView {
     [super loadView];
     
+    self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    
  
     [self.tableView registerClass:[CoffeeListCell class] forCellReuseIdentifier:@"CoffeeListCell"];
     self.tableView.separatorColor = UIColorFromRGB(0xb57252);
