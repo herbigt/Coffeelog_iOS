@@ -357,6 +357,10 @@
     
     [TrackingHelper trackEvent:kTrackingEventCoffeeEvent withLabel:label];
     
+    if(!self.coffeeModel.created) {
+        self.coffeeModel.created = [NSDate new];
+    }
+    
     [self.coffeeModel save];
     
     
