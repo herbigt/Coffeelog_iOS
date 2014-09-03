@@ -99,7 +99,7 @@
         
         if (*schemaVersion < 1) {
             if (![db executeUpdate:
-                   @"CREATE TABLE CoffeeModel ("
+                   @"CREATE TABLE IF NOT EXISTS CoffeeModel ("
                   @"    id           INTEGER PRIMARY KEY AUTOINCREMENT,"
                   @"    name         TEXT NOT NULL DEFAULT '',"
                   @"    imagePath         TEXT NOT NULL DEFAULT '',"
