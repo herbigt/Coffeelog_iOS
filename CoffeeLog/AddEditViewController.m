@@ -26,6 +26,7 @@
 
 @property (strong, nonatomic) UITapGestureRecognizer *dismissRecognizer;
 @property (strong, nonatomic) UIImageView *coffeeImageView;
+@property (strong, nonatomic) UIView *noImageView;
 @property (strong, nonatomic) UILabel *noImageLabel;
 @property (strong, nonatomic) NSArray *coffeeTypes;
 
@@ -60,16 +61,36 @@
     
     self.coffeeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
     
+    self.noImageView = [[UIView alloc] init];
+    self.noImageView.frame = self.coffeeImageView.bounds;
+    
     self.noImageLabel = [[UILabel alloc] init];
-    self.noImageLabel.frame = self.coffeeImageView.bounds;
+    self.noImageLabel.translatesAutoresizingMaskIntoConstraints = NO;
     self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
     self.noImageLabel.textColor = UIColorFromRGB(0x8e8e93);
     self.noImageLabel.numberOfLines = 2;
     self.noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
     self.noImageLabel.backgroundColor = [UIColor clearColor];
     self.noImageLabel.textAlignment = NSTextAlignmentCenter;
+    [self.noImageLabel sizeToFit];
     
-    [self.coffeeImageView addSubview:self.noImageLabel];
+    UIImageView *cameraView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Camera"]];
+    cameraView.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    [self.noImageView addSubview:cameraView];
+    
+    [self.noImageView addSubview:self.noImageLabel];
+    
+    [self.noImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.noImageLabel attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.noImageView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+    [self.noImageView addConstraint:[NSLayoutConstraint constraintWithItem:self.noImageLabel attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.noImageView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:50]];
+    
+    [self.noImageView addConstraint:[NSLayoutConstraint constraintWithItem:cameraView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.noImageView attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0]];
+    [self.noImageView addConstraint:[NSLayoutConstraint constraintWithItem:cameraView attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.noImageView attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:-50]];
+    
+    
+    
+    
+    [self.coffeeImageView addSubview:self.noImageView];
     
     [self.coffeeImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)]];
     [self.noImageLabel addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openImageActionSheet:)]];
@@ -117,7 +138,7 @@
     
     if(![self.coffeeModel.imagePath isEqualToString:@""]) {
         self.coffeeImageView.image = [UIImage imageWithContentsOfFile:self.coffeeModel.imagePath];
-        self.noImageLabel.hidden = YES;
+        self.noImageView.hidden = YES;
     }
    
 }
@@ -347,8 +368,7 @@
     
     if(buttonIndex == actionSheet.destructiveButtonIndex) {
         self.coffeeImageView.image = nil;
-        self.noImageLabel.text = NSLocalizedString(@"Tap to add image", nil);
-        self.noImageLabel.hidden = NO;
+        self.noImageView.hidden = NO;
         return;
     }
     
@@ -392,7 +412,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.coffeeImageView.image = info[@"UIImagePickerControllerEditedImage"];
-    self.noImageLabel.text = @"";
+    self.noImageView.hidden = YES;
     
     [self.coffeeModel saveImage:info[@"UIImagePickerControllerEditedImage"]];
     

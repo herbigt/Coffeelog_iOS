@@ -11,7 +11,7 @@
 
 
 @interface NoteCell()
-@property (strong, nonatomic) AUIAutoGrowingTextView *noteField;
+@property (strong, nonatomic) UITextView *noteField;
 
 
 @end
@@ -23,17 +23,15 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.noteField = [[AUIAutoGrowingTextView alloc] init];
+        self.noteField = [[UITextView alloc] init];
         self.noteField.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         self.noteField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:17];
         self.noteField.textColor = UIColorFromRGB(0x8e8e93);
-       // self.noteField.placeholder = NSLocalizedString(@"Notes", nil);
         self.noteField.returnKeyType = UIReturnKeyDone;
         self.noteField.delegate = self;
+        [self.noteField sizeToFit];
         
-        self.noteField.minHeight = 175;
-        
-        self.noteField.frame = CGRectMake(16, 0, 294, self.bounds.size.height);
+        self.noteField.frame = CGRectMake(16, 0, 294, self.noteField.bounds.size.height);
         
         [self addSubview:self.noteField];
     }
