@@ -168,21 +168,18 @@
 }
 
 - (CGFloat)heightForNoteCell {
-    static UILabel *sizingLabel = nil;
+    static UITableViewCell *sizingCell = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sizingLabel = [[UILabel alloc] init];
+        sizingCell = [[UITableViewCell alloc] init];
     });
     
-    sizingLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    sizingLabel.text = self.coffeeModel.notes;
-    [sizingLabel sizeToFit];
-    sizingLabel.numberOfLines = 0;
     
-    [sizingLabel setNeedsLayout];
-    [sizingLabel layoutIfNeeded];
     
-    CGSize size = sizingLabel.frame.size;
+    sizingCell.textLabel.text = self.coffeeModel.notes;
+    sizingCell.textLabel.numberOfLines = 0;
+    
+    CGSize size = [sizingCell systemLayoutSizeFittingSize:UILayoutFittingExpandedSize];
     return MAX(65, size.height);
 }
 
@@ -248,7 +245,6 @@
         cell.textLabel.text = self.coffeeModel.notes;
         cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
         cell.textLabel.numberOfLines = 0;
-        
     }
     else if (([self.coffeeModel.notes isEqualToString:@""] && indexPath.row == 4) || indexPath.row == 5) {
         UILabel *worksWithLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 12, self.view.bounds.size.width, 20)];
