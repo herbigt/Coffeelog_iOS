@@ -368,7 +368,7 @@
     
     if(buttonIndex == actionSheet.destructiveButtonIndex) {
         self.coffeeImageView.image = nil;
-        self.noImageLabel.hidden = NO;
+        self.noImageView.hidden = NO;
         return;
     }
     
@@ -412,7 +412,7 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     self.coffeeImageView.image = info[@"UIImagePickerControllerEditedImage"];
-    self.noImageLabel.hidden = YES;
+    self.noImageView.hidden = YES;
     
     [self.coffeeModel saveImage:info[@"UIImagePickerControllerEditedImage"]];
     
