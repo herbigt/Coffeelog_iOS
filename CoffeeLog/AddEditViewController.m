@@ -72,6 +72,7 @@
     self.noImageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:32];
     self.noImageLabel.backgroundColor = [UIColor clearColor];
     self.noImageLabel.textAlignment = NSTextAlignmentCenter;
+    self.noImageLabel.preferredMaxLayoutWidth = 280;
     [self.noImageLabel sizeToFit];
     
     UIImageView *cameraView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Camera"]];

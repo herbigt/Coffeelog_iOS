@@ -74,6 +74,9 @@
 		F07B03A2181D53A3001FBBAF /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A1181D53A3001FBBAF /* Constants.m */; };
 		F07B03A5181D542F001FBBAF /* UserSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03A4181D542F001FBBAF /* UserSettings.m */; };
 		F07B03AB181D5C49001FBBAF /* VenueSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */; };
+		F082E4CB19C2E96400B99A4F /* Camera.png in Resources */ = {isa = PBXBuildFile; fileRef = F082E4C919C2E96400B99A4F /* Camera.png */; };
+		F082E4CC19C2E96400B99A4F /* Camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F082E4CA19C2E96400B99A4F /* Camera@2x.png */; };
+		F082E4CE19C31CE700B99A4F /* Camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F082E4CD19C31CE700B99A4F /* Camera@3x.png */; };
 		F0976CDD184E9610004F81C4 /* TrackingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0976CDC184E9610004F81C4 /* TrackingHelper.m */; };
 		F0A08D29183AE087001A5370 /* NameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D28183AE087001A5370 /* NameCell.m */; };
 		F0A08D2C183AE1DE001A5370 /* FavoriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A08D2B183AE1DE001A5370 /* FavoriteCell.m */; };
@@ -183,6 +186,9 @@
 		F07B03A4181D542F001FBBAF /* UserSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserSettings.m; sourceTree = "<group>"; };
 		F07B03A9181D5C49001FBBAF /* VenueSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenueSearchViewController.h; sourceTree = "<group>"; };
 		F07B03AA181D5C49001FBBAF /* VenueSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenueSearchViewController.m; sourceTree = "<group>"; };
+		F082E4C919C2E96400B99A4F /* Camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Camera.png; sourceTree = "<group>"; };
+		F082E4CA19C2E96400B99A4F /* Camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@2x.png"; sourceTree = "<group>"; };
+		F082E4CD19C31CE700B99A4F /* Camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera@3x.png"; sourceTree = "<group>"; };
 		F0976CDB184E9610004F81C4 /* TrackingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingHelper.h; sourceTree = "<group>"; };
 		F0976CDC184E9610004F81C4 /* TrackingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingHelper.m; sourceTree = "<group>"; };
 		F0A08D27183AE087001A5370 /* NameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameCell.h; sourceTree = "<group>"; };
@@ -418,6 +424,9 @@
 		F0DC9AB71801F16500C95EEB /* images */ = {
 			isa = PBXGroup;
 			children = (
+				F082E4C919C2E96400B99A4F /* Camera.png */,
+				F082E4CA19C2E96400B99A4F /* Camera@2x.png */,
+				F082E4CD19C31CE700B99A4F /* Camera@3x.png */,
 				C5E98E70186798AE005A0A3E /* add_thick@2x.png */,
 				C5277FD919C0DBEE0003E499 /* add_thick@3x.png */,
 				F0DC9ABA1801F69400C95EEB /* add@2x.png */,
@@ -564,6 +573,7 @@
 				C5277FCF19C0C9B60003E499 /* type_filter_active@3x.png in Resources */,
 				F07A06871820607400B49E13 /* type_sieb_active@2x.png in Resources */,
 				C5277FD619C0C9B60003E499 /* type_syphon@3x.png in Resources */,
+				F082E4CB19C2E96400B99A4F /* Camera.png in Resources */,
 				F0DC9ABB1801F69400C95EEB /* add@2x.png in Resources */,
 				C5277FC919C0C9B60003E499 /* type_aero_active@3x.png in Resources */,
 				F0680BD9189E889700F6AA4D /* type_espressokocher@2x.png in Resources */,
@@ -599,8 +609,10 @@
 				C5277FCB19C0C9B60003E499 /* type_chemex_active@3x.png in Resources */,
 				F07B039F181D5219001FBBAF /* location_detail@2x.png in Resources */,
 				F0680BD1189E886500F6AA4D /* type_chemex_active@2x.png in Resources */,
+				F082E4CE19C31CE700B99A4F /* Camera@3x.png in Resources */,
 				F05140B5180C941E00B7D0D3 /* type_sieb@2x.png in Resources */,
 				C5277FE219C0DDAB0003E499 /* placeholder_image@3x.png in Resources */,
+				F082E4CC19C2E96400B99A4F /* Camera@2x.png in Resources */,
 				C5277FE819C0DF410003E499 /* location_detail@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
